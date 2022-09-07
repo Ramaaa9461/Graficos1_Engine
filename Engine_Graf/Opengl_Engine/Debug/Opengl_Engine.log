@@ -1,3 +1,0 @@
-﻿  main.cpp
-LINK : warning LNK4098: la biblioteca predeterminada'MSVCRT' entra en conflicto con otras bibliotecas; use la biblioteca /NODEFAULTLIB:biblioteca
-  Opengl_Engine.vcxproj -> C:\Users\Administrador\Desktop\Engine_Graf\Debug\Opengl_Engine.exe
