@@ -1,14 +1,18 @@
-#pragma once
+#ifndef ENTITY2D_H
+#define ENTITY2D_H
 
 #include"entity.h"
 
-class Entity2d : public Entity
+namespace FACU_RAMI_ENGINE
 {
-public:
-	Entity2d();
-	~Entity2d();
+	class Entity2d : public Entity
+	{
+	private:
 
-private:
+	public:
+		Entity2d();
+		~Entity2d();
+	};
+}
 
-};
-
+#endif

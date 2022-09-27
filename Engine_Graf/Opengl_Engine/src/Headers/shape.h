@@ -1,25 +1,29 @@
-#pragma once
-#include"entity2d.h"
-class Shape :Entity2d
+#ifndef SHAPE_H
+#define SHAPE_H
+
+#include "entity2d.h"
+
+namespace FACU_RAMI_ENGINE
 {
-private:
-	float* vertexPosition;
-	int vertexCount;
-
-public:
-	Shape();
-	~Shape();
-	void setVertices(int vertexCount, float* vertexPosition);
-	void draw(Renderer* renderer) override;
-	float* getVertexPosition()
+	class Shape : Entity2d
 	{
-		return vertexPosition;
-	}
-	int getVertexCount()
-	{
-		return vertexCount;
-	}
+	private:
 
+		float* _vertexPosition;
 
-};
+		int _vertexCount;
 
+	public:
+		Shape();
+		~Shape();
+
+		void setVertices(int vertexCount, float* vertexPosition);
+
+		float* getVertexPosition();
+		int getVertexCount();
+
+		void draw(Renderer* renderer);
+	};
+}
+
+#endif

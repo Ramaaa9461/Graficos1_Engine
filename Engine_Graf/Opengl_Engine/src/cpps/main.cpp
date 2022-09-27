@@ -2,9 +2,11 @@
 
 int main()
 {
-	BaseGame baseGame;
+	FACU_RAMI_ENGINE::BaseGame* game = new FACU_RAMI_ENGINE::BaseGame();
 
-	baseGame.run();
+	game->run();
+
+	delete game;
 
 	return 0;
 }

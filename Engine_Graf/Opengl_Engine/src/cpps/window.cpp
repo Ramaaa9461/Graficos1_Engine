@@ -1,56 +1,50 @@
 #include "../Headers/window.h"
 
-DllExport Window::Window()
+namespace FACU_RAMI_ENGINE
 {
-	begin();
-}
-
-DllExport Window::~Window()
-{
-	terminate_Glfw();
-}
-
-DllExport GLFWwindow* Window::getWindows()
-{
-	return window;
-}
-
-DllExport GLFWwindow* Window::create_Window(int width, int height, const char *console_Name)
-{
-	return glfwCreateWindow(width, height, console_Name, NULL, NULL);
-}
-
-DllExport int Window::initialize_Glfw()
-{
-	return glfwInit();
-}
-
-DllExport void Window::terminate_Glfw()
-{
-	glfwTerminate();
-}
-
-DllExport void Window::initialize_Glew()
-{
-	if (glewInit() != GLEW_OK)
+	DllExport Window::Window()
 	{
-		std::cout << "Error" << std::endl;
-	}
-}
-
-DllExport int Window::begin()
-{
-	if (!initialize_Glfw())
-		return -1;
-
-	window = create_Window(640, 480, "OpenGl_Engine");
-
-	if (!window)
-	{
-		terminate_Glfw();
-		return -1;
+		start();
 	}
 
-	glfwMakeContextCurrent(window);
-	initialize_Glew();
+	DllExport Window::~Window()
+	{
+		glfwTerminate();
+	}
+
+	DllExport int Window::initGlfw()
+	{
+		return glfwInit();
+	}
+
+	DllExport void Window::initGlew()
+	{
+		if (glewInit() != GLEW_OK)
+		{
+			std::cout << "Glew initialization failed!" << std::endl;
+		}
+	}
+
+	DllExport int Window::start()
+	{
+		if (!initGlfw())
+			return -1;
+
+		window = glfwCreateWindow(640, 480, "OpenGl_Engine", NULL, NULL);
+
+		if (!window)
+		{
+			glfwTerminate();
+			return -1;
+		}
+
+		glfwMakeContextCurrent(window);
+
+		initGlew();
+	}
+
+	DllExport GLFWwindow* Window::getWindow()
+	{
+		return window;
+	}		
 }

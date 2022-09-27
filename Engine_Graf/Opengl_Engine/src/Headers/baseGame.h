@@ -1,18 +1,26 @@
-#pragma once
-#include "DDLExport.h"
+#ifndef BASE_GAME_H
+#define BASE_GAME_H
+
 #include "GL/glew.h"
 #include "glfw3.h"
+
+#include "DDLExport.h"
+
 #include "renderer.h"
 #include "window.h"
 
-class BaseGame
+namespace FACU_RAMI_ENGINE
 {
-public:
-	DllExport BaseGame();
-	DllExport ~BaseGame();
-	DllExport int run();
+	class BaseGame
+	{
+	private:
 
-private:
+	public:
+		DllExport BaseGame();
+		DllExport ~BaseGame();
 
-};
+		DllExport int run();
+	};
+}
 
+#endif

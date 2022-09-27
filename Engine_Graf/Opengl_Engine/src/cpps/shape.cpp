@@ -1,20 +1,38 @@
 #include "../Headers/shape.h"
 
-Shape::Shape()
+namespace FACU_RAMI_ENGINE
 {
-}
+	Shape::Shape()
+	{
+		_vertexPosition = NULL;
 
-Shape::~Shape()
-{
-}
+		_vertexCount = 0;
+	}
 
-void Shape::setVertices(int vertexCount, float* vertexPosition)
-{
-	this->vertexPosition = vertexPosition;
-	this->vertexCount = vertexCount;
-}
+	Shape::~Shape()
+	{
 
-void Shape::draw(Renderer* renderer)
-{
+	}
 
+	void Shape::setVertices(int vertexCount, float* vertexPosition)
+	{
+		_vertexPosition = vertexPosition;
+
+		_vertexCount = vertexCount;
+	}
+
+	float* Shape::getVertexPosition()
+	{
+		return _vertexPosition;
+	}
+
+	int Shape::getVertexCount()
+	{
+		return _vertexCount;
+	}
+
+	void Shape::draw(Renderer* renderer)
+	{
+
+	}
 }
