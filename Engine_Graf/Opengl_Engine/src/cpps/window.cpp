@@ -4,7 +4,7 @@ namespace FACU_RAMI_ENGINE
 {
 	DllExport Window::Window()
 	{
-		start();
+		run();
 	}
 
 	DllExport Window::~Window()
@@ -25,7 +25,7 @@ namespace FACU_RAMI_ENGINE
 		}
 	}
 
-	DllExport int Window::start()
+	DllExport int Window::run()
 	{
 		if (!initGlfw())
 			return -1;

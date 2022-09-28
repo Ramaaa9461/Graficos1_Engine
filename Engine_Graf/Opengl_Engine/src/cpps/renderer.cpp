@@ -21,16 +21,16 @@ namespace FACU_RAMI_ENGINE
 
 		float vertexPositions[] =
 		{
-			-0.5f, -0.5f, 0.0f, 
-			 0.5f, -0.5f, 0.0f, 
-			 0.5f,  0.5f, 0.0f, 
-			-0.5f,  0.5f, 0.0f  
+			-0.5f, -0.5f, 0.0f,   //Abajo Izquierda
+			 0.5f, -0.5f, 0.0f,  //Abajo Derecha
+			 0.5f,  0.5f, 0.0f, //Arriba Derecha
+			-0.5f,  0.5f, 0.0f //Arriba izquierda
 		};
-
+		 
 		unsigned int indexes[] =
 		{
-			0,1,2,
-			2,3,0
+			2,3,0,
+			0,1,2
 		};
 
 		setBuffers(1, vertexBufferObject, vertexPositions, GL_STATIC_DRAW, GL_ARRAY_BUFFER);
@@ -54,7 +54,7 @@ namespace FACU_RAMI_ENGINE
 		}
 
 		glDeleteProgram(shader);
-	}		
+	}
 
 	DllExport void Renderer::setBuffers(int quantity, unsigned int& id, unsigned int bufferArray[], GLenum drawMode, GLenum bufferMode)
 	{
@@ -79,7 +79,7 @@ namespace FACU_RAMI_ENGINE
 	DllExport unsigned int Renderer::CompileShader(unsigned int type, const std::string& source)
 	{
 		unsigned int id = glCreateShader(type);
-		
+
 		const char* src = source.c_str();
 
 		glShaderSource(id, 1, &src, nullptr);
@@ -87,24 +87,24 @@ namespace FACU_RAMI_ENGINE
 		glCompileShader(id);
 
 		int result;
-		
+
 		glGetShaderiv(id, GL_COMPILE_STATUS, &result);
 
 		if (result == GL_FALSE)
 		{
 			int length;
-			
+
 			glGetShaderiv(id, GL_INFO_LOG_LENGTH, &length);
-			
+
 			char* message = (char*)_malloca(length * sizeof(char));
-			
+
 			glGetShaderInfoLog(id, length, &length, message);
-			
-			cout << "Failed to compile" << 
+
+			cout << "Failed to compile" <<
 				(type == GL_VERTEX_SHADER ? " vertex" : " fragment") << " shader!" << std::endl;
-			
+
 			cout << message << std::endl;
-			
+
 			glDeleteShader(id);
 
 			return 0;
@@ -124,7 +124,7 @@ namespace FACU_RAMI_ENGINE
 		glAttachShader(program, fragmentShader);
 
 		glLinkProgram(program);
-		
+
 		glValidateProgram(program);
 
 		glDeleteShader(vertexShader);

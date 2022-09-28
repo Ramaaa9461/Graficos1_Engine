@@ -29,6 +29,8 @@ namespace FACU_RAMI_ENGINE
 		vec3 rotation;
 		vec3 scale;
 
+		//Defino la matrizes y la TRS
+
 	public:
 		DllExport Entity();
 		DllExport ~Entity();
@@ -40,6 +42,8 @@ namespace FACU_RAMI_ENGINE
 		DllExport vec3 getPosition();
 		DllExport vec3 getRotation();
 		DllExport vec3 getScale();
+
+		//UpdateTRSMat
 
 		DllExport virtual void draw(Renderer* renderer) = 0;
 	};

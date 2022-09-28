@@ -23,7 +23,7 @@ namespace FACU_RAMI_ENGINE
 		DllExport int initGlfw();
 		DllExport void initGlew();
 
-		DllExport int start();
+		DllExport int run();
 
 		DllExport GLFWwindow* getWindow();				
 	};

@@ -9,6 +9,8 @@ namespace FACU_RAMI_ENGINE
 		scale = vec3();
 	}
 
+	//multtplicar S*r*t
+
 	Entity::~Entity()
 	{
 
@@ -17,16 +19,19 @@ namespace FACU_RAMI_ENGINE
 	DllExport void Entity::setPosition(vec3 newPosition)
 	{
 		position = newPosition;
+		//TODO Hacer Update de la matriz model
 	}
 
 	DllExport void Entity::setRotation(vec3 newRotation)
 	{
 		rotation = newRotation;
+		//TODO Hacer Update de la matriz model
 	}
 
 	DllExport void Entity::setScale(vec3 newScale)
 	{
 		scale = newScale;
+		//TODO Hacer Update de la matriz model
 	}
 
 	DllExport vec3 Entity::getPosition()

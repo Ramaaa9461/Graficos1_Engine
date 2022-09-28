@@ -23,6 +23,8 @@ namespace FACU_RAMI_ENGINE
 		int getVertexCount();
 
 		void draw(Renderer* renderer);
+
+		//Tiene Agregar un Material (Una funcion tiene que pedirlo por parametro)
 	};
 }
 
