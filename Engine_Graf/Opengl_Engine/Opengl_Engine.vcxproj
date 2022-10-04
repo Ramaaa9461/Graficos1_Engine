@@ -158,25 +158,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="src\cpps\baseGame.cpp" />
-    <ClCompile Include="src\cpps\entity.cpp" />
-    <ClCompile Include="src\cpps\entity2d.cpp" />
     <ClCompile Include="src\cpps\main.cpp" />
-    <ClCompile Include="src\cpps\renderer.cpp" />
-    <ClCompile Include="src\cpps\shape.cpp" />
-    <ClCompile Include="src\cpps\window.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="res\Shaders\Basic.shader" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="src\Headers\baseGame.h" />
-    <ClInclude Include="src\Headers\DDLExport.h" />
-    <ClInclude Include="src\Headers\entity.h" />
-    <ClInclude Include="src\Headers\entity2d.h" />
-    <ClInclude Include="src\Headers\renderer.h" />
-    <ClInclude Include="src\Headers\shape.h" />
-    <ClInclude Include="src\Headers\window.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
