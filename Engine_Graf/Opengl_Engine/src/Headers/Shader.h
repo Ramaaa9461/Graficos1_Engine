@@ -2,6 +2,8 @@
 #include <string>
 #include <unordered_map>
 
+#include "glm/glm.hpp"
+
 struct ShaderProgramSource
 {
 	std::string VertexSource;
@@ -27,11 +29,11 @@ private:
 		"\n"
 		"layout(location = 1) in vec2 texCoord;"
 		"\n"
-		"out vec2 v_TexCoord;"
-		"\n"
+		"out vec2 v_TexCoord;\n"
+		"uniform mat4 u_MVP;\n"
 		"void main()\n"
 		"{\n"
-		"	gl_Position = position;\n"
+		"	gl_Position = u_MVP * position;\n"
 		"	v_TexCoord = texCoord;\n"
 		"};\n";
 
@@ -67,6 +69,7 @@ public:
 	void SetUniforms1f(const std::string name, float value);
 	void SetUniforms1i(const std::string name, int value);
 	void SetUniforms4f(const std::string name, float v0, float v1, float v2, float v3);
+	void SetUniformsMat4f(const std::string name, const glm::mat4& matrix);
 
 private:
 	unsigned int CreateShader(const std::string& vertexShader, const std::string& fragmentShader);
