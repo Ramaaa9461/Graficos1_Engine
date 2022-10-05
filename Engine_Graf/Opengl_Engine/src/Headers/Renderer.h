@@ -24,7 +24,7 @@ private:
 
 public:
 
-	void Clear();
+	void Clear() const ;
 	void Draw(const VertexArray& va, const IndexBuffer& ib, const Shader& shader)const ;
 
 };
