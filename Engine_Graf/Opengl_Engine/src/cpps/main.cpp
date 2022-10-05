@@ -9,6 +9,7 @@
 #include "../Headers/Renderer.h"
 #include "../Headers/VertexBuffer.h"
 #include "../Headers/IndexBuffer.h"
+#include "../Headers/VertexArray.h"
 
 struct ShaderProgramSource
 {
@@ -134,14 +135,13 @@ int main(void)
 
 		unsigned int indices[] = { 0,1,2,        2,3,0 };
 
-		unsigned int vao;
-		GLCall(glGenVertexArrays(1, &vao));
-		GLCall(glBindVertexArray(vao));
-
+		VertexArray va;
 		VertexBuffer vb(positions, 4 * 2 * sizeof(float));
 
-		GLCall(glEnableVertexAttribArray(0));
-		GLCall(glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, sizeof(float) * 2, 0));
+		VertexBufferLayout layout;
+		layout.Push<float>(2);            //Video: Buffer Layout Abstraction in OpenGL - min 27.30 Explica mas cosas qe se pueden hacer
+		va.AddBuffer(vb, layout);
+		va.Bind();
 
 		IndexBuffer ib(indices, 6);
 
@@ -184,7 +184,7 @@ int main(void)
 		ASSERT(location != -1);
 		GLCall(glUniform4f(location, 0.8f, 0.3f, 0.8f, 1.0f));
 
-		GLCall(glBindVertexArray(0));
+		va.Unbind();
 		GLCall(glUseProgram(0));
 		GLCall(glBindBuffer(GL_ARRAY_BUFFER, 0));
 		GLCall(glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0));
@@ -200,7 +200,7 @@ int main(void)
 			GLCall(glUseProgram(shader));
 			GLCall(glUniform4f(location, r, 0.3f, 0.8f, 1.0f));
 
-			GLCall(glBindVertexArray(vao));
+			va.Bind();
 			ib.Bind();
 
 			GLCall(glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, nullptr));
@@ -220,7 +220,7 @@ int main(void)
 		}
 
 		GLCall(glDeleteProgram(shader));
-	
+
 	}
 
 
