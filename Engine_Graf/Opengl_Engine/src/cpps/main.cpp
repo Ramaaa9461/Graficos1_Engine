@@ -48,10 +48,10 @@ int main(void)
 	std::cout << glGetString(GL_VERSION) << std::endl;
 	{
 		float positions[] = {
-			100.0f, 100.0f,	 0.0f, 0.0f,
-			200.0f, 100.0f,	 1.0f, 0.0f,
-			200.0f, 200.0f,	 1.0f, 1.0f,
-			100.0f, 200.0f,	 0.0f, 1.0f
+			100.0f, 100.0f,	     0.0f, 0.0f,
+			200.0f, 100.0f,	     1.0f, 0.0f,
+			200.0f, 200.0f,	     1.0f, 1.0f,   //Esq Der arr
+			100.0f, 200.0f,	     0.0f, 1.0f
 		};
 
 		unsigned int indices[] = {
@@ -74,8 +74,10 @@ int main(void)
 		IndexBuffer ib(indices, 6);
 
 		glm::mat4 proj = glm::ortho(0.0f, 960.0f, 0.0f, 540.0f, -1.0f, 1.0f); //Proyeccion ortografica
-		glm::mat4 view = glm::translate(glm::mat4(1.0f), glm::vec3(-100, 0, 0));
-		glm::mat4 model = glm::translate(glm::mat4(1.0f), glm::vec3(200, 200, 0));
+		glm::mat4 view = glm::lookAt(glm::vec3(0.0f, 0.0f, 1.0f),
+			glm::vec3(0.0f, 0.0f, 0.0f),
+			glm::vec3(0.0f, 1.0f, 0.0f));// glm::translate(glm::mat4(1.0f), glm::vec3(-100, 0, 0));
+		glm::mat4 model = glm::translate(glm::mat4(1.0f), glm::vec3(300, 150, 0));
 
 		glm::mat4 mvp = proj * view * model;
 
