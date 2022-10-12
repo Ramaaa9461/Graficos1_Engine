@@ -15,6 +15,9 @@ namespace FACU_RAMI_ENGINE
 	private:
 
 		GLFWwindow* window;
+		const int WINDOW_WIDTH = 960;
+		const int WINDOW_HEIGHT = 540;
+
 
 	public:
 		DllExport Window();
@@ -26,6 +29,9 @@ namespace FACU_RAMI_ENGINE
 		DllExport int createWindow();
 
 		DllExport GLFWwindow* getWindow();
+
+		DllExport int GetScreenWidth();
+		DllExport int GetScreenHeight();
 	};
 }
 

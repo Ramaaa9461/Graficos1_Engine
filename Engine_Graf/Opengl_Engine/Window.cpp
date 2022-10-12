@@ -30,7 +30,7 @@ namespace FACU_RAMI_ENGINE
 		if (!initGlfw())
 			return -1;
 
-		window = glfwCreateWindow(640, 480, "OpenGl_Engine", NULL, NULL);
+		window = glfwCreateWindow(WINDOW_WIDTH, WINDOW_HEIGHT, "OpenGl_Engine", NULL, NULL);
 
 		if (!window)
 		{
@@ -46,5 +46,15 @@ namespace FACU_RAMI_ENGINE
 	DllExport GLFWwindow* Window::getWindow()
 	{
 		return window;
+	}
+	
+	DllExport int Window::GetScreenWidth()
+	{
+		return WINDOW_WIDTH;
+	}
+
+	DllExport int Window::GetScreenHeight()
+	{
+		return WINDOW_HEIGHT;
 	}
 }
