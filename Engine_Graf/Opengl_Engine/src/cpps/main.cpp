@@ -31,7 +31,11 @@ int main(void)
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
-	window = glfwCreateWindow(960, 540, "Hello World", NULL, NULL);
+	const int WINDOW_WIDTH = 960;
+	const int WINDOW_HEIGHT = 540;
+
+
+	window = glfwCreateWindow(WINDOW_WIDTH, WINDOW_HEIGHT, "Hello World", NULL, NULL);
 	if (!window)
 	{
 		glfwTerminate();
@@ -50,7 +54,7 @@ int main(void)
 		float positions[] = {
 			100.0f, 100.0f,	     0.0f, 0.0f,
 			200.0f, 100.0f,	     1.0f, 0.0f,
-			200.0f, 200.0f,	     1.0f, 1.0f,   //Esq Der arr
+			200.0f, 200.0f,	     1.0f, 1.0f,
 			100.0f, 200.0f,	     0.0f, 1.0f
 		};
 
@@ -59,25 +63,25 @@ int main(void)
 			2,3,0
 		};
 
-		//	GLCall(glEnable(GL_BLEND));
-			//GLCall(glBlendFunc(GL_SRC0_ALPHA, GL_ONE_MINUS_SRC_ALPHA));
+		//GLCall(glEnable(GL_BLEND));
+		//GLCall(glBlendFunc(GL_SRC0_ALPHA, GL_ONE_MINUS_SRC_ALPHA));   //TIENE QE VER CON BLENDING
 
 		VertexArray va;
 		VertexBuffer vb(positions, 4 * 4 * sizeof(float));
 
 		VertexBufferLayout layout;
-		layout.Push<float>(2);            //Video: Buffer Layout Abstraction in OpenGL - min 27.30 Explica mas cosas qe se pueden hacer
+		layout.Push<float>(2);   //Video: Buffer Layout Abstraction in OpenGL - min 27.30 Explica mas cosas qe se pueden hacer
 		layout.Push<float>(2);
 		va.AddBuffer(vb, layout);
 		va.Bind();
 
 		IndexBuffer ib(indices, 6);
 
-		glm::mat4 proj = glm::ortho(0.0f, 960.0f, 0.0f, 540.0f, -1.0f, 1.0f); //Proyeccion ortografica
-		glm::mat4 view = glm::lookAt(glm::vec3(0.0f, 0.0f, 1.0f),
-			glm::vec3(0.0f, 0.0f, 0.0f),
-			glm::vec3(0.0f, 1.0f, 0.0f));// glm::translate(glm::mat4(1.0f), glm::vec3(-100, 0, 0));
+		glm::mat4 proj = glm::ortho(0.0f, (float)WINDOW_WIDTH, 0.0f, (float)WINDOW_HEIGHT, -1.0f, 1.0f); //Proyeccion ortografica
+		glm::mat4 view = glm::lookAt(glm::vec3(0.0f, 0.0f, 1.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		glm::mat4 model = glm::translate(glm::mat4(1.0f), glm::vec3(300, 150, 0));
+		glViewport(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT);
+
 
 		glm::mat4 mvp = proj * view * model;
 
@@ -100,7 +104,8 @@ int main(void)
 
 		float r = 0.0f;
 		float increment = 0.05f;
-		/* Loop until the user closes the window */
+
+
 		while (!glfwWindowShouldClose(window))
 		{
 			/* Render here */
@@ -118,16 +123,12 @@ int main(void)
 
 			r += increment;
 
-			/* Swap front and back buffers */
-			glfwSwapBuffers(window);
 
-			/* Poll for and process events */
+			glfwSwapBuffers(window);
 			glfwPollEvents();
 		}
 	}
 
-
 	glfwTerminate();
 	return 0;
-
 }

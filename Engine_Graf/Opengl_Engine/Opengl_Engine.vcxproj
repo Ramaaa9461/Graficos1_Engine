@@ -158,6 +158,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Entity.cpp" />
+    <ClCompile Include="Entity2d.cpp" />
+    <ClCompile Include="BaseGame.cpp" />
+    <ClCompile Include="Shape.cpp" />
     <ClCompile Include="src\cpps\IndexBuffer.cpp" />
     <ClCompile Include="src\cpps\Renderer.cpp" />
     <ClCompile Include="src\cpps\main.cpp" />
@@ -166,11 +170,18 @@
     <ClCompile Include="src\cpps\VertexBuffer.cpp" />
     <ClCompile Include="src\cpps\VertexArray.cpp" />
     <ClCompile Include="src\vendor\stb_image\stb_image.cpp" />
+    <ClCompile Include="Window.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="cpp.hint" />
     <None Include="res\Shaders\Basic.shader" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="DDLExport.h" />
+    <ClInclude Include="Entity.h" />
+    <ClInclude Include="Entity2d.h" />
+    <ClInclude Include="BaseGame.h" />
+    <ClInclude Include="Shape.h" />
     <ClInclude Include="src\Headers\IndexBuffer.h" />
     <ClInclude Include="src\Headers\Renderer.h" />
     <ClInclude Include="src\Headers\Shader.h" />
@@ -179,6 +190,7 @@
     <ClInclude Include="src\Headers\VertexBufferLayout.h" />
     <ClInclude Include="src\Headers\Texture.h" />
     <ClInclude Include="src\vendor\stb_image\stb_image.h" />
+    <ClInclude Include="Window.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
