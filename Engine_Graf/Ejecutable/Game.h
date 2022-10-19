@@ -1,7 +1,7 @@
 #ifndef GAME_H
 #define GAME_H
 
-#include "../../Opengl_Engine/BaseGame.h"
+#include "../../Engine_Graf/Opengl_Engine/BaseGame.h"
 
 using namespace FACU_RAMI_ENGINE;
 
