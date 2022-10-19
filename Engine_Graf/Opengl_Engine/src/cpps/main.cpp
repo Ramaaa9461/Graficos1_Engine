@@ -54,10 +54,10 @@ int main(void)
 	std::cout << glGetString(GL_VERSION) << std::endl;
 	{
 		float positions[] = {
-			100.0f, 100.0f,	     0.0f, 0.0f,
-			200.0f, 100.0f,	     1.0f, 0.0f,
-			200.0f, 200.0f,	     1.0f, 1.0f,
-			100.0f, 200.0f,	     0.0f, 1.0f
+			-50.0f, -50.0f,	     0.0f, 0.0f,
+			 50.0f, -50.0f,	     1.0f, 0.0f,
+			 50.0f, 50.0f,	     1.0f, 1.0f,
+			-50.0f, 50.0f,	     0.0f, 1.0f
 		};
 
 		unsigned int indices[] = {
@@ -82,7 +82,7 @@ int main(void)
 		glm::mat4 proj = glm::ortho(0.0f, (float)WINDOW_WIDTH, 0.0f, (float)WINDOW_HEIGHT, -1.0f, 1.0f); //Proyeccion ortografica
 		glm::mat4 view = glm::lookAt(glm::vec3(0.0f, 0.0f, 1.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		glViewport(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT);
-	
+
 
 		Shader shader("res/Shaders/Basic.shader");
 		shader.Bind();
@@ -103,7 +103,7 @@ int main(void)
 		ImGui_ImplGlfwGL3_Init(window, true);
 		ImGui::StyleColorsDark();
 
-	 	glm::vec3 translation(200, 200, 0);
+		glm::vec3 translation(200, 200, 0);
 
 		float r = 0.0f;
 		float increment = 0.05f;
@@ -114,16 +114,14 @@ int main(void)
 			renderer.Clear();
 
 			ImGui_ImplGlfwGL3_NewFrame();
-
+			
+			{
 			glm::mat4 model = glm::translate(glm::mat4(1.0f), translation);
 			glm::mat4 mvp = proj * view * model;
-
-
 			shader.Bind();
-			shader.SetUniforms4f("u_Color", r, 0.3f, 0.8f, 1.0f);
 			shader.SetUniformsMat4f("u_MVP", mvp);
-
 			renderer.Draw(va, ib, shader);
+			}
 
 			if (r > 1.0f)
 				increment = -0.05f;
@@ -133,8 +131,8 @@ int main(void)
 			r += increment;
 
 			{
-				ImGui::SliderFloat3("Translation", &translation.x, 0.0f, WINDOW_WIDTH);            // Edit 1 float using a slider from 0.0f to 1.0f    
-				
+				ImGui::SliderFloat3("Translation", &translation.x, 0.0f, WINDOW_WIDTH);          
+
 				ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
 			}
 
