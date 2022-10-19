@@ -161,6 +161,7 @@
     <ClCompile Include="Entity.cpp" />
     <ClCompile Include="Entity2d.cpp" />
     <ClCompile Include="BaseGame.cpp" />
+    <ClCompile Include="Input.cpp" />
     <ClCompile Include="Shape.cpp" />
     <ClCompile Include="src\cpps\IndexBuffer.cpp" />
     <ClCompile Include="src\cpps\Renderer.cpp" />
@@ -185,6 +186,7 @@
     <ClInclude Include="Entity.h" />
     <ClInclude Include="Entity2d.h" />
     <ClInclude Include="BaseGame.h" />
+    <ClInclude Include="Input.h" />
     <ClInclude Include="Shape.h" />
     <ClInclude Include="src\Headers\IndexBuffer.h" />
     <ClInclude Include="src\Headers\Renderer.h" />

@@ -8,32 +8,37 @@
 
 #include "src/Headers/Renderer.h"
 #include "window.h"
+#include "Input.h"
 
 namespace FACU_RAMI_ENGINE
 {
 
 	class BaseGame
 	{
+		private:
 
-	private:
+			Window* window;
+			Renderer* renderer;
+			Input* _input;
 
-		Window* window;
-		Renderer* renderer;
+			bool windowsIsOpen;
 
-	public:
+		protected:
 
-		DllExport BaseGame();
-		DllExport ~BaseGame();
-		DllExport void run();
+			DllExport BaseGame();
+			DllExport ~BaseGame();
+			DllExport void run();
 
+			Input* getInput();
+			
+			virtual void init() = 0;
 
-		virtual void Init() = 0;
-		virtual void Update() = 0;
-		virtual void DeInit() = 0;
-
-
+			virtual void input() = 0;
+		
+			virtual void update() = 0;
+		
+			virtual void deInit() = 0;			
 	};
-
 }
 
 #endif
