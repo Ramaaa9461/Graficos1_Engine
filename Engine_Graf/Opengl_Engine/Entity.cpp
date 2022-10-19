@@ -10,8 +10,6 @@ namespace FACU_RAMI_ENGINE
 		rotation = glm::vec3();
 		scale = glm::vec3();
 
-		TRS = glm::mat4();
-
 		//Inicializar los Buffers
 
 	}

@@ -4,53 +4,29 @@ namespace FACU_RAMI_ENGINE
 {
 	DllExport BaseGame::BaseGame()
 	{
-		window = NULL;
-		renderer = NULL;
-		_input = NULL;
 
-		windowsIsOpen = true;
 	}
 
 	DllExport BaseGame::~BaseGame()
 	{
-		delete window;
 
-		delete renderer;
-
-		delete _input;
-	}
-
-	Input* BaseGame::getInput()
-	{
-		return _input;
 	}
 
 	void BaseGame::run()
 	{
-		window = new Window();
+		Window* window = new Window();
 
-		renderer = new Renderer();
+		Renderer* renderer = new Renderer();
 
-		_input = new Input(window);
-		
-		windowsIsOpen = true;
+		//renderer->renderWindow(window->getWindow()); 
+		//ACA deberia entrar al loop del engine
 
-		//renderer->renderWindow(window->getWindow());
+		delete window;
 
-		init();
+		delete renderer;
 
-		while(windowsIsOpen)
-		{
-			input();
-
-			update();
-
-			//Render here
-			//renderer->Draw();
-
-			_input->SetWindowsShouldClose(windowsIsOpen);
-		}
-
-		deInit();		
-	}	
+		//return 0;
+	}
 }
+
+
