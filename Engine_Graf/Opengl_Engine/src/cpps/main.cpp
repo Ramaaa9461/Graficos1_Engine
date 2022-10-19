@@ -72,7 +72,7 @@ int main(void)
 		VertexBuffer vb(positions, 4 * 4 * sizeof(float));
 
 		VertexBufferLayout layout;
-		layout.Push<float>(2);   //Video: Buffer Layout Abstraction in OpenGL - min 27.30 Explica mas cosas qe se pueden hacer
+		layout.Push<float>(2);		 //Video: Buffer Layout Abstraction in OpenGL - min 27.30 Explica mas cosas qe se pueden hacer
 		layout.Push<float>(2);
 		va.AddBuffer(vb, layout);
 		va.Bind();
@@ -81,7 +81,7 @@ int main(void)
 
 		glm::mat4 proj = glm::ortho(0.0f, (float)WINDOW_WIDTH, 0.0f, (float)WINDOW_HEIGHT, -1.0f, 1.0f); //Proyeccion ortografica
 		glm::mat4 view = glm::lookAt(glm::vec3(0.0f, 0.0f, 1.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 1.0f, 0.0f));
-		glViewport(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT);
+		//glViewport(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT);
 
 
 		Shader shader("res/Shaders/Basic.shader");
@@ -104,9 +104,11 @@ int main(void)
 		ImGui::StyleColorsDark();
 
 		glm::vec3 translation(200, 200, 0);
+		glm::vec3 rotation(1, 0, 0);
+		glm::vec3 scale(1, 1, 0);
 
-		float r = 0.0f;
-		float increment = 0.05f;
+		/*float r = 0.0f;
+		float increment = 0.05f*/;
 
 		while (!glfwWindowShouldClose(window))
 		{
@@ -114,24 +116,33 @@ int main(void)
 			renderer.Clear();
 
 			ImGui_ImplGlfwGL3_NewFrame();
-			
-			{
-			glm::mat4 model = glm::translate(glm::mat4(1.0f), translation);
-			glm::mat4 mvp = proj * view * model;
-			shader.Bind();
-			shader.SetUniformsMat4f("u_MVP", mvp);
-			renderer.Draw(va, ib, shader);
+
+			{ //Dibuja 1 objeto, si se duplica dibujas 2 :D
+				glm::mat4 tras = glm::translate(glm::mat4(1.0f), translation);
+				glm::mat4 rotX = glm::rotate(glm::mat4(1.0f), glm::radians(rotation.x), glm::vec3(1.0f, 0.0f, 0.0f));
+				glm::mat4 rotY = glm::rotate(glm::mat4(1.0f), glm::radians(rotation.y), glm::vec3(0.0f, 1.0f, 0.0f));
+				glm::mat4 rotZ = glm::rotate(glm::mat4(1.0f), glm::radians(rotation.z), glm::vec3(0.0f, 0.0f, 1.0f));
+				glm::mat4 sca = glm::scale(glm::mat4(1.0f), scale);
+
+				glm::mat4 rot = rotX * rotY * rotZ;
+				glm::mat4 model = tras * rot * sca;
+
+				glm::mat4 mvp = proj * view * model;
+				shader.Bind();
+				shader.SetUniformsMat4f("u_MVP", mvp);
+				renderer.Draw(va, ib, shader);
 			}
 
-			if (r > 1.0f)
-				increment = -0.05f;
-			else if (r < 0.0f)
-				increment = 0.05f;
-
-			r += increment;
+			//if (r > 1.0f)
+			//	increment = -0.05f;
+			//else if (r < 0.0f)
+			//	increment = 0.05f;
+			//r += increment;
 
 			{
-				ImGui::SliderFloat3("Translation", &translation.x, 0.0f, WINDOW_WIDTH);          
+				ImGui::SliderFloat3("Translation", &translation.x, 0.0f, WINDOW_WIDTH);
+				ImGui::SliderFloat3("Rotation", &rotation.x, 0.0f, 360.0f);
+				ImGui::SliderFloat3("Scale", &scale.x, 0.0f, 10.0f);
 
 				ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
 			}
