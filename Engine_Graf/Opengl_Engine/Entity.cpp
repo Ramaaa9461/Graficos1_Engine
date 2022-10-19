@@ -6,11 +6,17 @@ namespace FACU_RAMI_ENGINE
 {
 	DllExport Entity::Entity()
 	{
-		position = glm::vec3();
-		rotation = glm::vec3();
-		scale = glm::vec3();
+		glm::vec3 translation(200, 200, 0);
+		glm::vec3 rotation(0, 0, 0);
+		glm::vec3 scale(1, 1, 0);
 
 		//Inicializar los Buffers
+		layout.Push<float>(2);
+		layout.Push<float>(2);
+		va.AddBuffer(vb, layout);
+		va.Bind();
+
+		IndexBuffer ib(indices, 6);
 
 	}
 
@@ -21,7 +27,7 @@ namespace FACU_RAMI_ENGINE
 
 	DllExport void Entity::setPosition(glm::vec3 newPosition)
 	{
-		position = newPosition;
+		translation = newPosition;
 		UpdateTRSMat();
 	}
 
@@ -39,7 +45,7 @@ namespace FACU_RAMI_ENGINE
 
 	DllExport glm::vec3 Entity::getPosition()
 	{
-		return position;
+		return translation;
 	}
 
 	DllExport glm::vec3 Entity::getRotation()
@@ -54,20 +60,13 @@ namespace FACU_RAMI_ENGINE
 
 	void Entity::UpdateTRSMat()
 	{
-		glm::mat4 t = glm::translate(glm::mat4(1.0f), position);
-		glm::mat4 r = glm::rotate(glm::mat4(1.0f), (float)glfwGetTime(), rotation); //Chequar ese 10 harcodeado
-		glm::mat4 s = glm::scale(glm::mat4(1.0f), scale);
+		glm::mat4 tras = glm::translate(glm::mat4(1.0f), translation);
+		glm::mat4 rotX = glm::rotate(glm::mat4(1.0f), glm::radians(rotation.x), glm::vec3(1.0f, 0.0f, 0.0f));
+		glm::mat4 rotY = glm::rotate(glm::mat4(1.0f), glm::radians(rotation.y), glm::vec3(0.0f, 1.0f, 0.0f));
+		glm::mat4 rotZ = glm::rotate(glm::mat4(1.0f), glm::radians(rotation.z), glm::vec3(0.0f, 0.0f, 1.0f));
+		glm::mat4 sca = glm::scale(glm::mat4(1.0f), scale);
 
-		TRS = s * r * t;
-
-
-		//ASI LO HACE LEARNOPENGL
-
-		// create transformations	https://learnopengl.com/code_viewer_gh.php?code=src/1.getting_started/5.1.transformations/transformations.cpp
-		//glm::mat4 transform = glm::mat4(1.0f); // make sure to initialize matrix to identity matrix first
-		//transform = glm::translate(transform, glm::vec3(0.5f, -0.5f, 0.0f));
-		//transform = glm::rotate(transform, (float)glfwGetTime(), glm::vec3(0.0f, 0.0f, 1.0f));
-
-
+		glm::mat4 rot = rotX * rotY * rotZ;
+		TRS = tras * rot * sca;
 	}
 }

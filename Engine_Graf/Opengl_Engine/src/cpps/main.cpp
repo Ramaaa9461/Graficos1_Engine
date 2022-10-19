@@ -56,8 +56,8 @@ int main(void)
 		float positions[] = {
 			-50.0f, -50.0f,	     0.0f, 0.0f,
 			 50.0f, -50.0f,	     1.0f, 0.0f,
-			 50.0f, 50.0f,	     1.0f, 1.0f,
-			-50.0f, 50.0f,	     0.0f, 1.0f
+			 50.0f,  50.0f,	     1.0f, 1.0f,
+			-50.0f,  50.0f,	     0.0f, 1.0f
 		};
 
 		unsigned int indices[] = {
@@ -81,7 +81,6 @@ int main(void)
 
 		glm::mat4 proj = glm::ortho(0.0f, (float)WINDOW_WIDTH, 0.0f, (float)WINDOW_HEIGHT, -1.0f, 1.0f); //Proyeccion ortografica
 		glm::mat4 view = glm::lookAt(glm::vec3(0.0f, 0.0f, 1.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 1.0f, 0.0f));
-		//glViewport(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT);
 
 
 		Shader shader("res/Shaders/Basic.shader");
@@ -104,11 +103,8 @@ int main(void)
 		ImGui::StyleColorsDark();
 
 		glm::vec3 translation(200, 200, 0);
-		glm::vec3 rotation(1, 0, 0);
+		glm::vec3 rotation(0, 0, 0);
 		glm::vec3 scale(1, 1, 0);
-
-		/*float r = 0.0f;
-		float increment = 0.05f*/;
 
 		while (!glfwWindowShouldClose(window))
 		{
@@ -132,13 +128,6 @@ int main(void)
 				shader.SetUniformsMat4f("u_MVP", mvp);
 				renderer.Draw(va, ib, shader);
 			}
-
-			//if (r > 1.0f)
-			//	increment = -0.05f;
-			//else if (r < 0.0f)
-			//	increment = 0.05f;
-			//r += increment;
-
 			{
 				ImGui::SliderFloat3("Translation", &translation.x, 0.0f, WINDOW_WIDTH);
 				ImGui::SliderFloat3("Rotation", &rotation.x, 0.0f, 360.0f);
