@@ -39,25 +39,16 @@
     <ClCompile Include="src\cpps\Texture.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
-    <ClCompile Include="src\vendor\imGui\imgui.cpp">
+    <ClCompile Include="src\vendor\ImGui\imgui.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
-    <ClCompile Include="src\vendor\imGui\imgui_demo.cpp">
+    <ClCompile Include="src\vendor\ImGui\imgui_demo.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
-    <ClCompile Include="src\vendor\imGui\imgui_draw.cpp">
+    <ClCompile Include="src\vendor\ImGui\imgui_draw.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
-    <ClCompile Include="src\vendor\imGui\imgui_impl_glfw.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
-    <ClCompile Include="src\vendor\imGui\imgui_impl_opengl3.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
-    <ClCompile Include="src\vendor\imgui\imgui_tables.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
-    <ClCompile Include="src\vendor\imgui\imgui_widgets.cpp">
+    <ClCompile Include="src\vendor\ImGui\imgui_impl_glfw_gl3.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
   </ItemGroup>
@@ -89,31 +80,25 @@
     <ClInclude Include="src\Headers\Texture.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
-    <ClInclude Include="src\vendor\imGui\imconfig.h">
+    <ClInclude Include="src\vendor\ImGui\imconfig.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
-    <ClInclude Include="src\vendor\imGui\imgui.h">
+    <ClInclude Include="src\vendor\ImGui\imgui.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
-    <ClInclude Include="src\vendor\imGui\imgui_impl_glfw.h">
+    <ClInclude Include="src\vendor\imgui\imgui_impl_glfw_gl3.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
-    <ClInclude Include="src\vendor\imGui\imgui_internal.h">
+    <ClInclude Include="src\vendor\ImGui\imgui_internal.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
-    <ClInclude Include="src\vendor\imGui\imstb_rectpack.h">
+    <ClInclude Include="src\vendor\ImGui\stb_rect_pack.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
-    <ClInclude Include="src\vendor\imGui\imstb_textedit.h">
+    <ClInclude Include="src\vendor\ImGui\stb_textedit.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
-    <ClInclude Include="src\vendor\imGui\imstb_truetype.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
-    <ClInclude Include="src\vendor\imGui\imgui_impl_opengl3.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
-    <ClInclude Include="src\vendor\imGui\imgui_impl_opengl3_loader.h">
+    <ClInclude Include="src\vendor\ImGui\stb_truetype.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
   </ItemGroup>
