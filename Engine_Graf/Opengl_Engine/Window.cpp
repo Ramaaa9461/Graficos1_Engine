@@ -40,6 +40,8 @@ namespace FACU_RAMI_ENGINE
 
 		glfwMakeContextCurrent(window);
 
+		glfwSwapInterval(1); //Ni idea qe onda esto
+
 		initGlew();
 	}
 

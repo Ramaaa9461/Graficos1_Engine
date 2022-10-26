@@ -3,12 +3,43 @@
 
 #include "entity2d.h"
 
+#include "../Headers/VertexArray.h"
+#include "../Headers/IndexBuffer.h"
+#include "../Headers/VertexBufferLayout.h"
+#include "../Headers/Shader.h"
+#include "../Headers/Texture.h"
+
+
 namespace FACU_RAMI_ENGINE
 {
 	class Shape : Entity2d
 	{
 
 	private:
+
+		float positions[16] = {
+	-50.0f, -50.0f,	     0.0f, 0.0f,
+	 50.0f, -50.0f,	     1.0f, 0.0f,
+	 50.0f,  50.0f,	     1.0f, 1.0f,
+	-50.0f,  50.0f,	     0.0f, 1.0f
+		};
+
+		unsigned int indices[6] = {
+			0,1,2,
+			2,3,0
+		};
+
+		VertexArray va; //
+		VertexBuffer vb;
+		VertexBufferLayout layout;
+
+		IndexBuffer ib;
+
+
+		Shader shader;
+		
+		Texture texture;
+
 
 		float* _vertexPosition;
 

@@ -29,9 +29,9 @@ int main(void)
 	if (!glfwInit())
 		return -1;
 
-	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
-	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
-	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+	//glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
+	//glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
+	//glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
 	const int WINDOW_WIDTH = 960;
 	const int WINDOW_HEIGHT = 540;
@@ -51,7 +51,7 @@ int main(void)
 	if (glewInit() != GLEW_OK)
 		std::cout << "Error!" << std::endl;
 
-	std::cout << glGetString(GL_VERSION) << std::endl;
+	//std::cout << glGetString(GL_VERSION) << std::endl;
 	{
 		float positions[] = {
 			-50.0f, -50.0f,	     0.0f, 0.0f,
@@ -98,6 +98,7 @@ int main(void)
 		shader.Unbind();
 
 		Renderer renderer;
+
 		ImGui::CreateContext();
 		ImGui_ImplGlfwGL3_Init(window, true);
 		ImGui::StyleColorsDark();

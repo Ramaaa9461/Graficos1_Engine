@@ -6,6 +6,14 @@
 #include "IndexBuffer.h"
 #include "Shader.h"
 
+#include "glm/glm.hpp"
+#include "glm/gtc/matrix_transform.hpp"
+
+#include "../../Window.h"
+
+namespace FACU_RAMI_ENGINE
+{
+#pragma region Assert
 
 #define ASSERT(x) if (!(x)) __debugbreak();
 #define GLCall(x) GLClearError();\
@@ -13,22 +21,31 @@
 	ASSERT(GLLogCall(#x, __FILE__, __LINE__))
 
 
-void GLClearError();
+	void GLClearError();
 
-bool GLLogCall(const char* funtion, const char* file, int line);
+	bool GLLogCall(const char* funtion, const char* file, int line);
 
-class Renderer
-{
-private:
+#pragma endregion
 
-	
-public:
+	class Renderer
+	{
 
+	private:
 
+		Window* window; 
+		const int WINDOW_WIDTH = 960;
+		const int WINDOW_HEIGHT = 540;
 
+	public:
 
-	void Clear() const;
-	void Draw(const VertexArray& va, const IndexBuffer& ib, const Shader& shader)const;
-	//El draw tendria que ser virtual puro
-};
+		Renderer(Window* window);
 
+		glm::mat4 proj;
+		glm::mat4 view;
+
+		void Clear() const;
+		void Draw(const VertexArray& va, const IndexBuffer& ib, const Shader& shader)const;
+		//El draw tendria que ser virtual puro
+	};
+
+}

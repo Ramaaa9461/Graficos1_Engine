@@ -1,5 +1,5 @@
 #include "Entity.h"
-#include <glm\ext\matrix_transform.hpp>
+#include <glm\gtc\matrix_transform.hpp>
 #include <glfw3.h>
 
 namespace FACU_RAMI_ENGINE
@@ -9,15 +9,6 @@ namespace FACU_RAMI_ENGINE
 		glm::vec3 translation(200, 200, 0);
 		glm::vec3 rotation(0, 0, 0);
 		glm::vec3 scale(1, 1, 0);
-
-		//Inicializar los Buffers
-		layout.Push<float>(2);
-		layout.Push<float>(2);
-		va.AddBuffer(vb, layout);
-		va.Bind();
-
-		IndexBuffer ib(indices, 6);
-
 	}
 
 	Entity::~Entity()

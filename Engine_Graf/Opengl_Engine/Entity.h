@@ -32,10 +32,6 @@ namespace FACU_RAMI_ENGINE
 			2,3,0
 		};
 
-		VertexArray va;
-		VertexBuffer vb;
-		VertexBufferLayout layout;
-
 	public:
 		DllExport Entity();
 		DllExport ~Entity();
