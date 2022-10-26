@@ -3,8 +3,6 @@
 
 #include <iostream>
 
-namespace FACU_RAMI_ENGINE
-{
 
 	void GLClearError()
 	{
@@ -30,19 +28,25 @@ namespace FACU_RAMI_ENGINE
 		view = glm::lookAt(glm::vec3(0.0f, 0.0f, 1.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 	}
 
+	Renderer::Renderer(GLFWwindow* window)
+	{
+
+		proj = glm::ortho(0.0f, 960.0f, 0.0f, 540.0f, -1.0f, 1.0f); //Proyeccion ortografica
+		view = glm::lookAt(glm::vec3(0.0f, 0.0f, 1.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+	}
+
 	void Renderer::Clear() const
 	{
 		GLCall(glClear(GL_COLOR_BUFFER_BIT));
 	}
 
-	void Renderer::Draw(const VertexArray& va, const IndexBuffer& ib, const Shader& shader) const
+	void Renderer::Draw(const VertexArray* va, const IndexBuffer* ib, const Shader* shader) const
 	{
-		shader.Bind();
-		va.Bind();
-		ib.Bind();
+		shader->Bind();
+		va->Bind();
+		ib->Bind();
 
-		GLCall(glDrawElements(GL_TRIANGLES, ib.GetCount(), GL_UNSIGNED_INT, nullptr));
+		GLCall(glDrawElements(GL_TRIANGLES, ib->GetCount(), GL_UNSIGNED_INT, nullptr));
 
 	}
 
-}

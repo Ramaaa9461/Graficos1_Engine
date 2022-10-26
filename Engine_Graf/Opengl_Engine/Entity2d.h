@@ -3,8 +3,6 @@
 
 #include"entity.h"
 
-namespace FACU_RAMI_ENGINE
-{
 	class Entity2d : public Entity
 	{
 
@@ -16,6 +14,6 @@ namespace FACU_RAMI_ENGINE
 		DllExport ~Entity2d();
 
 	};
-}
+
 
 #endif

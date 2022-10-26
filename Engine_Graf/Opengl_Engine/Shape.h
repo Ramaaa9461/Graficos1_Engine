@@ -10,8 +10,6 @@
 #include "../Headers/Texture.h"
 
 
-namespace FACU_RAMI_ENGINE
-{
 	class Shape : Entity2d
 	{
 
@@ -29,16 +27,15 @@ namespace FACU_RAMI_ENGINE
 			2,3,0
 		};
 
-		VertexArray va; //
-		VertexBuffer vb;
+		VertexArray* va;
+		VertexBuffer* vb;
 		VertexBufferLayout layout;
 
-		IndexBuffer ib;
+		IndexBuffer* ib;
 
+		Shader* shader;
 
-		Shader shader;
-		
-		Texture texture;
+		Texture* texture;
 
 
 		float* _vertexPosition;
@@ -59,7 +56,7 @@ namespace FACU_RAMI_ENGINE
 
 		//Tiene Agregar un Material (Una funcion tiene que pedirlo por parametro)
 	};
-}
+
 
 #endif
 

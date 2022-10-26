@@ -2,8 +2,6 @@
 #include "../Headers/IndexBuffer.h"
 #include "../Headers/Renderer.h"
 
-namespace FACU_RAMI_ENGINE
-{
 
 	IndexBuffer::IndexBuffer(const unsigned* data, unsigned int count) : m_Count(count)
 	{
@@ -29,4 +27,3 @@ namespace FACU_RAMI_ENGINE
 		GLCall(glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0));
 	}
 
-}

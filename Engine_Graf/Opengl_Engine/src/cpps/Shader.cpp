@@ -7,8 +7,6 @@
 
 #include "../Headers/Renderer.h"
 
-namespace FACU_RAMI_ENGINE
-{
 
 	Shader::Shader(const std::string& filepath) : m_FilepPath(filepath), m_RendererID(0)
 	{
@@ -161,4 +159,3 @@ namespace FACU_RAMI_ENGINE
 		return program;
 	}
 
-}

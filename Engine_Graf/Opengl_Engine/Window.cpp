@@ -1,7 +1,5 @@
 #include "Window.h"
 
-namespace FACU_RAMI_ENGINE
-{
 	DllExport Window::Window()
 	{
 		createWindow();
@@ -59,4 +57,3 @@ namespace FACU_RAMI_ENGINE
 	{
 		return WINDOW_HEIGHT;
 	}
-}

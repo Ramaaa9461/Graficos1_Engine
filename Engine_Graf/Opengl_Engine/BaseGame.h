@@ -9,8 +9,7 @@
 #include "src/Headers/Renderer.h"
 #include "window.h"
 
-namespace FACU_RAMI_ENGINE
-{
+
 
 	class BaseGame
 	{
@@ -34,6 +33,6 @@ namespace FACU_RAMI_ENGINE
 
 	};
 
-}
+
 
 #endif

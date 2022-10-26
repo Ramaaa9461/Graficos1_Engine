@@ -2,8 +2,7 @@
 
 #include "stb_image/stb_image.h"
 
-namespace FACU_RAMI_ENGINE
-{
+
 
 	Texture::Texture(const std::string& path)
 		: m_RendererID(0), m_FilePath(path), m_LocalBuffer(nullptr), m_Width(0), m_Height(0), m_BPP(0)
@@ -45,4 +44,3 @@ namespace FACU_RAMI_ENGINE
 		GLCall(glBindTexture(GL_TEXTURE_2D, 0));
 	}
 
-}

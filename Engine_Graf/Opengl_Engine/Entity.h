@@ -8,8 +8,6 @@
 #include "src/Headers/VertexBuffer.h"
 #include "src/Headers/VertexBufferLayout.h"
 
-namespace FACU_RAMI_ENGINE
-{
 	class Entity
 	{
 	private:
@@ -18,7 +16,6 @@ namespace FACU_RAMI_ENGINE
 		glm::vec3 rotation;
 		glm::vec3 scale;
 
-		glm::mat4 TRS = glm::mat4(1);
 
 		float positions[16] = {
 	-50.0f, -50.0f,	     0.0f, 0.0f,
@@ -31,6 +28,10 @@ namespace FACU_RAMI_ENGINE
 			0,1,2,
 			2,3,0
 		};
+
+	protected:
+
+		glm::mat4 TRS = glm::mat4(1);
 
 	public:
 		DllExport Entity();
@@ -48,7 +49,6 @@ namespace FACU_RAMI_ENGINE
 
 		DllExport virtual void draw(Renderer* renderer) = 0;
 	};
-}
 
 #endif
 

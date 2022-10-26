@@ -11,8 +11,7 @@
 
 #include "../../Window.h"
 
-namespace FACU_RAMI_ENGINE
-{
+
 #pragma region Assert
 
 #define ASSERT(x) if (!(x)) __debugbreak();
@@ -39,13 +38,13 @@ namespace FACU_RAMI_ENGINE
 	public:
 
 		Renderer(Window* window);
+		Renderer(GLFWwindow* window);
 
 		glm::mat4 proj;
 		glm::mat4 view;
 
 		void Clear() const;
-		void Draw(const VertexArray& va, const IndexBuffer& ib, const Shader& shader)const;
+		void Draw(const VertexArray* va, const IndexBuffer* ib, const Shader* shader)const;
 		//El draw tendria que ser virtual puro
 	};
 
-}

@@ -3,8 +3,6 @@
 #include <vector>
 #include "Renderer.h"
 
-namespace FACU_RAMI_ENGINE
-{
 
 	struct  VertexbufferElement
 	{
@@ -70,4 +68,3 @@ namespace FACU_RAMI_ENGINE
 
 	};
 
-}

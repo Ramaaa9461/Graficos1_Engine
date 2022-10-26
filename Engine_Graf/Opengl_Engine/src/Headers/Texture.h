@@ -2,8 +2,6 @@
 
 #include "Renderer.h"
 
-namespace FACU_RAMI_ENGINE
-{
 
 	class Texture
 	{
@@ -26,4 +24,3 @@ namespace FACU_RAMI_ENGINE
 
 	};
 
-}

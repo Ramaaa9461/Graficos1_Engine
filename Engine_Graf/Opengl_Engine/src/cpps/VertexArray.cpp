@@ -3,8 +3,8 @@
 #include "../Headers/VertexBufferLayout.h"
 #include "../Headers/Renderer.h"
 
-namespace FACU_RAMI_ENGINE
-{
+
+
 	VertexArray::VertexArray()
 	{
 		GLCall(glGenVertexArrays(1, &m_RendererID));
@@ -41,4 +41,3 @@ namespace FACU_RAMI_ENGINE
 	{
 		GLCall(glBindVertexArray(0));
 	}
-}

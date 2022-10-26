@@ -8,8 +8,7 @@
 
 #include "DDLExport.h"
 
-namespace FACU_RAMI_ENGINE
-{
+
 	class Window
 	{
 	private:
@@ -36,6 +35,6 @@ namespace FACU_RAMI_ENGINE
 		DllExport int GetScreenWidth();
 		DllExport int GetScreenHeight();
 	};
-}
+
 
 #endif

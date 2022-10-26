@@ -21,11 +21,10 @@
 #include "imgui/imgui.h"
 #include "imgui/imgui_impl_glfw_gl3.h"
 
-namespace FACU_RAMI_ENGINE
-{
 
 	int main(void)
 	{
+
 		GLFWwindow* window;
 
 		/* Initialize the library */
@@ -100,7 +99,7 @@ namespace FACU_RAMI_ENGINE
 			ib.UnBind();
 			shader.Unbind();
 
-			FACU_RAMI_ENGINE::Renderer renderer;
+			Renderer renderer(window);
 
 			ImGui::CreateContext();
 			ImGui_ImplGlfwGL3_Init(window, true);
@@ -130,7 +129,7 @@ namespace FACU_RAMI_ENGINE
 					glm::mat4 mvp = proj * view * model;
 					shader.Bind();
 					shader.SetUniformsMat4f("u_MVP", mvp);
-					renderer.Draw(va, ib, shader);
+					renderer.Draw(&va, &ib, &shader);
 				}
 				{
 					ImGui::SliderFloat3("Translation", &translation.x, 0.0f, WINDOW_WIDTH);
@@ -155,4 +154,3 @@ namespace FACU_RAMI_ENGINE
 		return 0;
 	}
 
-}

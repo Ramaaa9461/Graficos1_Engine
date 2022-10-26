@@ -2,8 +2,6 @@
 #include "../Headers/VertexBuffer.h"
 #include "../Headers/Renderer.h"
 
-namespace FACU_RAMI_ENGINE
-{
 
 	VertexBuffer::VertexBuffer(const void* data, unsigned int size)
 	{
@@ -29,4 +27,3 @@ namespace FACU_RAMI_ENGINE
 		GLCall(glBindBuffer(GL_ARRAY_BUFFER, 0));
 	}
 
-}

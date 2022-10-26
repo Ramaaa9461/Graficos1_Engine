@@ -1,7 +1,6 @@
 #pragma once
 
-namespace FACU_RAMI_ENGINE
-{
+
 
 	class VertexBuffer
 	{
@@ -16,4 +15,3 @@ namespace FACU_RAMI_ENGINE
 		void UnBind() const;
 	};
 
-}

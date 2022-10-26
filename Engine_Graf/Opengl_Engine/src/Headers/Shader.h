@@ -4,8 +4,6 @@
 
 #include "glm/glm.hpp"
 
-namespace FACU_RAMI_ENGINE
-{
 
 	struct ShaderProgramSource
 	{
@@ -81,4 +79,3 @@ namespace FACU_RAMI_ENGINE
 		unsigned int GetUniformLocation(const std::string& name);
 	};
 
-}

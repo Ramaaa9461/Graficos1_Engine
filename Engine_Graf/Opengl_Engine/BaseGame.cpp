@@ -1,7 +1,6 @@
 #include "baseGame.h" 
 
-namespace FACU_RAMI_ENGINE
-{
+
 	DllExport BaseGame::BaseGame()
 	{
 
@@ -16,7 +15,7 @@ namespace FACU_RAMI_ENGINE
 	{
 		Window* window = new Window();
 
-		Renderer* renderer = new Renderer();
+		Renderer* renderer = new Renderer(window);
 
 		//renderer->renderWindow(window->getWindow()); 
 		//ACA deberia entrar al loop del engine
@@ -27,6 +26,6 @@ namespace FACU_RAMI_ENGINE
 
 		//return 0;
 	}
-}
+
 
 

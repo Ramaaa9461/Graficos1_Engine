@@ -1,7 +1,5 @@
 #pragma once
 
-namespace FACU_RAMI_ENGINE
-{
 
 	class IndexBuffer
 	{
@@ -19,4 +17,3 @@ namespace FACU_RAMI_ENGINE
 		inline unsigned int GetCount() const { return m_Count; }
 	};
 
-}

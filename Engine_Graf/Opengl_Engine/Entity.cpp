@@ -2,8 +2,7 @@
 #include <glm\gtc\matrix_transform.hpp>
 #include <glfw3.h>
 
-namespace FACU_RAMI_ENGINE
-{
+
 	DllExport Entity::Entity()
 	{
 		glm::vec3 translation(200, 200, 0);
@@ -60,4 +59,3 @@ namespace FACU_RAMI_ENGINE
 		glm::mat4 rot = rotX * rotY * rotZ;
 		TRS = tras * rot * sca;
 	}
-}

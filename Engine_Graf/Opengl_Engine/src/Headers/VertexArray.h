@@ -2,9 +2,6 @@
 
 #include "VertexBuffer.h"
 
-namespace FACU_RAMI_ENGINE
-{
-
 	class VertexBufferLayout;
 
 
@@ -26,4 +23,3 @@ namespace FACU_RAMI_ENGINE
 		void Unbind() const;
 	};
 
-}
