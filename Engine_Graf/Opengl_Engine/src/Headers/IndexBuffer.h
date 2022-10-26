@@ -1,17 +1,22 @@
 #pragma once
-class IndexBuffer
+
+namespace FACU_RAMI_ENGINE
 {
-private:
-	unsigned int m_RendererID;
-	unsigned int m_Count;
 
-public:
-	IndexBuffer(const unsigned* data, unsigned int count); //Video: Abstracing OPENGL into Classes - Min: 14.43
-	~IndexBuffer();
+	class IndexBuffer
+	{
+	private:
+		unsigned int m_RendererID;
+		unsigned int m_Count;
 
-	void Bind() const;
-	void UnBind() const;
+	public:
+		IndexBuffer(const unsigned* data, unsigned int count); //Video: Abstracing OPENGL into Classes - Min: 14.43
+		~IndexBuffer();
 
-	inline unsigned int GetCount() const { return m_Count; }
-};
+		void Bind() const;
+		void UnBind() const;
 
+		inline unsigned int GetCount() const { return m_Count; }
+	};
+
+}
