@@ -18,8 +18,8 @@
 
 	public:
 
-		const int WINDOW_WIDTH = 960;
-		const int WINDOW_HEIGHT = 540;
+		static const int WINDOW_WIDTH = 960;
+		static const int WINDOW_HEIGHT = 540;
 
 
 		DllExport Window();

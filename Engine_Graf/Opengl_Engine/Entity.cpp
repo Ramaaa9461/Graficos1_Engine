@@ -51,9 +51,11 @@
 	void Entity::UpdateTRSMat()
 	{
 		glm::mat4 tras = glm::translate(glm::mat4(1.0f), translation);
+
 		glm::mat4 rotX = glm::rotate(glm::mat4(1.0f), glm::radians(rotation.x), glm::vec3(1.0f, 0.0f, 0.0f));
 		glm::mat4 rotY = glm::rotate(glm::mat4(1.0f), glm::radians(rotation.y), glm::vec3(0.0f, 1.0f, 0.0f));
 		glm::mat4 rotZ = glm::rotate(glm::mat4(1.0f), glm::radians(rotation.z), glm::vec3(0.0f, 0.0f, 1.0f));
+
 		glm::mat4 sca = glm::scale(glm::mat4(1.0f), scale);
 
 		glm::mat4 rot = rotX * rotY * rotZ;

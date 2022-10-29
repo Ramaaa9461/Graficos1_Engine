@@ -31,7 +31,7 @@
 
 	protected:
 
-		Renderer* renderer;
+		Renderer* renderer = Renderer::getRenderer();
 		glm::mat4 TRS = glm::mat4(1);
 
 	public:

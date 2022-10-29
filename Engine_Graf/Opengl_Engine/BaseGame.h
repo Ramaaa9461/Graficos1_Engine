@@ -10,7 +10,6 @@
 #include "window.h"
 
 
-
 	class BaseGame
 	{
 
