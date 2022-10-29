@@ -31,6 +31,7 @@
 
 	protected:
 
+		Renderer* renderer;
 		glm::mat4 TRS = glm::mat4(1);
 
 	public:
@@ -47,7 +48,7 @@
 
 		DllExport void UpdateTRSMat();
 
-		DllExport virtual void draw(Renderer* renderer) = 0;
+		DllExport virtual void draw() = 0;
 	};
 
 #endif

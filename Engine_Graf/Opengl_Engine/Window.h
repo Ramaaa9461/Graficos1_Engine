@@ -34,6 +34,9 @@
 
 		DllExport int GetScreenWidth();
 		DllExport int GetScreenHeight();
+
+		bool getWindowsShouldClose();
+
 	};
 
 

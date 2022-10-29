@@ -4,6 +4,8 @@
 #include <iostream>
 
 
+Renderer* Renderer::S_Renderer = nullptr;;
+
 	void GLClearError()
 	{
 		while (glGetError() != GL_NO_ERROR);
@@ -20,7 +22,17 @@
 		return true;
 	}
 
-	Renderer::Renderer(Window* window)
+	Renderer::Renderer() {	}
+
+	Renderer* Renderer::getRenderer()
+	{
+		if (S_Renderer == nullptr) {
+			S_Renderer = new Renderer();
+		}
+		return S_Renderer;
+	}
+
+	void Renderer::initRenderer(Window* window)
 	{
 		this->window = window;
 
@@ -28,12 +40,6 @@
 		view = glm::lookAt(glm::vec3(0.0f, 0.0f, 1.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 	}
 
-	Renderer::Renderer(GLFWwindow* window)
-	{
-
-		proj = glm::ortho(0.0f, 960.0f, 0.0f, 540.0f, -1.0f, 1.0f); //Proyeccion ortografica
-		view = glm::lookAt(glm::vec3(0.0f, 0.0f, 1.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 1.0f, 0.0f));
-	}
 
 	void Renderer::Clear() const
 	{

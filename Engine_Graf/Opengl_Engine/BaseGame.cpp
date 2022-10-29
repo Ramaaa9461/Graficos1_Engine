@@ -15,10 +15,25 @@
 	{
 		Window* window = new Window();
 
-		Renderer* renderer = new Renderer(window);
+		Renderer* renderer = Renderer::getRenderer();
+		renderer->initRenderer(window);
 
-		//renderer->renderWindow(window->getWindow()); 
-		//ACA deberia entrar al loop del engine
+		Init();
+
+		while (window->getWindowsShouldClose())
+		{
+			renderer->Clear();
+
+
+			Update();
+
+
+
+			glfwSwapBuffers(window->getWindow());
+			glfwPollEvents();
+		}
+	
+		DeInit();
 
 		delete window;
 

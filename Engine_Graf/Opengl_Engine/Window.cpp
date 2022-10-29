@@ -57,3 +57,8 @@
 	{
 		return WINDOW_HEIGHT;
 	}
+
+	bool Window::getWindowsShouldClose()
+	{
+		return glfwWindowShouldClose;
+	}

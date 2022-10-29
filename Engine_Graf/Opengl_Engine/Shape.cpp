@@ -59,7 +59,7 @@
 		return _vertexCount;
 	}
 
-	void Shape::draw(Renderer* renderer)
+	void Shape::draw()
 	{
 		glm::mat4 mvp = renderer->proj * renderer->view * TRS;
 

@@ -11,7 +11,6 @@
 
 #include "../../Window.h"
 
-
 #pragma region Assert
 
 #define ASSERT(x) if (!(x)) __debugbreak();
@@ -34,11 +33,17 @@
 		Window* window; 
 		const int WINDOW_WIDTH = 960;
 		const int WINDOW_HEIGHT = 540;
+		Renderer();
+		static Renderer* S_Renderer;
 
 	public:
 
-		Renderer(Window* window);
-		Renderer(GLFWwindow* window);
+		static Renderer* getRenderer();
+		void initRenderer(Window* window);
+
+		Renderer(Renderer& other) = delete;
+		void operator=(const Renderer&) = delete;
+
 
 		glm::mat4 proj;
 		glm::mat4 view;

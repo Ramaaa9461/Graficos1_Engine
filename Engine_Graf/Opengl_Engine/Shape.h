@@ -10,7 +10,7 @@
 #include "../Headers/Texture.h"
 
 
-	class Shape : Entity2d
+	class Shape : public Entity2d
 	{
 
 	private:
@@ -52,7 +52,7 @@
 		float* getVertexPosition();
 		int getVertexCount();
 
-		void draw(Renderer* renderer);
+		void draw();
 
 		//Tiene Agregar un Material (Una funcion tiene que pedirlo por parametro)
 	};
