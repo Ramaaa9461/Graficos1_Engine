@@ -37,20 +37,31 @@ void ImGuiEngine::imGuiDrawObject(glm::vec3 traslation, glm::vec3 rotation, glm:
 	ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
 }
 
-void ImGuiEngine::imGuiDrawObject(Shape* shape)
+void ImGuiEngine::imGuiDrawObject(Shape* shape[], int size)
 {
-	glm::vec3 traslation = shape->getPosition();
-	glm::vec3 rotation =   shape->getRotation();
-	glm::vec3 scale =      shape->getScale();
 
-	ImGui::SliderFloat3("Translation", &traslation.x, 0.0f, 960.0f);
-	ImGui::SliderFloat3("Rotation", &rotation.x, 0.0f, 360.0f);
-	ImGui::SliderFloat3("Scale", &scale.x, 0.0f, 10.0f);
+	for (int i = 0; i < size; i++)
+	{
 
-	shape->setPosition(traslation);
-	shape->setRotation(rotation);
-	shape->setScale(scale);
 
+		traslation = shape[i]->getPosition();
+		rotation = shape  [i]->getRotation();
+		scale = shape     [i]->getScale();
+
+		
+		std::string pepito = "Tranlation" + std::to_string(i);
+
+		{
+		ImGui::SliderFloat3 ("Translation " + i, &traslation.x, 0.0f, 960.0f);
+		ImGui::SliderFloat3("Rotation " + i, &rotation.x, 0.0f, 360.0f);
+		ImGui::SliderFloat3("Scale " + i, &scale.x, 0.0f, 10.0f);
+		}
+
+		shape[i]->setPosition(traslation);
+		shape[i]->setRotation(rotation);
+		shape[i]->setScale(scale);
+
+	}
 
 
 }

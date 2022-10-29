@@ -11,6 +11,13 @@
 class ImGuiEngine
 {
 
+
+private:
+
+	glm::vec3 traslation;
+		glm::vec3 rotation;
+		glm::vec3 scale;
+
 public:
 
 	ImGuiEngine(Window* window);
@@ -21,7 +28,7 @@ public:
 
 	void imGuiDrawObject(glm::vec3 traslation, glm::vec3 rotation, glm::vec3 scale);
 
-	void imGuiDrawObject(Shape* shape);
+	void imGuiDrawObject(Shape* shape[],int size);
 
 
 };

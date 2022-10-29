@@ -24,8 +24,13 @@
 		ImGuiEngine* imGuiEngine = new ImGuiEngine(window);
 		Init();
 
-		Shape* shape = new Shape();
-		Shape* shape2 = new Shape();
+		Shape* shape[3];
+		
+		for (int i = 0; i < 3; i++)
+		{
+			shape[i] = new Shape();
+		}
+
 
 		while (window->getWindowsShouldClose())
 		{
@@ -34,13 +39,13 @@
 
 			Update();
 
-			
-			shape->draw();
-			shape2->draw();
+			for (int i = 0; i < 3; i++)
+			{
+				shape[i]->draw();
+			}
 			
 			//imGuiEngine->imGuiDrawObject(shape->getPosition(), shape->getRotation(), shape->getScale());
-			imGuiEngine->imGuiDrawObject(shape);
-			imGuiEngine->imGuiDrawObject(shape2);
+			imGuiEngine->imGuiDrawObject(shape, 3);
 
 
 			imGuiEngine->imGuiEndDraw();
