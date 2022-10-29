@@ -25,6 +25,7 @@
 		Init();
 
 		Shape* shape = new Shape();
+		Shape* shape2 = new Shape();
 
 		while (window->getWindowsShouldClose())
 		{
@@ -33,11 +34,13 @@
 
 			Update();
 
-
+			
 			shape->draw();
-
+			shape2->draw();
+			
 			//imGuiEngine->imGuiDrawObject(shape->getPosition(), shape->getRotation(), shape->getScale());
 			imGuiEngine->imGuiDrawObject(shape);
+			imGuiEngine->imGuiDrawObject(shape2);
 
 
 			imGuiEngine->imGuiEndDraw();
