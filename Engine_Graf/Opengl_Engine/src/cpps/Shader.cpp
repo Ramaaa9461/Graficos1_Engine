@@ -7,13 +7,19 @@
 
 #include "../Headers/Renderer.h"
 
-
-	Shader::Shader(const std::string& filepath) : m_FilepPath(filepath), m_RendererID(0)
+	Shader::Shader(ShaderType shaderType)
 	{
+		m_RendererID = 0;
 		ShaderProgramSource source;// = ParseShader("filepath");
 		source.VertexSource = vertexShader;
-		
+		if (shaderType == ShaderType::whithTexture)
+		{
 		source.FragmentSource = fragmentShaderWithTexture;
+		}
+		else if(shaderType == ShaderType::noTexture)
+		{
+			source.FragmentSource = fragmentShaderNoTexture;
+		}
 
 		m_RendererID = CreateShader(source.VertexSource, source.FragmentSource);
 		
@@ -73,7 +79,7 @@
 
 
 
-	ShaderProgramSource Shader::ParseShader(const std::string& filepath)
+	/*ShaderProgramSource Shader::ParseShader(const std::string& filepath)
 	{
 		std::ifstream stream(filepath);
 
@@ -113,7 +119,7 @@
 
 		return { ss[0].str(), ss[1].str() };
 
-	}
+	}*/
 
 
 	unsigned int Shader::CompileShader(unsigned int type, const std::string& source)

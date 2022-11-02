@@ -16,7 +16,9 @@ RectangleShape::RectangleShape()
 
 	ib = new IndexBuffer(indices, 6);
 
-	shader = new Shader("res/Shaders/Basic.shader");
+	shaderType = ShaderType::whithTexture;
+
+	shader = new Shader(shaderType);
 	shader->Bind();
 	shader->SetUniforms4f("u_Color", 0.8f, 0.3f, 0.8f, 1.0f);
 

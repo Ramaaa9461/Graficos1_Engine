@@ -8,6 +8,7 @@
 #include "../Headers/VertexBufferLayout.h"
 #include "../Headers/Shader.h"
 #include "../Headers/Texture.h"
+#include "ShaderType.h"
 
 	class Shape : public Entity2d
 	{
@@ -37,6 +38,7 @@
 
 		Texture* texture;
 
+		ShaderType shaderType;
 		virtual void  setVertices() = 0;
 		virtual void  setIndixs() = 0;
 
