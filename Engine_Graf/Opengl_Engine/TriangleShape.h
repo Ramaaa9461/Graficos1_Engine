@@ -8,7 +8,7 @@ class TriangleShape : public Shape
 
 private:
 
-    float positions[9];
+    float positions[6];
     unsigned int indices[3];
 
      void  setVertices();

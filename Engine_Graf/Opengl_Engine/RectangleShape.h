@@ -8,8 +8,7 @@ class RectangleShape : public Shape
 
 private:
 
-    float positions[16];
-
+    float positions[8];
     unsigned int indices[6];
 
      void  setVertices();

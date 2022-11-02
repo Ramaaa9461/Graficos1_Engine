@@ -10,7 +10,6 @@ RectangleShape::RectangleShape()
 
 	layout = VertexBufferLayout();
 	layout.Push<float>(2);		 //Video: Buffer Layout Abstraction in OpenGL - min 27.30 Explica mas cosas qe se pueden hacer
-	layout.Push<float>(2);
 	va->AddBuffer(*vb, layout);
 	va->Bind();
 
@@ -21,11 +20,6 @@ RectangleShape::RectangleShape()
 	shader = new Shader(shaderType);
 	shader->Bind();
 	shader->SetUniforms4f("u_Color", 0.8f, 0.3f, 0.8f, 1.0f);
-
-	//texture = new Texture("res/textures/Logo.jpg");
-	//texture->Bind();
-	//shader->SetUniforms1i("u_Texture", 0);
-
 
 	va->Unbind();
 	vb->UnBind();
@@ -38,20 +32,12 @@ void RectangleShape::setVertices()
 
 	positions[0] = -50.0f;
 	positions[1] = -50.0f;
-	positions[2] = 0.0f;
-	positions[3] = 0.0f;
+	positions[2] = 50.0f;
+	positions[3] = -50.0f;
 	positions[4] = 50.0f;
-	positions[5] = -50.0f;
-	positions[6] = 1.0f;
-	positions[7] = 0.0f;
-	positions[8] = 50.0f;
-	positions[9] = 50.0f;
-	positions[10] = 1.0f;
-	positions[11] = 1.0f;
-	positions[12] = - 50.0f;
-	positions[13] = 50.0f;
-	positions[14] = 0.0f;
-	positions[15] = 1.0f;
+	positions[5] = 50.0f;
+	positions[6] = - 50.0f;
+	positions[7] = 50.0f;
 
 }
 

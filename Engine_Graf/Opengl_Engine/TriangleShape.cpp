@@ -38,11 +38,11 @@ void TriangleShape::setVertices()
 	positions[0] = -50.0f;
 	positions[1] = -50.0f;
 	
-	positions[4] = 50.0f;
-	positions[5] = -50.0f;
+	positions[2] = 50.0f;
+	positions[3] = -50.0f;
 	
-	positions[8] = 0.0f;
-	positions[9] = 50.0f;
+	positions[4] = 0.0f;
+	positions[5] = 50.0f;
 	
 
 }
