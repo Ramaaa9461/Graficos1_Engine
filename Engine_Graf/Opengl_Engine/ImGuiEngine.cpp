@@ -1,7 +1,5 @@
 #include "ImGuiEngine.h"
 
-
-
 ImGuiEngine::ImGuiEngine(Window* window)
 {
 	ImGui::CreateContext();
@@ -39,22 +37,17 @@ void ImGuiEngine::imGuiDrawObject(glm::vec3 traslation, glm::vec3 rotation, glm:
 
 void ImGuiEngine::imGuiDrawObject(Shape* shape[], int size)
 {
-
 	for (int i = 0; i < size; i++)
 	{
 
-
 		traslation = shape[i]->getPosition();
-		rotation = shape  [i]->getRotation();
-		scale = shape     [i]->getScale();
-
-		
-		std::string pepito = "Tranlation" + std::to_string(i);
+		rotation = shape[i]->getRotation();
+		scale = shape[i]->getScale();
 
 		{
-		ImGui::SliderFloat3 ("Translation " + i, &traslation.x, 0.0f, 960.0f);
-		ImGui::SliderFloat3("Rotation " + i, &rotation.x, 0.0f, 360.0f);
-		ImGui::SliderFloat3("Scale " + i, &scale.x, 0.0f, 10.0f);
+			ImGui::SliderFloat2("Translation" , &traslation.x, 0.0f, 960.0f);
+			ImGui::SliderFloat("Rotation " + i, &rotation.z, 0.0f, 360.0f);
+			ImGui::SliderFloat2("Scale " + i, &scale.x, 0.0f, 10.0f);
 		}
 
 		shape[i]->setPosition(traslation);
