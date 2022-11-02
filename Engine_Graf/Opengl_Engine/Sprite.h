@@ -19,7 +19,7 @@ private:
 
 public:
 
-    Sprite();
+    Sprite(std::string imageName);
 
 
 

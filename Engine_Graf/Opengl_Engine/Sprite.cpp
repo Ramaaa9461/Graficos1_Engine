@@ -1,6 +1,6 @@
 #include "Sprite.h"
 
-Sprite::Sprite()
+Sprite::Sprite(std::string imageName)
 {
 	setVertices();
 	setIndixs();
@@ -22,7 +22,7 @@ Sprite::Sprite()
 	shader->Bind();
 	//shader->SetUniforms4f("u_Color", 0.8f, 0.3f, 0.8f, 1.0f);
 
-	texture = new Texture("res/textures/Logo.jpg");
+	texture = new Texture("res/textures/" + imageName);
 	texture->Bind();
 	shader->SetUniforms1i("u_Texture", 0);
 

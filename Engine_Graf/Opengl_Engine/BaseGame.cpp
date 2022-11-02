@@ -31,7 +31,7 @@ void BaseGame::run()
 
 	shape[0] = new RectangleShape();
 	shape[1] = new TriangleShape();
-	shape[2] = new Sprite();
+	shape[2] = new Sprite("Logo.jpg");
 
 	while (window->getWindowsShouldClose())
 	{
