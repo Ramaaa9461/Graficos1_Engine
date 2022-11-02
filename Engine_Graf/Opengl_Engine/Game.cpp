@@ -2,30 +2,30 @@
 
 Game::Game() : BaseGame()
 {
-	
+	run();
 }
 
 Game::~Game()
 {
-	
+
 }
 
-void Init()
+void Game::Init()
 {
 
 }
 
 void Game::Input()
 {
-	
+	//getInput()->GetKey(0);
 }
 
-void Update()
+void Game::Update()
 {
 
 }
 
-void DeInit()
+void Game::DeInit()
 {
 
 }

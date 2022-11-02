@@ -1,7 +1,10 @@
 #include "baseGame.h" 
 
-namespace FACU_RAMI_ENGINE
-{
+#include "Shape.h"
+#include "RectangleShape.h"
+#include "ImGuiEngine.h"
+
+
 	DllExport BaseGame::BaseGame()
 	{
 
@@ -16,10 +19,45 @@ namespace FACU_RAMI_ENGINE
 	{
 		Window* window = new Window();
 
-		Renderer* renderer = new Renderer();
+		Renderer* renderer = Renderer::getRenderer();
+		renderer->initRenderer(window);
 
-		//renderer->renderWindow(window->getWindow()); 
-		//ACA deberia entrar al loop del engine
+		ImGuiEngine* imGuiEngine = new ImGuiEngine(window);
+		Init();
+
+		Shape* shape[3];
+		
+		for (int i = 0; i < 3; i++)
+		{
+			shape[i] = new RectangleShape();
+		}
+
+
+		while (window->getWindowsShouldClose())
+		{
+			renderer->Clear();
+			imGuiEngine->imGuiStarDraw();
+
+			Update();
+
+			for (int i = 0; i < 3; i++)
+			{
+				shape[i]->draw();
+			}
+			
+			imGuiEngine->imGuiDrawObject(shape, 3);
+
+
+			imGuiEngine->imGuiEndDraw();
+			glfwSwapBuffers(window->getWindow());
+			glfwPollEvents();
+		}
+	
+		DeInit();
+
+		delete imGuiEngine;
+
+		delete shape;
 
 		delete window;
 
@@ -27,6 +65,6 @@ namespace FACU_RAMI_ENGINE
 
 		//return 0;
 	}
-}
+
 
 

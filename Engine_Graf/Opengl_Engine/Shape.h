@@ -3,32 +3,53 @@
 
 #include "entity2d.h"
 
-namespace FACU_RAMI_ENGINE
-{
-	class Shape : Entity2d
+#include "../Headers/VertexArray.h"
+#include "../Headers/IndexBuffer.h"
+#include "../Headers/VertexBufferLayout.h"
+#include "../Headers/Shader.h"
+#include "../Headers/Texture.h"
+
+
+	class Shape : public Entity2d
 	{
 
-	private:
+	protected:
 
-		float* _vertexPosition;
+		float positions[16]; /*= {
+	-50.0f, -50.0f,	     0.0f, 0.0f,
+	 50.0f, -50.0f,	     1.0f, 0.0f,
+	 50.0f,  50.0f,	     1.0f, 1.0f,
+	-50.0f,  50.0f,	     0.0f, 1.0f
+		};*/
 
-		int _vertexCount;
+		unsigned int indices[6] /*= {
+			0,1,2,
+			2,3,0
+		}*/;
+
+		VertexArray* va;
+		VertexBuffer* vb;
+		VertexBufferLayout layout;
+
+		IndexBuffer* ib;
+
+		Shader* shader;
+
+		Texture* texture;
+
+		virtual void  setVertices() = 0;
+		virtual void  setIndixs() = 0;
 
 	public:
 
 		Shape();
 		~Shape();
 
-		void setVertices(int vertexCount, float* vertexPosition);
-
-		float* getVertexPosition();
-		int getVertexCount();
-
-		void draw(Renderer* renderer);
+		void draw();
 
 		//Tiene Agregar un Material (Una funcion tiene que pedirlo por parametro)
 	};
-}
+
 
 #endif
 

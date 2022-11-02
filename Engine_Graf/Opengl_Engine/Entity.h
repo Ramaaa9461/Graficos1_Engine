@@ -4,19 +4,35 @@
 #include "DDLExport.h"
 
 #include "src/Headers/Renderer.h"
-
-namespace FACU_RAMI_ENGINE
-{
+#include "src/Headers/VertexArray.h"
+#include "src/Headers/VertexBuffer.h"
+#include "src/Headers/VertexBufferLayout.h"
+#include "imgui/imgui.h"
 	class Entity
 	{
 	private:
 
-		glm::vec3 position;
+		glm::vec3 translation;
 		glm::vec3 rotation;
 		glm::vec3 scale;
 
-		glm::mat4 TRS;
-		//Defino la matrizes y la TRS
+
+		float positions[16] = {
+	-50.0f, -50.0f,	     0.0f, 0.0f,
+	 50.0f, -50.0f,	     1.0f, 0.0f,
+	 50.0f,  50.0f,	     1.0f, 1.0f,
+	-50.0f,  50.0f,	     0.0f, 1.0f
+		};
+		
+		unsigned int indices[6] = {
+			0,1,2,
+			2,3,0
+		};
+
+	protected:
+
+		Renderer* renderer = Renderer::getRenderer();
+		glm::mat4 TRS = glm::mat4(1);
 
 	public:
 		DllExport Entity();
@@ -32,9 +48,8 @@ namespace FACU_RAMI_ENGINE
 
 		DllExport void UpdateTRSMat();
 
-		DllExport virtual void draw(Renderer* renderer) = 0;
+		DllExport virtual void draw() = 0;
 	};
-}
 
 #endif
 

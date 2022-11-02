@@ -1,38 +1,27 @@
 #include "Shape.h"
 
-namespace FACU_RAMI_ENGINE
-{
+
 	Shape::Shape()
 	{
-		_vertexPosition = NULL;
 
-		_vertexCount = 0;
+		
 	}
 
 	Shape::~Shape()
 	{
-
+		delete va;
+		delete vb;
+		delete ib;
+		delete shader;
+		delete texture;
 	}
 
-	void Shape::setVertices(int vertexCount, float* vertexPosition)
+	void Shape::draw()
 	{
-		_vertexPosition = vertexPosition;
+		glm::mat4 mvp = renderer->proj * renderer->view * TRS;
 
-		_vertexCount = vertexCount;
+		shader->Bind();
+		shader->SetUniformsMat4f("u_MVP", mvp);
+
+		renderer->Draw(va, ib, shader); //Esta raro... pide direccion de memoria, habria qe pasar solo el puntero (sin el *)
 	}
-
-	float* Shape::getVertexPosition()
-	{
-		return _vertexPosition;
-	}
-
-	int Shape::getVertexCount()
-	{
-		return _vertexCount;
-	}
-
-	void Shape::draw(Renderer* renderer)
-	{
-
-	}
-}

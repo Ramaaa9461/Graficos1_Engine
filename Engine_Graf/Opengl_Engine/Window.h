@@ -8,18 +8,20 @@
 
 #include "DDLExport.h"
 
-namespace FACU_RAMI_ENGINE
-{
+
 	class Window
 	{
 	private:
 
 		GLFWwindow* window;
-		const int WINDOW_WIDTH = 960;
-		const int WINDOW_HEIGHT = 540;
 
 
 	public:
+
+		static const int WINDOW_WIDTH = 960;
+		static const int WINDOW_HEIGHT = 540;
+
+
 		DllExport Window();
 		DllExport ~Window();
 
@@ -32,7 +34,10 @@ namespace FACU_RAMI_ENGINE
 
 		DllExport int GetScreenWidth();
 		DllExport int GetScreenHeight();
+
+		bool getWindowsShouldClose();
+
 	};
-}
+
 
 #endif

@@ -1,16 +1,17 @@
 #ifndef GAME_H
 #define GAME_H
 
-#include "../../Engine_Graf/Opengl_Engine/BaseGame.h"
+#include "BaseGame.h"
+
 
 class Game : BaseGame
 {
-private:	
+private:
 
 public:
 
 	Game();
-	~Game();	
+	~Game();
 
 	void Init();
 	void Input();

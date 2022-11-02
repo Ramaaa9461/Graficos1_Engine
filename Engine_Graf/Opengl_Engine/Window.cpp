@@ -1,7 +1,5 @@
 #include "Window.h"
 
-namespace FACU_RAMI_ENGINE
-{
 	DllExport Window::Window()
 	{
 		createWindow();
@@ -40,6 +38,8 @@ namespace FACU_RAMI_ENGINE
 
 		glfwMakeContextCurrent(window);
 
+		glfwSwapInterval(1); //Ni idea qe onda esto
+
 		initGlew();
 	}
 
@@ -57,4 +57,8 @@ namespace FACU_RAMI_ENGINE
 	{
 		return WINDOW_HEIGHT;
 	}
-}
+
+	bool Window::getWindowsShouldClose()
+	{
+		return glfwWindowShouldClose;
+	}
