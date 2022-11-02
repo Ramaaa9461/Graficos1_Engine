@@ -3,8 +3,6 @@
 
 #include "../../Engine_Graf/Opengl_Engine/BaseGame.h"
 
-using namespace FACU_RAMI_ENGINE;
-
 class Game : BaseGame
 {
 private:	
@@ -12,12 +10,12 @@ private:
 public:
 
 	Game();
-	~Game();
+	~Game();	
 
-	void init();
-	void input();
-	void update();
-	void deInit();
+	void Init();
+	void Input();
+	void Update();
+	void DeInit();
 };
 
 #endif
