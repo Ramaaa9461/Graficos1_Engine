@@ -17,7 +17,7 @@ private:
 
 public:
     
-    RectangleShape();
+    RectangleShape(glm::vec4 RGBA);
 
 
 

@@ -28,9 +28,11 @@ void BaseGame::run()
 
 	Shape* shape[3];
 
+	//GLCall(glEnable(GL_BLEND));
+	//GLCall(glBlendFunc(GL_SRC0_ALPHA, GL_ONE_MINUS_SRC_ALPHA)); 
 
-	shape[0] = new RectangleShape();
-	shape[1] = new TriangleShape();
+	shape[0] = new RectangleShape(glm::vec4(0.5f, 0.9f,0.1f, 1.0f));
+	shape[1] = new TriangleShape(glm::vec4(0.2f, 0.6f, 0.9f, 1.0f));
 	shape[2] = new Sprite("Logo.jpg");
 
 	while (window->getWindowsShouldClose())

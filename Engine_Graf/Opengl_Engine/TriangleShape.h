@@ -17,7 +17,7 @@ private:
 
 public:
     
-    TriangleShape();
+    TriangleShape(glm::vec4 RGBA);
 
 
 

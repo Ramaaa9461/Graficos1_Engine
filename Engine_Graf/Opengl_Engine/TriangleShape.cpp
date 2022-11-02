@@ -1,6 +1,6 @@
 #include "TriangleShape.h"
 
-TriangleShape::TriangleShape()
+TriangleShape::TriangleShape(glm::vec4 RGBA)
 {
 	setVertices();
 	setIndixs();
@@ -19,7 +19,7 @@ TriangleShape::TriangleShape()
 
 	shader = new Shader(shaderType);
 	shader->Bind();
-	shader->SetUniforms4f("u_Color", 0.8f, 0.3f, 0.8f, 1.0f);
+	shader->SetUniforms4f("u_Color", RGBA.x, RGBA.y, RGBA.z, RGBA.w);
 
 	//texture = new Texture("res/textures/Logo.jpg");
 	//texture->Bind();
