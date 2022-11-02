@@ -39,6 +39,7 @@
 		Texture* texture;
 
 		ShaderType shaderType;
+
 		virtual void  setVertices() = 0;
 		virtual void  setIndixs() = 0;
 

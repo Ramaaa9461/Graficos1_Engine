@@ -2,8 +2,8 @@
 
 #include "Shape.h"
 #include "RectangleShape.h"
+#include "Sprite.h"
 #include "ImGuiEngine.h"
-
 
 	DllExport BaseGame::BaseGame()
 	{
@@ -26,12 +26,12 @@
 		Init();
 
 		Shape* shape[3];
-		
-		for (int i = 0; i < 3; i++)
+
+		for (int i = 0; i <2; i++)
 		{
 			shape[i] = new RectangleShape();
 		}
-
+		shape[2] = new Sprite();
 
 		while (window->getWindowsShouldClose())
 		{
@@ -44,7 +44,7 @@
 			{
 				shape[i]->draw();
 			}
-			
+
 			imGuiEngine->imGuiDrawObject(shape, 3);
 
 

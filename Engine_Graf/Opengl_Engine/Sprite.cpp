@@ -16,7 +16,11 @@ Sprite::Sprite()
 
 	ib = new IndexBuffer(indices, 6);
 
+	shaderType = ShaderType::whithTexture;
 
+	shader = new Shader(shaderType);
+	shader->Bind();
+	//shader->SetUniforms4f("u_Color", 0.8f, 0.3f, 0.8f, 1.0f);
 
 	texture = new Texture("res/textures/Logo.jpg");
 	texture->Bind();
