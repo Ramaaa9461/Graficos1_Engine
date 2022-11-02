@@ -16,7 +16,7 @@ RectangleShape::RectangleShape()
 
 	ib = new IndexBuffer(indices, 6);
 
-	shaderType = ShaderType::whithTexture;
+	shaderType = ShaderType::noTexture;
 
 	shader = new Shader(shaderType);
 	shader->Bind();

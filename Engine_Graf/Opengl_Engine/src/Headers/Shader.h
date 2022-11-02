@@ -59,7 +59,7 @@ private:
 		"};\n";
 
 	std::string fragmentShaderNoTexture =
-		"#shader fragment							\n"
+		//"#shader fragment							\n"
 		"#version 330 core\n"
 		"\n"
 		"	layout(location = 0) out vec4 color;"
