@@ -10,22 +10,22 @@ Game::~Game()
 	
 }
 
-void Game::init()
+void Init()
+{
+
+}
+
+void Game::Input()
 {
 	
 }
 
-void Game::input()
+void Update()
 {
-	//getInput()->GetKey(0);
+
 }
 
-void Game::update()
-{
-	
-}
-
-void Game::deInit()
+void DeInit()
 {
 
 }
