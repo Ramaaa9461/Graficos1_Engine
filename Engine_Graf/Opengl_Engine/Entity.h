@@ -7,7 +7,7 @@
 #include "src/Headers/VertexArray.h"
 #include "src/Headers/VertexBuffer.h"
 #include "src/Headers/VertexBufferLayout.h"
-
+#include "imgui/imgui.h"
 	class Entity
 	{
 	private:

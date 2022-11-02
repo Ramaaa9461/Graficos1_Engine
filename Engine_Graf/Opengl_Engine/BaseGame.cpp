@@ -1,6 +1,7 @@
 #include "baseGame.h" 
 
 #include "Shape.h"
+#include "RectangleShape.h"
 #include "ImGuiEngine.h"
 
 
@@ -28,7 +29,7 @@
 		
 		for (int i = 0; i < 3; i++)
 		{
-			shape[i] = new Shape();
+			shape[i] = new RectangleShape();
 		}
 
 
@@ -44,7 +45,6 @@
 				shape[i]->draw();
 			}
 			
-			//imGuiEngine->imGuiDrawObject(shape->getPosition(), shape->getRotation(), shape->getScale());
 			imGuiEngine->imGuiDrawObject(shape, 3);
 
 

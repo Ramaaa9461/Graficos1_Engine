@@ -13,19 +13,19 @@
 	class Shape : public Entity2d
 	{
 
-	private:
+	protected:
 
-		float positions[16] = {
+		float positions[16]; /*= {
 	-50.0f, -50.0f,	     0.0f, 0.0f,
 	 50.0f, -50.0f,	     1.0f, 0.0f,
 	 50.0f,  50.0f,	     1.0f, 1.0f,
 	-50.0f,  50.0f,	     0.0f, 1.0f
-		};
+		};*/
 
-		unsigned int indices[6] = {
+		unsigned int indices[6] /*= {
 			0,1,2,
 			2,3,0
-		};
+		}*/;
 
 		VertexArray* va;
 		VertexBuffer* vb;
@@ -37,20 +37,13 @@
 
 		Texture* texture;
 
-
-		float* _vertexPosition;
-
-		int _vertexCount;
+		virtual void  setVertices() = 0;
+		virtual void  setIndixs() = 0;
 
 	public:
 
 		Shape();
 		~Shape();
-
-		void setVertices(int vertexCount, float* vertexPosition);
-
-		float* getVertexPosition();
-		int getVertexCount();
 
 		void draw();
 
