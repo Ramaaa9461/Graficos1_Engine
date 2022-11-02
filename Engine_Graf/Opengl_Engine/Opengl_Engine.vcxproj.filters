@@ -78,6 +78,9 @@
     <ClCompile Include="Sprite.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
+    <ClCompile Include="TriangleShape.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="res\Shaders\Basic.shader" />
@@ -160,6 +163,9 @@
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
     <ClInclude Include="src\vendor\ShaderType.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="TriangleShape.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
   </ItemGroup>

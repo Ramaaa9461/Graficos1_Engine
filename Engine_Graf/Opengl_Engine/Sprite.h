@@ -8,6 +8,11 @@ class Sprite : public Shape
 
 private:
 
+    	float positions[16]; 
+
+        unsigned int indices[6];
+
+
     void  setVertices();
     void  setIndixs();
 

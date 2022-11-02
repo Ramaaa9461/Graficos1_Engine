@@ -3,14 +3,13 @@
 #include "Shape.h"
 
 
-class RectangleShape : public Shape
+class TriangleShape : public Shape
 {
 
 private:
 
-    float positions[16];
-
-    unsigned int indices[6];
+    float positions[9];
+    unsigned int indices[3];
 
      void  setVertices();
      void  setIndixs();
@@ -18,7 +17,7 @@ private:
 
 public:
     
-    RectangleShape();
+    TriangleShape();
 
 
 
