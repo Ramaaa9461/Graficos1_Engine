@@ -38,37 +38,37 @@
 			"	v_TexCoord = texCoord;\n"
 			"};\n";
 
-		//std::string fragmentShader =
-		//	//"#shader fragment							\n"
+		std::string fragmentShaderWithTexture =
+				//"#shader fragment							\n"
+				"#version 330 core\n"
+				"\n"
+				"	layout(location = 0) out vec4 color;"
+				"\n"
+				"	in vec2 v_TexCoord;"
+				"\n"
+				"	uniform vec4 u_Color;"
+				"\n"
+				"	uniform sampler2D u_Texture;"
+				"\n"
+				"void main()\n"
+				"{\n"
+				"	vec4 texColor = texture(u_Texture, v_TexCoord);"
+				"\n"
+				"	color = texColor;"
+				"};\n";
+
+		//std::string fragmentShaderNoTexture =
+		//	"#shader fragment							\n"
 		//	"#version 330 core\n"
 		//	"\n"
 		//	"	layout(location = 0) out vec4 color;"
 		//	"\n"
-		//	"	in vec2 v_TexCoord;"
-		//	"\n"
 		//	"	uniform vec4 u_Color;"
-		//	"\n"
-		//	"	uniform sampler2D u_Texture;"
 		//	"\n"
 		//	"void main()\n"
 		//	"{\n"
-		//	"	vec4 texColor = texture(u_Texture, v_TexCoord);"
-		//	"\n"
-		//	"	color = texColor;"
+		//	"	color = u_Color;"
 		//	"};\n";
-
-		std::string fragmentShader =
-			//"#shader fragment							\n"
-			"#version 330 core\n"
-			"\n"
-			"	layout(location = 0) out vec4 color;"
-			"\n"
-			"	uniform vec4 u_Color;"
-			"\n"
-			"void main()\n"
-			"{\n"
-			"	color = u_Color;"
-			"};\n";
 
 
 #pragma endregion

@@ -6,12 +6,15 @@
 class RectangleShape : public Shape
 {
 
-public:
-    
-    RectangleShape();
+private:
 
      void  setVertices();
      void  setIndixs();
+
+
+public:
+    
+    RectangleShape();
 
 
 

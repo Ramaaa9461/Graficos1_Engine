@@ -9,7 +9,6 @@
 #include "../Headers/Shader.h"
 #include "../Headers/Texture.h"
 
-
 	class Shape : public Entity2d
 	{
 
@@ -26,6 +25,7 @@
 			0,1,2,
 			2,3,0
 		}*/;
+
 
 		VertexArray* va;
 		VertexBuffer* vb;

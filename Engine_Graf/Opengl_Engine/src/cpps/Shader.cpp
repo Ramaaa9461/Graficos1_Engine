@@ -12,10 +12,11 @@
 	{
 		ShaderProgramSource source;// = ParseShader("filepath");
 		source.VertexSource = vertexShader;
-		source.FragmentSource = fragmentShader;
+		
+		source.FragmentSource = fragmentShaderWithTexture;
 
 		m_RendererID = CreateShader(source.VertexSource, source.FragmentSource);
-
+		
 
 	}
 
