@@ -1,8 +1,16 @@
 #include "Sprite.h"
 
-Sprite::Sprite(std::string imageName)
+Sprite::Sprite(std::string imageName, bool singleImage)
 {
-	setVertices();
+	if (singleImage)
+	{
+		setVerticesSingleImage();
+	}
+	else
+	{
+		setVerticesSpriteSheet();
+	}
+
 	setIndixs();
 
 	va = new VertexArray();
@@ -34,22 +42,47 @@ Sprite::Sprite(std::string imageName)
 }
 
 
-void Sprite::setVertices()
+void Sprite::setVerticesSingleImage()
 {
 	positions[0] = -50.0f;
 	positions[1] = -50.0f;
-	positions[2] = 0.0f;
-	positions[3] = 0.0f;
-	positions[4] = 50.0f;
 	positions[5] = -50.0f;
-	positions[6] = 1.0f;
-	positions[7] = 0.0f;
+	positions[4] = 50.0f;
 	positions[8] = 50.0f;
 	positions[9] = 50.0f;
-	positions[10] = 1.0f;
-	positions[11] = 1.0f;
 	positions[12] = -50.0f;
 	positions[13] = 50.0f;
+
+	positions[2] = 0.0f;
+	positions[3] = 0.0f;
+	positions[6] = 1.0f;
+	positions[7] = 0.0f;
+	positions[10] = 1.0f;
+	positions[11] = 1.0f;
+	positions[14] = 0.0f;
+	positions[15] = 1.0f;
+
+}
+
+void Sprite::setVerticesSpriteSheet()
+{
+	//Crear animaciones y 
+
+	positions[0] = -50.0f;
+	positions[1] = -50.0f;
+	positions[5] = -50.0f;
+	positions[4] = 50.0f;
+	positions[8] = 50.0f;
+	positions[9] = 50.0f;
+	positions[12] = -50.0f;
+	positions[13] = 50.0f;
+
+	positions[2] = 0.0f;
+	positions[3] = 0.0f;
+	positions[6] = 1.0f;
+	positions[7] = 0.0f;
+	positions[10] = 1.0f;
+	positions[11] = 1.0f;
 	positions[14] = 0.0f;
 	positions[15] = 1.0f;
 

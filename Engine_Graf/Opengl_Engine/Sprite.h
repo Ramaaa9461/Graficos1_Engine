@@ -13,13 +13,14 @@ private:
         unsigned int indices[6];
 
 
-    void  setVertices();
+    void  setVerticesSingleImage();
+    void setVerticesSpriteSheet();
     void  setIndixs();
 
 
 public:
 
-    Sprite(std::string imageName);
+    Sprite(std::string imageName, bool singleImage);
 
 
 
