@@ -29,12 +29,9 @@ void BaseGame::run()
 
 	Entity2d* entity;
 
-	//GLCall(glEnable(GL_BLEND));
-	//GLCall(glBlendFunc(GL_SRC0_ALPHA, GL_ONE_MINUS_SRC_ALPHA)); 
-
 	entity = new Sprite("Mario.png", true);
 
-//	((Sprite*)entity)->CreateAnimation(0, 0, 10, 4);
+	((Sprite*)entity)->CreateAnimation(0, 0, 1, 4);
 
 	while (window->getWindowsShouldClose())
 	{
@@ -46,7 +43,7 @@ void BaseGame::run()
 
 		Update();
 		//Render here-------------------------
-		//((Sprite*)entity)->updateAnimation(*timer);
+		((Sprite*)entity)->updateAnimation(*timer);
 
 
 

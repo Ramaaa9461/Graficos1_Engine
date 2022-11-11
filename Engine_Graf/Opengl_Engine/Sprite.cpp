@@ -5,12 +5,6 @@ Sprite::Sprite(std::string imageName, bool singleImage)
 	setVertices();
 	setIndixs();
 
-	animation = new Animation();
-	CreateAnimation(0, 0, 2, 4);
-	Timer* timer = new Timer();
-
-	updateAnimation(*timer);
-
 	va = new VertexArray();
 	vb = new VertexBuffer(positions, 4 * 4 * sizeof(float));
 
@@ -109,23 +103,23 @@ void Sprite::CreateAnimation(int x, int y, int durationInSec, int framesAmount)
 
 void Sprite::updateAnimation(Timer& timer)
 {
-	vb->Bind();
 	frames = animation->getFrames();
 
-	positions[2] = 0.0f;                 //frames[0].uvCoords[0].u;
-	positions[3] = 0.0f;                 //frames[0].uvCoords[0].v;
-								
-	positions[6] = 0.25f;                //frames[1].uvCoords[1].u;
-	positions[7] = 0.0f;                 //frames[1].uvCoords[1].v;
-									
-	positions[10] = 0.25f;               // frames[2].uvCoords[2].u;
-	positions[11] = 0.25f;               // frames[2].uvCoords[2].v;
-									
-	positions[14] = 0.0f;                // frames[3].uvCoords[3].u;
-	positions[15] = 0.25f;               // frames[3].uvCoords[3].v;
+	positions[2] = frames[animation->getCurrentIndex()].uvCoords[0].u;
+	positions[3] = frames[animation->getCurrentIndex()].uvCoords[0].v;
+	
+	positions[6] = frames[animation->getCurrentIndex()].uvCoords[1].u;
+	positions[7] = frames[animation->getCurrentIndex()].uvCoords[1].v;
+	
+	positions[10] =frames[animation->getCurrentIndex()].uvCoords[3].u;
+	positions[11] =frames[animation->getCurrentIndex()].uvCoords[3].v;
+	
+	positions[14] =frames[animation->getCurrentIndex()].uvCoords[2].u;
+	positions[15] =frames[animation->getCurrentIndex()].uvCoords[2].v;
 
 	animation->UpdateAnimation(timer);
 
+	vb->updateVertexBufferData(positions, 4 * 4 * sizeof(float));
 }
 
 

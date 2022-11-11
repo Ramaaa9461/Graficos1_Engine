@@ -19,7 +19,7 @@ float Timer::timeBetweenFrames()
 
 void Timer::updateDeltaTime()
 {
-	deltaTime = (clock() - oldTime) / 1000.0f;
+	deltaTime = clock() - oldTime;
 	//double fps = (1 / deltaTime) * 1000;
 	oldTime = clock();
 }
