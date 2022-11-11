@@ -24,32 +24,36 @@ void BaseGame::run()
 	renderer->initRenderer(window);
 
 	ImGuiEngine* imGuiEngine = new ImGuiEngine(window);
+	Timer* timer = new Timer();
 	Init();
 
-	Shape* shape[3];
+	Entity2d* entity;
 
 	//GLCall(glEnable(GL_BLEND));
 	//GLCall(glBlendFunc(GL_SRC0_ALPHA, GL_ONE_MINUS_SRC_ALPHA)); 
 
-	shape[0] = new RectangleShape(glm::vec4(0.5f, 0.9f,0.1f, 1.0f));
-	shape[1] = new TriangleShape(glm::vec4(0.2f, 0.6f, 0.9f, 1.0f));
-	shape[2] = new Sprite("Mario.png");
+	entity = new Sprite("Mario.png", true);
+
+//	((Sprite*)entity)->CreateAnimation(0, 0, 10, 4);
 
 	while (window->getWindowsShouldClose())
 	{
 		renderer->Clear();
 		imGuiEngine->imGuiStarDraw();
+		timer->updateDeltaTime();
+
+		std::cout << timer->timeBetweenFrames() << std::endl;
 
 		Update();
-
-		for (int i = 0; i < 3; i++)
-		{
-			shape[i]->draw();
-		}
-
-		imGuiEngine->imGuiDrawObject(shape, 3);
+		//Render here-------------------------
+		//((Sprite*)entity)->updateAnimation(*timer);
 
 
+
+		entity->draw();
+		imGuiEngine->imGuiDrawObject(entity);
+
+		//------------------------------------
 		imGuiEngine->imGuiEndDraw();
 		glfwSwapBuffers(window->getWindow());
 		glfwPollEvents();
@@ -59,7 +63,7 @@ void BaseGame::run()
 
 	delete imGuiEngine;
 
-	delete shape;
+	delete entity;
 
 	delete window;
 

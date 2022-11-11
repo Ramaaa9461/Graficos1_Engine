@@ -1,29 +1,33 @@
 #pragma once
 
-#include "Shape.h"
+#include "Entity2d.h"
+#include "Animaiton.h"
+#include <vector>
 
-class Sprite : public Shape
+class Sprite : public Entity2d
 {
 
 
 private:
 
-    	float positions[16]; 
+	Animation* animation;
+	std::vector<Frame> frames;
 
-        unsigned int indices[6];
+	float positions[16];
 
+	unsigned int indices[6];
 
-    void  setVerticesSingleImage();
-    void setVerticesSpriteSheet();
-    void  setIndixs();
+	void setVertices();
+	void setVerticesSpriteSheet();
+	void setIndixs();
 
 
 public:
 
-    Sprite(std::string imageName, bool singleImage);
-
-
-
-
+	Sprite(std::string imageName, bool singleImage);
+	~Sprite();
+	
+	void CreateAnimation(int x, int y, int durationInSec, int framesAmount);
+	void updateAnimation(Timer& timer);
 };
 

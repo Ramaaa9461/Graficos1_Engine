@@ -6,7 +6,7 @@
 #include "imgui/imgui_impl_glfw_gl3.h"
 
 #include "Window.h"
-#include "Shape.h"
+#include "Entity2d.h"
 
 class ImGuiEngine
 {
@@ -26,6 +26,6 @@ public:
 
 	void imGuiDrawObject(glm::vec3 traslation, glm::vec3 rotation, glm::vec3 scale);
 
-	void imGuiDrawObject(Shape* shape[], int size);
+	void imGuiDrawObject(Entity2d* entity2d);
 };
 

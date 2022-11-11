@@ -76,7 +76,5 @@ int Animation::getCurrentIndex()
 
 std::vector<Frame>& Animation::getFrames()
 {
-	// TODO: Insertar una instrucción "return" aquí
-
 	return framesVector;
 }
