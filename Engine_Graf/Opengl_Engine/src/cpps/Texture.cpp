@@ -11,6 +11,9 @@
 		m_LocalBuffer = stbi_load(path.c_str(), &m_Width, &m_Height, &m_BPP, 4);
 
 
+		GLCall(glEnable(GL_BLEND));
+		GLCall(glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA)); 
+
 		GLCall(glGenTextures(1, &m_RendererID));
 		GLCall(glBindTexture(GL_TEXTURE_2D, m_RendererID));
 

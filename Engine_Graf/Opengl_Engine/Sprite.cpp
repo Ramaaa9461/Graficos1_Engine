@@ -1,6 +1,6 @@
 #include "Sprite.h"
 
-Sprite::Sprite(std::string imageName, bool singleImage)
+Sprite::Sprite(std::string imageName)
 {
 	setVertices();
 	setIndixs();
@@ -92,11 +92,11 @@ void Sprite::setIndixs()
 	indices[5] = 0;
 }
 
-void Sprite::CreateAnimation(int x, int y, int durationInSec, int framesAmount)
+void Sprite::CreateAnimation(int x, int y, int durationInSec, int framesAmountX, int framesAmountY)
 {
 	animation = new Animation();
 
-	animation->addFrame(x, y, texture->GetWidth() / framesAmount, texture->GetHeight() / framesAmount, texture->GetWidth(), texture->GetHeight(), durationInSec, framesAmount);
+	animation->addFrame(x, y, texture->GetWidth() / framesAmountX, texture->GetHeight() / framesAmountY, texture->GetWidth(), texture->GetHeight(), durationInSec, framesAmountX);
 
 
 }

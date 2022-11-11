@@ -22,12 +22,13 @@ private:
 	void setIndixs();
 
 
+
 public:
 
-	Sprite(std::string imageName, bool singleImage);
+	Sprite(std::string imageName);
 	~Sprite();
 	
-	void CreateAnimation(int x, int y, int durationInSec, int framesAmount);
+	void CreateAnimation(int x, int y, int durationInSec, int framesAmountX, int framesAmountY);
 	void updateAnimation(Timer& timer);
 };
 

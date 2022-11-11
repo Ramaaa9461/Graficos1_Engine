@@ -29,9 +29,9 @@ void BaseGame::run()
 
 	Entity2d* entity;
 
-	entity = new Sprite("Mario.png", true);
+	entity = new Sprite("Mario.png");
 
-	((Sprite*)entity)->CreateAnimation(0, 0, 1, 4);
+	((Sprite*)entity)->CreateAnimation(0, 0, 1, 4, 4); //La textura es 256 x 256 (64, 128,192, 256)
 
 	while (window->getWindowsShouldClose())
 	{
