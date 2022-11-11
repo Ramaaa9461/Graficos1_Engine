@@ -24,3 +24,4 @@ void Timer::updateDeltaTime()
 	oldTime = clock();
 }
 
+//https://stackoverflow.com/questions/34133249/c-deltatime-using-clock-is-0

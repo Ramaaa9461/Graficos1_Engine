@@ -21,7 +21,7 @@
 		GLCall(glBindBuffer(GL_ARRAY_BUFFER, m_RendererID));
 		GLCall(glBufferSubData(GL_ARRAY_BUFFER, 0, size, data));
 	}
-
+	//https://stackoverflow.com/questions/27771902/opengl-changing-texture-coordinates-on-the-fly
 
 
 	void VertexBuffer::Bind() const
