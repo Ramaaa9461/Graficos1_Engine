@@ -92,6 +92,10 @@ void Sprite::setIndixs()
 	indices[5] = 0;
 }
 
+void Sprite::calculateVertices()
+{
+}
+
 void Sprite::CreateAnimation(int x, int y, int durationInSec, int framesAmountX, int framesAmountY)
 {
 	animation = new Animation();

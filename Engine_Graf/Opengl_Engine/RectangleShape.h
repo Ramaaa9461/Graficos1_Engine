@@ -13,7 +13,7 @@ private:
 
      void  setVertices();
      void  setIndixs();
-
+     void calculateVertices();
 
 public:
     

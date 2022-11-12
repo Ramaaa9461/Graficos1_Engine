@@ -32,11 +32,14 @@ void RectangleShape::setVertices()
 
 	positions[0] = -50.0f;
 	positions[1] = -50.0f;
+
 	positions[2] = 50.0f;
 	positions[3] = -50.0f;
+
 	positions[4] = 50.0f;
 	positions[5] = 50.0f;
-	positions[6] = - 50.0f;
+
+	positions[6] = -50.0f;
 	positions[7] = 50.0f;
 
 }
@@ -52,3 +55,12 @@ void RectangleShape::setIndixs()
 	indices[5] = 0;
 
 }
+
+void RectangleShape::calculateVertices()
+{
+//	vertices[0] = getPosition() + (-glm::vec3(1.0f, 0.0f, 0.0f) * width / 2) + (glm::vec3(0.0f, 1.0f, 0.0f) * height / 2);
+//	vertices[1] = getPosition() + (glm::vec3(1.0f, 0.0f, 0.0f) * width / 2) + (glm::vec3(0.0f, 1.0f, 0.0f) * height / 2);
+//	vertices[2] = getPosition() + (glm::vec3(1.0f, 0.0f, 0.0f) * width / 2) + (-glm::vec3(0.0f, 1.0f, 0.0f) * height / 2);
+//	vertices[3] = getPosition() + (-glm::vec3(1.0f, 0.0f, 0.0f) * width / 2) + (-glm::vec3(0.0f, 1.0f, 0.0f) * height / 2);
+}
+

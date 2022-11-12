@@ -17,19 +17,6 @@
 		glm::vec3 rotation;
 		glm::vec3 scale;
 
-
-		float positions[16] = {
-	-50.0f, -50.0f,	     0.0f, 0.0f,
-	 50.0f, -50.0f,	     1.0f, 0.0f,
-	 50.0f,  50.0f,	     1.0f, 1.0f,
-	-50.0f,  50.0f,	     0.0f, 1.0f
-		};
-		
-		unsigned int indices[6] = {
-			0,1,2,
-			2,3,0
-		};
-
 	protected:
 
 		Renderer* renderer = Renderer::getRenderer();

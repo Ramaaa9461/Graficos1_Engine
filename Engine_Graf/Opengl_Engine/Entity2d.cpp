@@ -1,6 +1,8 @@
 #include "Entity2d.h"
+//
 
-Entity2d::Entity2d()
+
+Entity2d::Entity2d() 
 {
 }
 
@@ -11,6 +13,11 @@ Entity2d::~Entity2d()
 	delete ib;
 	delete shader;
 	delete texture;
+}
+
+glm::vec3* Entity2d::getVertices()
+{
+	return vertices;
 }
 
 void Entity2d::draw()

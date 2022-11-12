@@ -18,22 +18,26 @@
 		VertexArray* va;
 		VertexBuffer* vb;
 		VertexBufferLayout layout;
-
 		IndexBuffer* ib;
-
 		Shader* shader;
-
 		Texture* texture;
 
 		ShaderType shaderType;
 
+		glm::vec3 vertices[4];
+
+		int width, height;
+
 		virtual void  setVertices() = 0;
 		virtual void  setIndixs() = 0;
+		virtual void calculateVertices() = 0;
 
 	public:
 
 		DllExport Entity2d();
 		DllExport ~Entity2d();
+
+		glm::vec3* getVertices();
 
 		void draw();
 

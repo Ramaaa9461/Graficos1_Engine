@@ -20,7 +20,7 @@ private:
 	void setVertices();
 	void setVerticesSpriteSheet();
 	void setIndixs();
-
+	void calculateVertices();
 
 
 public:
