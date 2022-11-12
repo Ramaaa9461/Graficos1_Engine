@@ -2,8 +2,8 @@
 
 void CollisionManager::ProjectVertices(glm::vec3 vertices[], int size, glm::vec3 axis, float& min, float& max)
 {
-	min = 10000.0f;
-	max = -10000.0f;
+	min =  3.40282347E+38;
+	max = -3.40282347E+38;
 
 	for (int i = 0; i < size; i++)
 	{
@@ -16,7 +16,7 @@ void CollisionManager::ProjectVertices(glm::vec3 vertices[], int size, glm::vec3
 }
 
 
-bool CollisionManager::IntersectPolygons(glm::vec3 verticesA[], int sizeA, glm::vec3 verticesB[], int sizeB, glm::vec3& normal, float& depth)
+bool CollisionManager::IntersectPolygons(glm::vec3 verticesA[], int sizeA, glm::vec3 verticesB[], int sizeB, glm::vec3& normal , float& depth)
 {
 	normal = glm::vec3(0, 0, 0);
 	float minA, maxA;

@@ -13,8 +13,8 @@ private:
 	Animation* animation;
 	std::vector<Frame> frames;
 
+	int width, height;
 	float positions[16];
-
 	unsigned int indices[6];
 
 	void setVertices();

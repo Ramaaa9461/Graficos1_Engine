@@ -39,6 +39,9 @@ Sprite::~Sprite()
 
 void Sprite::setVertices()
 {
+	width = 100;
+	height = 100;
+
 	positions[0] = -50.0f;
 	positions[1] = -50.0f;
 	positions[5] = -50.0f;
@@ -94,6 +97,17 @@ void Sprite::setIndixs()
 
 void Sprite::calculateVertices()
 {
+	//glm::vec3 scale = getScale();
+//glm::vec3 rotation = getRotation();
+//int scaleX = scale.x;
+//int scaleY = scale.y;
+//int rotZ   = rotation.z;
+
+	vertices[0] = getPosition() + (-glm::vec3(1.0f * width / 2, 0.0f, 0.0f)) + (glm::vec3(0.0f, 1.0f * height / 2, 0.0f));
+	vertices[1] = getPosition() + (glm::vec3(1.0f * width / 2, 0.0f, 0.0f)) + (glm::vec3(0.0f, 1.0f * height / 2, 0.0f));
+	vertices[2] = getPosition() + (glm::vec3(1.0f * width / 2, 0.0f, 0.0f)) + (-glm::vec3(0.0f, 1.0f * height / 2, 0.0f));
+	vertices[3] = getPosition() + (-glm::vec3(1.0f * width / 2, 0.0f, 0.0f)) + (-glm::vec3(0.0f, 1.0f * height / 2, 0.0f));
+
 }
 
 void Sprite::CreateAnimation(int x, int y, int durationInSec, int framesAmountX, int framesAmountY)

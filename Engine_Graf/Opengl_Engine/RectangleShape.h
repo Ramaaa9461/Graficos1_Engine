@@ -8,6 +8,8 @@ class RectangleShape : public Shape
 
 private:
 
+
+    int width, height;
     float positions[8];
     unsigned int indices[6];
 
@@ -17,9 +19,9 @@ private:
 
 public:
     
-    RectangleShape(glm::vec4 RGBA);
+    RectangleShape();
 
-
+    void setColor(glm::vec4 RGBA);
 
 };
 

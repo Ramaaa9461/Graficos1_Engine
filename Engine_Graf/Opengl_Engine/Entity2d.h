@@ -26,11 +26,9 @@
 
 		glm::vec3 vertices[4];
 
-		int width, height;
 
 		virtual void  setVertices() = 0;
 		virtual void  setIndixs() = 0;
-		virtual void calculateVertices() = 0;
 
 	public:
 
@@ -40,6 +38,7 @@
 		glm::vec3* getVertices();
 
 		void draw();
+		virtual void calculateVertices() = 0;
 
 	};
 

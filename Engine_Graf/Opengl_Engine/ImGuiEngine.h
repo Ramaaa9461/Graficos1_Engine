@@ -16,6 +16,9 @@ private:
 	glm::vec3 rotation;
 	glm::vec3 scale;
 
+	static int objectNumber;
+
+
 public:
 
 	ImGuiEngine(Window* window);
@@ -26,6 +29,6 @@ public:
 
 	void imGuiDrawObject(glm::vec3 traslation, glm::vec3 rotation, glm::vec3 scale);
 
-	void imGuiDrawObject(Entity2d* entity2d);
+	void imGuiDrawObject(Entity2d* entity2d, int index);
 };
 
