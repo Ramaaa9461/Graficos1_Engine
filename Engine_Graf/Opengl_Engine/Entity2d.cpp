@@ -2,7 +2,7 @@
 //
 
 
-Entity2d::Entity2d() 
+Entity2d::Entity2d(int initPositionX, int initPositionY) : Entity(initPositionX, initPositionY)
 {
 }
 

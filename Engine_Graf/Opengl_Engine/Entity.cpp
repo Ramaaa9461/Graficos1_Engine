@@ -3,9 +3,9 @@
 #include <glfw3.h>
 
 
-DllExport Entity::Entity()
+DllExport Entity::Entity(int initPositionX, int initPositionY)
 {
-	translation = glm::vec3(200, 200, 0);
+	translation = glm::vec3(initPositionX, initPositionY, 0);
 	rotation = glm::vec3(0, 0, 0);
 	scale = glm::vec3(1, 1, 0);
 }
@@ -60,4 +60,61 @@ void Entity::UpdateTRSMat()
 
 	glm::mat4 rot = rotX * rotY * rotZ;
 	TRS = tras * rot * sca;
+}
+
+
+
+void Entity::setPositionX(float posX)
+{
+	translation.x = posX;
+	UpdateTRSMat();
+}
+
+void Entity::setPositionY(float posY)
+{
+	translation.y = posY;
+	UpdateTRSMat();
+}
+
+float Entity::getPositionX()
+{
+	return translation.x;
+}
+
+float Entity::getPositionY()
+{
+	return translation.y;
+}
+
+
+void Entity::setScaleX(float scalX)
+{
+	scale.x = scalX;
+	UpdateTRSMat();
+}
+void Entity::setScaleY(float scalY)
+{
+	scale.y = scalY;
+	UpdateTRSMat();
+}
+	  
+float Entity::getScaleX()
+{
+	return scale.x;
+}
+
+float Entity::getScaleY()
+{
+	return scale.y;
+}
+
+void Entity::setRotationZ(float rotZ)
+{
+	rotation.z = rotZ;
+	UpdateTRSMat();
+}
+
+float Entity::getRotationZ()
+{
+	return rotation.z;
 }

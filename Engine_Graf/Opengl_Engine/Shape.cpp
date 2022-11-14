@@ -1,7 +1,7 @@
 #include "Shape.h"
 
 
-	Shape::Shape()
+	Shape::Shape(int initPositionX, int initPositionY) : Entity2d(initPositionX, initPositionY)
 	{
 
 	}

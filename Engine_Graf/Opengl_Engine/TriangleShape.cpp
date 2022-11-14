@@ -1,6 +1,6 @@
 #include "TriangleShape.h"
 
-TriangleShape::TriangleShape(glm::vec4 RGBA)
+TriangleShape::TriangleShape(glm::vec4 RGBA, int initPositionX, int initPositionY) : Shape(initPositionX, initPositionY)
 {
 	setVertices();
 	setIndixs();

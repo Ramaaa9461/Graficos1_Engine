@@ -1,6 +1,6 @@
 #include "Sprite.h"
 
-Sprite::Sprite(std::string imageName)
+Sprite::Sprite(std::string imageName, int initPositionX, int initPositionY) : Entity2d(initPositionX,initPositionY)
 {
 	setVertices();
 	setIndixs();
@@ -31,9 +31,46 @@ Sprite::Sprite(std::string imageName)
 	shader->Unbind();
 }
 
+Sprite::Sprite() : Entity2d(0,0)
+{
+	setVertices();
+	setIndixs();
+
+	va = new VertexArray();
+	vb = new VertexBuffer(positions, 4 * 4 * sizeof(float));
+
+	layout = VertexBufferLayout();
+	layout.Push<float>(2);		 //Video: Buffer Layout Abstraction in OpenGL - min 27.30 Explica mas cosas qe se pueden hacer
+	layout.Push<float>(2);
+	va->AddBuffer(*vb, layout);
+	va->Bind();
+
+	ib = new IndexBuffer(indices, 6);
+
+	shaderType = ShaderType::whithTexture;
+
+	shader = new Shader(shaderType);
+
+	va->Unbind();
+	vb->UnBind();
+	ib->UnBind();
+
+}
+
 Sprite::~Sprite()
 {
 	delete animation;
+}
+
+void Sprite::setTexture(std::string imageName)
+{
+	texture = new Texture("res/textures/" + imageName);
+	
+	texture->Bind();
+	shader->Bind();
+	shader->SetUniforms1i("u_Texture", 0);
+
+	shader->Unbind();
 }
 
 

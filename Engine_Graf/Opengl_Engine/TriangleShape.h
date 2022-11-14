@@ -17,7 +17,7 @@ private:
 
 public:
     
-    TriangleShape(glm::vec4 RGBA);
+    TriangleShape(glm::vec4 RGBA, int initPositionX, int initPositionY);
 
 
 

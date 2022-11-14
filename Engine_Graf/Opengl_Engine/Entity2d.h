@@ -32,7 +32,7 @@
 
 	public:
 
-		DllExport Entity2d();
+		DllExport Entity2d(int initPositionX, int initPositionY);
 		DllExport ~Entity2d();
 
 		glm::vec3* getVertices();

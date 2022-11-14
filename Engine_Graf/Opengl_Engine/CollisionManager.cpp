@@ -19,6 +19,7 @@ void CollisionManager::ProjectVertices(glm::vec3 vertices[], int size, glm::vec3
 bool CollisionManager::IntersectPolygons(glm::vec3 verticesA[], int sizeA, glm::vec3 verticesB[], int sizeB, glm::vec3& normal , float& depth)
 {
 	normal = glm::vec3(0, 0, 0);
+	depth = 3.40282347E+38;
 	float minA, maxA;
 	float minB, maxB;
 
@@ -46,6 +47,8 @@ bool CollisionManager::IntersectPolygons(glm::vec3 verticesA[], int sizeA, glm::
 			depth = axisDepth;
 			normal = axis;
 		}
+
+	
 	}
 
 	// Lo mismo que con los vertices A pero con los vertices B

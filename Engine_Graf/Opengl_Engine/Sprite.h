@@ -14,7 +14,6 @@ private:
 	std::vector<Frame> frames;
 
 	int width, height;
-	float positions[16];
 	unsigned int indices[6];
 
 	void setVertices();
@@ -22,12 +21,18 @@ private:
 	void setIndixs();
 	void calculateVertices();
 
+protected:
+
+	float positions[16];
 
 public:
 
-	Sprite(std::string imageName);
+	Sprite(std::string imageName, int initPositionX, int initPositionY);
+	Sprite();
 	~Sprite();
 	
+	void setTexture(std::string imageName);
+
 	void CreateAnimation(int x, int y, int durationInSec, int framesAmountX, int framesAmountY);
 	void updateAnimation(Timer& timer);
 };

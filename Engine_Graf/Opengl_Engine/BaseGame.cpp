@@ -6,6 +6,7 @@
 #include "Sprite.h"
 #include "ImGuiEngine.h"
 #include "CollisionManager.h"
+#include "Tilemap.h"
 
 DllExport BaseGame::BaseGame()
 {
@@ -28,16 +29,11 @@ void BaseGame::run()
 	Timer* timer = new Timer();
 	Init();
 
-	Entity2d* entity;// = new RectangleShape();
-	Entity2d* entity2 = new RectangleShape();
 
-	//((RectangleShape*)entity)->setColor(glm::vec4(0.3f, 0.4, 0.9, 1.0f));
-	((RectangleShape*)entity2)->setColor(glm::vec4(0.5f, 0.9, 0.4, 1.0f));
-	entity = new Sprite("Mario.png");
+	TileMap* tileMap = new TileMap("TilePallet.png", 64,64);
 
-	((Sprite*)entity)->CreateAnimation(0, 192, 1, 4, 4); //La textura es 256 x 256 (64, 128,192, 256)
-	glm::vec3 normal;
-	float depth;
+	Entity2d* animation = new Sprite("Mario.png", 200,200);
+	((Sprite*)animation)->CreateAnimation(0,0,3,4,4);
 
 	while (window->getWindowsShouldClose())
 	{
@@ -46,28 +42,34 @@ void BaseGame::run()
 		timer->updateDeltaTime();
 
 		Update();
-		
-		//CalculateVertices
-		entity->calculateVertices();
-		entity2->calculateVertices();
+
+		tileMap->setTile(0, true, 0, 0,    18, 10);
+		tileMap->setTile(1, true, 0, 32,   18, 10);
+		tileMap->setTile(2, true, 32, 0,   18, 10);
+		tileMap->setTile(3, true, 32, 64,  18, 10);
+		tileMap->setTile(4, true, 128, 32, 18, 10);
+
+		//CalculateVertices----------------------------------------
+		animation->calculateVertices();
+		((Sprite*)animation)->updateAnimation(*timer);
+
+		tileMap->setDimensions(5, 5);
+
+		int id = 0;
+		for (int i = 0; i < 5; i++)
+		{
+			for (int j = 0; j < 5; j++)
+			{
+				tileMap->setMapTileId(i, j, id);
+			}
+			id++;
+		}
+
 		//Render here-------------------------
-		((Sprite*)entity)->updateAnimation(*timer);
+		tileMap->draw();
+		animation->draw();
 
-		if (CollisionManager::IntersectPolygons(entity->getVertices(), 4, entity2->getVertices(), 4, normal, depth))
-		{
-			std::cout << "Se la dieron" << std::endl;
-		}
-		else
-		{
-			std::cout << "no se la estan dando" << std::endl;
-		}
-
-
-		entity->draw();
-		entity2->draw();
-		imGuiEngine->imGuiDrawObject(entity, 0);
-		imGuiEngine->imGuiDrawObject(entity2, 1);
-
+		imGuiEngine->imGuiDrawObject(animation, 0);
 		//------------------------------------
 		imGuiEngine->imGuiEndDraw();
 		glfwSwapBuffers(window->getWindow());
@@ -76,11 +78,10 @@ void BaseGame::run()
 
 	DeInit();
 
-	delete entity2;
+	delete tileMap;
+	delete animation;
 
 	delete imGuiEngine;
-
-	delete entity;
 
 	delete window;
 

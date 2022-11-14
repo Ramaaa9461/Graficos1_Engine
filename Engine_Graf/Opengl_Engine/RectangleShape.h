@@ -19,7 +19,7 @@ private:
 
 public:
     
-    RectangleShape();
+    RectangleShape(int initPositionX, int initPositionY);
 
     void setColor(glm::vec4 RGBA);
 

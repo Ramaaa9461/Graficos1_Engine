@@ -1,6 +1,6 @@
 #include "RectangleShape.h"
 
-RectangleShape::RectangleShape()
+RectangleShape::RectangleShape(int initPositionX, int initPositionY) : Shape(initPositionX, initPositionY)
 {
 	setVertices();
 	setIndixs();

@@ -18,7 +18,7 @@
 
 	public:
 
-		Shape();
+		Shape(int initPositionX, int initPositionY);
 		~Shape();
 
 		//Tiene Agregar un Material (Una funcion tiene que pedirlo por parametro)
