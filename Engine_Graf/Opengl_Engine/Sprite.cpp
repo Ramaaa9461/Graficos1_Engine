@@ -51,6 +51,7 @@ Sprite::Sprite() : Entity2d(0,0)
 
 	shader = new Shader(shaderType);
 
+	shader->Unbind();
 	va->Unbind();
 	vb->UnBind();
 	ib->UnBind();
@@ -66,7 +67,7 @@ void Sprite::setTexture(std::string imageName)
 {
 	texture = new Texture("res/textures/" + imageName);
 	
-	texture->Bind();
+	texture->Bind(0);
 	shader->Bind();
 	shader->SetUniforms1i("u_Texture", 0);
 
