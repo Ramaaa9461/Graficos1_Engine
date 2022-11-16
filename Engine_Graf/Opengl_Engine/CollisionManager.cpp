@@ -81,6 +81,8 @@ bool CollisionManager::IntersectPolygons(glm::vec3 verticesA[], int sizeA, glm::
 
 	glm::normalize(normal);
 
+	depth /= glm::length(normal);
+
 	// busco los centro de ambos poligonos para encontrar la direccion
 	glm::vec3  centerA = FindArithmeticMean(verticesA, sizeA);
 	glm::vec3  centerB = FindArithmeticMean(verticesB, sizeB);

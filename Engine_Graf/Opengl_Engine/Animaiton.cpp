@@ -10,20 +10,20 @@ Animation::~Animation()
 
 void Animation::UpdateAnimation(Timer& timer) //Recibe un timer
 {
-	currentTime += timer.timeBetweenFrames();
+	currentTime += timer.timeBetweenFrames() * speed;
 
-	while (currentTime > length) 
+	/*while (currentTime > length) 
 	{
 		currentTime -= length;
-	}
+	}*/
 
-	float frameLength = length / framesVector.size();
-	currentIndex = static_cast<int>(currentTime / frameLength);
+	//float frameLength = length / framesVector.size();
+	currentIndex = static_cast<int>((currentTime / framesVector.size()) % framesVector.size());
 }
 
-void Animation::addFrame(float frameX, float frameY, float frameWidth, float frameHeigth, float textureWidth, float textureHeigth, float durationInSecs)
+void Animation::addFrame(float frameX, float frameY, float frameWidth, float frameHeigth, float textureWidth, float textureHeigth, float animationSpeed)
 {
-	length = durationInSecs * 1000;
+	speed = animationSpeed;
 	//----------------------------------------------------------------
 	Frame frame;
 
@@ -44,7 +44,7 @@ void Animation::addFrame(float frameX, float frameY, float frameWidth, float fra
 
 void Animation::addFrame(float frameX, float frameY, float frameWidth, float frameHeigth, float textureWidth, float textureHeigth, float durationInSecs, int frameCount)
 {
-	length = durationInSecs * 1000;
+	speed = durationInSecs * 1000;
 
 	float frameXIndex = 0;
 

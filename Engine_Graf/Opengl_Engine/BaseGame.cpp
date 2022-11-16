@@ -29,29 +29,14 @@ void BaseGame::run()
 	Timer* timer = new Timer();
 	Init();
 
-
-	TileMap* tileMap = new TileMap("TilePallet.png", 64, 64, 10,5);
-
 	Entity2d* animation = new Sprite("Mario.png", 200, 200);
-	((Sprite*)animation)->CreateAnimation(0, 0, 3, 4, 4);
+	Entity2d* animation1 = new Sprite("Mario.png", 400, 200);
 
-	tileMap->setTile(0, true, 9, 0 );
-	tileMap->setTile(1, true, 9, 1 );
-	tileMap->setTile(2, true, 9, 2 );
-	tileMap->setTile(3, true, 9, 3 );
-	tileMap->setTile(4, true, 9, 4 ); // 18 - 10 TilePallet
+	((Sprite*)animation)->CreateAnimation(0, 0, 1, 4, 4);
+	((Sprite*)animation1)->CreateAnimation(0, 128, 2, 4, 4);
 
-	tileMap->setDimensions(5, 5);
-
-	int id = 0;
-	for (int i = 0; i < 5; i++)
-	{
-		for (int j = 0; j < 5; j++)
-		{
-			tileMap->setMapTileId(i, j, id);
-		}
-		id++;
-	}
+	glm::vec3 normal;
+	float depth;
 
 	while (window->getWindowsShouldClose())
 	{
@@ -64,25 +49,35 @@ void BaseGame::run()
 		//CalculateVertices----------------------------------------
 		{
 			animation->calculateVertices();
+			animation1->calculateVertices();
 		}
 		//------------------------------------
 
 		((Sprite*)animation)->updateAnimation(*timer);
-
-		
+		((Sprite*)animation1)->updateAnimation(*timer);
 
 		//Render here-------------------------
 		{
-		tileMap->draw();
-		animation->draw();
+			animation->draw();
+			animation1->draw();
 		}
 		//------------------------------------
 
 		//ImGui visual sliders
+
+		if (CollisionManager::IntersectPolygons(animation->getVertices(), 4, animation1->getVertices(), 4, normal, depth))
 		{
-			imGuiEngine->imGuiDrawObject(animation, 0);
+
+			animation->setPosition(animation->getPosition() - normal * (depth / 2));
+			animation1->setPosition(animation1->getPosition() + normal * (depth / 2));
 		}
+
+		imGuiEngine->imGuiDrawObject(animation, 0);
+		imGuiEngine->imGuiDrawObject(animation1, 1);
+
 		//------------------------------------
+
+
 
 
 		imGuiEngine->imGuiEndDraw();
@@ -92,8 +87,8 @@ void BaseGame::run()
 
 	DeInit();
 
-	delete tileMap;
 	delete animation;
+	delete animation1;
 
 	delete imGuiEngine;
 

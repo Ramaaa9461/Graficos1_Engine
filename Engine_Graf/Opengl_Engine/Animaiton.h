@@ -12,7 +12,7 @@ class Animation
 		std::vector<Frame> framesVector;
 		int currentIndex;
 		int currentTime;
-		float length;
+		float speed;
 
 public:
 
@@ -20,8 +20,8 @@ public:
 	~Animation();
 
 	void UpdateAnimation(Timer& timer);
-	void addFrame(float frameX, float frameY, float frameWidth, float frameHeigth, float textureWidth, float textureHeigth, float durationInSecs);
-	void addFrame(float frameX, float frameY, float frameWidth, float frameHeigth, float textureWidth, float textureHeigth, float durationInSecs, int frameCount);
+	void addFrame(float frameX, float frameY, float frameWidth, float frameHeigth, float textureWidth, float textureHeigth, float animationSpeed);
+	void addFrame(float frameX, float frameY, float frameWidth, float frameHeigth, float textureWidth, float textureHeigth, float animationSpeed, int frameCount);
 
 	int getCurrentIndex();
 	std::vector<Frame>& getFrames();
