@@ -25,5 +25,6 @@ public:
 	void configureTile(int id, std::string nameImage, bool isWalkable);
 	void cutTexture(float initPosX, float initPosY, int framesCountX, int framesCountY);
 
+	void getTextureSize(float& width, float& height);
 };
 

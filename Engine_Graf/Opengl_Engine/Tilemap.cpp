@@ -1,11 +1,15 @@
 #include "Tilemap.h"
 
-TileMap::TileMap(std::string imageName, int initPositionX, int initPositionY)
+TileMap::TileMap(std::string imageName, int initPositionX, int initPositionY, int framesCountX, int framesCountY)
 {
 	_imageName = imageName;
 	_initPositionX = initPositionX;
 	_initPositionY = initPositionY;
-}
+
+	_framesCountX = framesCountX;
+	_framesCountY = framesCountY;
+
+ }
 
 TileMap::~TileMap()
 {
@@ -33,11 +37,16 @@ const Tile& TileMap::getTile(unsigned int uiId)
 	return *NoTile;
 }
 
-void TileMap::setTile(int id, bool isWalkeable, float initPosX, float initPosY, int framesCountX, int framesCountY)
+void TileMap::setTile(int id, bool isWalkeable, float cellsToMoveInX, float cellsToMoveInY)
 {
 	Tile* newTile = new Tile();
 	newTile->configureTile(id, _imageName, isWalkeable);
-	newTile->cutTexture(initPosX, initPosY, framesCountX, framesCountY);
+
+	newTile->getTextureSize(_tileWidth, _tileHeight);
+	_tileWidth /= _framesCountX;
+	_tileHeight /= _framesCountY;
+
+	newTile->cutTexture(cellsToMoveInX * _tileWidth, cellsToMoveInY * _tileHeight, _framesCountX, _framesCountY);
 
 	tilePallet.push_back(newTile);
 }
@@ -78,8 +87,11 @@ void TileMap::draw()
 	{
 		for (int j = 0; j < _width; j++)
 		{
-			_tileMapGrid[i][j].setPosX(_initPositionX +_tileWidth * i);
-			_tileMapGrid[i][j].setPosY(_initPositionY +_tileHeight * j);
+			//_tileMapGrid[i][j].setPosX( _initPositionX +_tileWidth * i);
+			//_tileMapGrid[i][j].setPosY(_initPositionY +_tileHeight * j);
+			
+			_tileMapGrid[i][j].setPosX(mapWidth +  (_tileWidth * i));
+			_tileMapGrid[i][j].setPosY(mapHeight - (_tileHeight * j));
 			_tileMapGrid[i][j].draw();
 		}
 	}

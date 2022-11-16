@@ -188,7 +188,6 @@
     <ClCompile Include="Window.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="cpp.hint" />
     <None Include="res\Shaders\Basic.shader" />
   </ItemGroup>
   <ItemGroup>

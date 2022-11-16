@@ -102,7 +102,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="res\Shaders\Basic.shader" />
-    <None Include="cpp.hint" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Headers\Renderer.h">

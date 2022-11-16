@@ -30,10 +30,28 @@ void BaseGame::run()
 	Init();
 
 
-	TileMap* tileMap = new TileMap("TilePallet.png", 64,64);
+	TileMap* tileMap = new TileMap("TilePallet.png", 64, 64, 10,5);
 
-	Entity2d* animation = new Sprite("Mario.png", 200,200);
-	((Sprite*)animation)->CreateAnimation(0,0,3,4,4);
+	Entity2d* animation = new Sprite("Mario.png", 200, 200);
+	((Sprite*)animation)->CreateAnimation(0, 0, 3, 4, 4);
+
+	tileMap->setTile(0, true, 9, 0 );
+	tileMap->setTile(1, true, 9, 1 );
+	tileMap->setTile(2, true, 9, 2 );
+	tileMap->setTile(3, true, 9, 3 );
+	tileMap->setTile(4, true, 9, 4 ); // 18 - 10 TilePallet
+
+	tileMap->setDimensions(5, 5);
+
+	int id = 0;
+	for (int i = 0; i < 5; i++)
+	{
+		for (int j = 0; j < 5; j++)
+		{
+			tileMap->setMapTileId(i, j, id);
+		}
+		id++;
+	}
 
 	while (window->getWindowsShouldClose())
 	{
@@ -43,34 +61,30 @@ void BaseGame::run()
 
 		Update();
 
-		tileMap->setTile(0, true, 0, 0,    18, 10);
-		tileMap->setTile(1, true, 0, 32,   18, 10);
-		tileMap->setTile(2, true, 32, 0,   18, 10);
-		tileMap->setTile(3, true, 32, 64,  18, 10);
-		tileMap->setTile(4, true, 128, 32, 18, 10);
-
 		//CalculateVertices----------------------------------------
-		animation->calculateVertices();
+		{
+			animation->calculateVertices();
+		}
+		//------------------------------------
+
 		((Sprite*)animation)->updateAnimation(*timer);
 
-		tileMap->setDimensions(5, 5);
-
-		int id = 0;
-		for (int i = 0; i < 5; i++)
-		{
-			for (int j = 0; j < 5; j++)
-			{
-				tileMap->setMapTileId(i, j, id);
-			}
-			id++;
-		}
+		
 
 		//Render here-------------------------
+		{
 		tileMap->draw();
 		animation->draw();
-
-		imGuiEngine->imGuiDrawObject(animation, 0);
+		}
 		//------------------------------------
+
+		//ImGui visual sliders
+		{
+			imGuiEngine->imGuiDrawObject(animation, 0);
+		}
+		//------------------------------------
+
+
 		imGuiEngine->imGuiEndDraw();
 		glfwSwapBuffers(window->getWindow());
 		glfwPollEvents();

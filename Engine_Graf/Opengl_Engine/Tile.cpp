@@ -1,6 +1,6 @@
 #include "Tile.h"
 
-Tile::Tile()
+Tile::Tile() : _id(0), _walkable(false)
 {
 
 }
@@ -74,4 +74,10 @@ void Tile::cutTexture(float initPosX, float intPosY, int framesCountX, int frame
 	positions[15] = tileFrame.uvCoords[2].v;
 
 	vb->updateVertexBufferData(positions, 4 * 4 * sizeof(float));
+}
+
+void Tile::getTextureSize(float& width, float& height)
+{
+	width = texture->GetWidth();
+	height = texture->GetHeight();
 }

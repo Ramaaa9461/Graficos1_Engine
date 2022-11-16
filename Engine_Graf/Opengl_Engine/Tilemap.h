@@ -21,6 +21,10 @@ private:
 
 	int _initPositionX;
 	int _initPositionY;
+	
+	int _framesCountX; 
+	int _framesCountY;
+	
 
 	float convertedPosX;
 	float convertedPosY;
@@ -32,11 +36,11 @@ private:
 
 
 public:
-	DllExport TileMap(std::string imageName, int initPositionX, int initPositionY);
+	DllExport TileMap(std::string imageName, int initPositionX, int initPositionY, int framesCountX, int framesCountY);
 	DllExport ~TileMap();
 
 	DllExport const Tile& getTile(unsigned int uiId);
-	DllExport void setTile(int id, bool isWalkeable, float initPosX, float initPosY, int framesCountX, int framesCountY);
+	DllExport void setTile(int id, bool isWalkeable, float cellsToMoveInX, float initPcellsToMoveInYosY);
 	DllExport void setMapTileId(unsigned int uiCol, unsigned int uiRow, unsigned int uiId);
 
 	DllExport void setDimensions(const int tilesAmountX, const int tileAmountY);
