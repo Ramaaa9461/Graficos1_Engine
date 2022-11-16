@@ -1,6 +1,6 @@
 #include "Sprite.h"
 
-Sprite::Sprite(std::string imageName, int initPositionX, int initPositionY) : Entity2d(initPositionX,initPositionY)
+Sprite::Sprite(std::string imageName, int initPositionX, int initPositionY) : Entity2d(initPositionX, initPositionY)
 {
 	setVertices();
 	setIndixs();
@@ -31,7 +31,7 @@ Sprite::Sprite(std::string imageName, int initPositionX, int initPositionY) : En
 	shader->Unbind();
 }
 
-Sprite::Sprite() : Entity2d(0,0)
+Sprite::Sprite() : Entity2d(0, 0)
 {
 	setVertices();
 	setIndixs();
@@ -66,7 +66,7 @@ Sprite::~Sprite()
 void Sprite::setTexture(std::string imageName)
 {
 	texture = new Texture("res/textures/" + imageName);
-	
+
 	texture->Bind(0);
 	shader->Bind();
 	shader->SetUniforms1i("u_Texture", 0);
@@ -135,16 +135,14 @@ void Sprite::setIndixs()
 
 void Sprite::calculateVertices()
 {
-	//glm::vec3 scale = getScale();
-//glm::vec3 rotation = getRotation();
-//int scaleX = scale.x;
-//int scaleY = scale.y;
-//int rotZ   = rotation.z;
 
-	vertices[0] = getPosition() + (-glm::vec3(1.0f * width / 2, 0.0f, 0.0f)) + (glm::vec3(0.0f, 1.0f * height / 2, 0.0f));
-	vertices[1] = getPosition() + (glm::vec3(1.0f * width / 2, 0.0f, 0.0f)) + (glm::vec3(0.0f, 1.0f * height / 2, 0.0f));
-	vertices[2] = getPosition() + (glm::vec3(1.0f * width / 2, 0.0f, 0.0f)) + (-glm::vec3(0.0f, 1.0f * height / 2, 0.0f));
-	vertices[3] = getPosition() + (-glm::vec3(1.0f * width / 2, 0.0f, 0.0f)) + (-glm::vec3(0.0f, 1.0f * height / 2, 0.0f));
+	int scaleX = getScaleX();
+	int scaleY = getScaleY();
+
+	vertices[0] = getPosition() + (-glm::vec3(1.0f * scaleX * width / 2, 0.0f, 0.0f)) + (glm::vec3(0.0f, 1.0f * scaleY * height / 2, 0.0f));
+	vertices[1] = getPosition() + (glm::vec3(1.0f * scaleX * width / 2, 0.0f, 0.0f)) + (glm::vec3(0.0f, 1.0f *  scaleY * height / 2, 0.0f));
+	vertices[2] = getPosition() + (glm::vec3(1.0f * scaleX * width / 2, 0.0f, 0.0f)) + (-glm::vec3(0.0f, 1.0f * scaleY * height / 2, 0.0f));
+	vertices[3] = getPosition() + (-glm::vec3(1.0f * scaleX * width / 2, 0.0f, 0.0f)) + (-glm::vec3(0.0f, 1.0f * scaleY * height / 2,0.0f));
 
 }
 
@@ -163,15 +161,15 @@ void Sprite::updateAnimation(Timer& timer)
 
 	positions[2] = frames[animation->getCurrentIndex()].uvCoords[0].u;
 	positions[3] = frames[animation->getCurrentIndex()].uvCoords[0].v;
-	
+
 	positions[6] = frames[animation->getCurrentIndex()].uvCoords[1].u;
 	positions[7] = frames[animation->getCurrentIndex()].uvCoords[1].v;
-	
-	positions[10] =frames[animation->getCurrentIndex()].uvCoords[3].u;
-	positions[11] =frames[animation->getCurrentIndex()].uvCoords[3].v;
-	
-	positions[14] =frames[animation->getCurrentIndex()].uvCoords[2].u;
-	positions[15] =frames[animation->getCurrentIndex()].uvCoords[2].v;
+
+	positions[10] = frames[animation->getCurrentIndex()].uvCoords[3].u;
+	positions[11] = frames[animation->getCurrentIndex()].uvCoords[3].v;
+
+	positions[14] = frames[animation->getCurrentIndex()].uvCoords[2].u;
+	positions[15] = frames[animation->getCurrentIndex()].uvCoords[2].v;
 
 	animation->UpdateAnimation(timer);
 
