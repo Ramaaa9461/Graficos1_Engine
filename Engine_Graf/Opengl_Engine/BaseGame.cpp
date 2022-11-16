@@ -6,7 +6,7 @@
 #include "Sprite.h"
 #include "ImGuiEngine.h"
 #include "CollisionManager.h"
-#include "Tilemap.h"
+#include "Input.h"
 
 DllExport BaseGame::BaseGame()
 {
@@ -24,6 +24,7 @@ void BaseGame::run()
 
 	Renderer* renderer = Renderer::getRenderer();
 	renderer->initRenderer(window);
+	Input::setWindow(window);
 
 	ImGuiEngine* imGuiEngine = new ImGuiEngine(window);
 	Timer* timer = new Timer();
@@ -67,9 +68,8 @@ void BaseGame::run()
 
 		if (CollisionManager::IntersectPolygons(animation->getVertices(), 4, animation1->getVertices(), 4, normal, depth))
 		{
-
-			animation->setPosition(animation->getPosition() - normal * (depth / 2));
-			animation1->setPosition(animation1->getPosition() + normal * (depth / 2));
+			animation-> addPosition(- normal * (depth / 2));
+			animation1->addPosition(+ normal * (depth / 2));
 		}
 
 		imGuiEngine->imGuiDrawObject(animation, 0);

@@ -64,6 +64,12 @@ void Entity::UpdateTRSMat()
 
 
 
+void Entity::addPosition(glm::vec3 positionToAdd)
+{
+	translation += positionToAdd;
+	UpdateTRSMat();
+}
+
 void Entity::setPositionX(float posX)
 {
 	translation.x = posX;

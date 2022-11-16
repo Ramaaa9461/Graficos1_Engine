@@ -38,7 +38,8 @@
 
 		DllExport virtual void draw() = 0;
 
-
+		void addPosition(glm::vec3 positionToAdd);
+	
 		void setPositionX(float posX);
 		void setPositionY(float posY);
 
