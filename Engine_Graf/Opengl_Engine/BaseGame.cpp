@@ -47,12 +47,29 @@ void BaseGame::run()
 
 		Update();
 
+		if (Input::getKeyPressed(GLFW_KEY_A) || Input::getKeyPressed(GLFW_KEY_A + 32))
+		{
+			animation->addPosition(glm::vec3(-1, 0, 0));
+		}
+		else if (Input::getKeyPressed(GLFW_KEY_S) || Input::getKeyPressed(GLFW_KEY_S + 32))
+		{
+			animation->addPosition(glm::vec3(0, -1, 0));
+		}
+		else if (Input::getKeyPressed(GLFW_KEY_D) || Input::getKeyPressed(GLFW_KEY_D + 32))
+		{
+			animation->addPosition(glm::vec3(1, 0, 0));
+		}
+		else if (Input::getKeyPressed(GLFW_KEY_W) || Input::getKeyPressed(GLFW_KEY_W + 32))
+		{
+			animation->addPosition(glm::vec3(0, 1, 0));
+		}
+
 		//CalculateVertices----------------------------------------
 		{
 			animation->calculateVertices();
 			animation1->calculateVertices();
 		}
-		//------------------------------------
+		//Update animation-------------------------
 
 		((Sprite*)animation)->updateAnimation(*timer);
 		((Sprite*)animation1)->updateAnimation(*timer);
@@ -68,8 +85,8 @@ void BaseGame::run()
 
 		if (CollisionManager::IntersectPolygons(animation->getVertices(), 4, animation1->getVertices(), 4, normal, depth))
 		{
-			animation-> addPosition(- normal * (depth / 2));
-			animation1->addPosition(+ normal * (depth / 2));
+			animation->addPosition(-normal * (depth / 2));
+			animation1->addPosition(+normal * (depth / 2));
 		}
 
 		imGuiEngine->imGuiDrawObject(animation, 0);

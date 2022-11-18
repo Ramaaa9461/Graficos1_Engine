@@ -1,18 +1,24 @@
 #pragma once
 
-#include "glfw3.h"
 #include "Window.h"
 
-static class Input
+ class Input
 {
 
-		
+private:
+
+	static Input* s_instance;
+
+protected:
 	static Window* _window;
+	virtual bool IsKeyPressedImpl(int keycode) = 0;
 
 public:
 
 	static void setWindow(Window* window);
 
-	static bool getKey(int key);
+	inline static bool getKeyPressed(int keycode) { return s_instance->IsKeyPressedImpl(keycode);  };
+	
+
 };
 

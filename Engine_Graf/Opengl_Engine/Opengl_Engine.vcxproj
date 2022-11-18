@@ -187,6 +187,7 @@
     <ClCompile Include="Timer.cpp" />
     <ClCompile Include="TriangleShape.cpp" />
     <ClCompile Include="Window.cpp" />
+    <ClCompile Include="WindowInput.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="res\Shaders\Basic.shader" />
@@ -226,6 +227,7 @@
     <ClInclude Include="Timer.h" />
     <ClInclude Include="TriangleShape.h" />
     <ClInclude Include="Window.h" />
+    <ClInclude Include="WindowInput.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
