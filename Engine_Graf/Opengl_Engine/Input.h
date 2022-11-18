@@ -1,21 +1,19 @@
 #pragma once
 
-#include "Window.h"
+#include "DDLExport.h"
 
- class Input
+static class Input
 {
 
 private:
 
-	static Input* s_instance;
 
+	static Input* s_instance;
 protected:
-	static Window* _window;
+
 	DllExport virtual bool IsKeyPressedImpl(int keycode) = 0;
 
 public:
-
-	DllExport static void setWindow(Window* window);
 
 	DllExport inline static bool getKeyPressed(int keycode) { return s_instance->IsKeyPressedImpl(keycode);  };
 	

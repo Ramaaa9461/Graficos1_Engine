@@ -1,13 +1,20 @@
 #include "Entity.h"
-#include <glm\gtc\matrix_transform.hpp>
-#include <glfw3.h>
 
+#include <glm\gtc\matrix_transform.hpp>
+
+
+int Entity::instanceCounter = 0;
 
 DllExport Entity::Entity(int initPositionX, int initPositionY)
 {
 	translation = glm::vec3(initPositionX, initPositionY, 0);
 	rotation = glm::vec3(0, 0, 0);
 	scale = glm::vec3(1, 1, 0);
+
+	id = instanceCounter;
+	instanceCounter++;
+	
+	UpdateTRSMat();
 }
 
 DllExport Entity::~Entity()
@@ -50,6 +57,7 @@ DllExport glm::vec3 Entity::getScale()
 
 DllExport void Entity::UpdateTRSMat()
 {
+
 	glm::mat4 tras = glm::translate(glm::mat4(1.0f), translation);
 
 	glm::mat4 rotX = glm::rotate(glm::mat4(1.0f), glm::radians(rotation.x), glm::vec3(1.0f, 0.0f, 0.0f));

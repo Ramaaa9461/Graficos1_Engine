@@ -1,5 +1,6 @@
 #include "Animaiton.h"
 
+#include "Timer.h"
 DllExport Animation::Animation()
 {
 }
@@ -8,9 +9,9 @@ DllExport Animation::~Animation()
 {
 }
 
-DllExport void Animation::UpdateAnimation(Timer& timer) //Recibe un timer
+DllExport void Animation::UpdateAnimation() //Recibe un timer
 {
-	currentTime += timer.timeBetweenFrames() * speed;
+	currentTime += Timer::getTimer()->timeBetweenFrames() * speed;
 
 	/*while (currentTime > length) 
 	{

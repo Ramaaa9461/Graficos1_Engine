@@ -155,7 +155,7 @@ void Sprite::CreateAnimation(int x, int y, int durationInSec, int framesAmountX,
 
 }
 
-void Sprite::updateAnimation(Timer& timer)
+void Sprite::updateAnimation()
 {
 	frames = animation->getFrames();
 
@@ -171,7 +171,7 @@ void Sprite::updateAnimation(Timer& timer)
 	positions[14] = frames[animation->getCurrentIndex()].uvCoords[2].u;
 	positions[15] = frames[animation->getCurrentIndex()].uvCoords[2].v;
 
-	animation->UpdateAnimation(timer);
+	animation->UpdateAnimation();
 
 	vb->updateVertexBufferData(positions, 4 * 4 * sizeof(float));
 }

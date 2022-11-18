@@ -1,7 +1,7 @@
 #ifndef GAME_H
 #define GAME_H
 
-#include "../Opengl_Engine/BaseGame.h"
+#include "BaseGame.h"
 
 class Game :  BaseGame
 {

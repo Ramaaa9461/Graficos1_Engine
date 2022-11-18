@@ -1,8 +1,18 @@
 #include "Window.h"
 
+Window* Window::S_Window = nullptr;
+
 	DllExport Window::Window()
 	{
 		createWindow();
+	}
+
+	DllExport Window* Window::getWindow()
+	{
+		if (S_Window == nullptr) {
+			S_Window = new Window();
+		}
+		return S_Window;
 	}
 
 	DllExport Window::~Window()
@@ -43,7 +53,7 @@
 		initGlew();
 	}
 
-	DllExport GLFWwindow* Window::getWindow()
+	DllExport GLFWwindow* Window::getNativeWindow()
 	{
 		return window;
 	}

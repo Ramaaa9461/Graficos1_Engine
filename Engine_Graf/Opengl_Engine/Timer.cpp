@@ -1,15 +1,17 @@
 #include "Timer.h"
 
-Timer::Timer()
+Timer* Timer::S_Timer = nullptr;
+
+Timer::Timer(){}
+
+Timer::~Timer(){}
+
+DllExport Timer* Timer::getTimer()
 {
-
-
-
-}
-
-Timer::~Timer()
-{
-
+	if (S_Timer == nullptr) {
+		S_Timer = new Timer();
+	}
+	return S_Timer;
 }
 
 DllExport float Timer::timeBetweenFrames()

@@ -1,12 +1,24 @@
 #include "ImGuiEngine.h"
 
+#include "Window.h"
 
-DllExport ImGuiEngine::ImGuiEngine(Window* window)
+ImGuiEngine* ImGuiEngine::S_ImGuiEngine = nullptr;
+
+
+DllExport ImGuiEngine::ImGuiEngine()
 {
 	ImGui::CreateContext();
-	ImGui_ImplGlfwGL3_Init(window->getWindow(), true);
+	ImGui_ImplGlfwGL3_Init(Window::getWindow()->getNativeWindow(), true);
 	ImGui::StyleColorsDark();
 
+}
+
+DllExport ImGuiEngine* ImGuiEngine::getImGuiEngine()
+{
+	if (S_ImGuiEngine == nullptr) {
+		S_ImGuiEngine = new ImGuiEngine();
+	}
+	return S_ImGuiEngine;
 }
 
 DllExport ImGuiEngine::~ImGuiEngine()
@@ -15,7 +27,7 @@ DllExport ImGuiEngine::~ImGuiEngine()
 	ImGui::DestroyContext();
 }
 
-DllExport void ImGuiEngine::imGuiStarDraw()
+DllExport void ImGuiEngine::imGuiStartDraw()
 {
 	ImGui_ImplGlfwGL3_NewFrame();
 
