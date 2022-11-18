@@ -49,19 +49,19 @@ void BaseGame::run()
 
 		if (Input::getKeyPressed(GLFW_KEY_A) || Input::getKeyPressed(GLFW_KEY_A + 32))
 		{
-			animation->addPosition(glm::vec3(-1, 0, 0));
+			animation->addPosition(glm::vec3(-5, 0, 0));
 		}
 		else if (Input::getKeyPressed(GLFW_KEY_S) || Input::getKeyPressed(GLFW_KEY_S + 32))
 		{
-			animation->addPosition(glm::vec3(0, -1, 0));
+			animation->addPosition(glm::vec3(0, -5, 0));
 		}
 		else if (Input::getKeyPressed(GLFW_KEY_D) || Input::getKeyPressed(GLFW_KEY_D + 32))
 		{
-			animation->addPosition(glm::vec3(1, 0, 0));
+			animation->addPosition(glm::vec3(5, 0, 0));
 		}
 		else if (Input::getKeyPressed(GLFW_KEY_W) || Input::getKeyPressed(GLFW_KEY_W + 32))
 		{
-			animation->addPosition(glm::vec3(0, 1, 0));
+			animation->addPosition(glm::vec3(0, 5, 0));
 		}
 
 		//CalculateVertices----------------------------------------

@@ -1,10 +1,11 @@
 #include "Input.h"
 
 
+Window* Input::_window = nullptr;
 
 void Input::setWindow(Window* window)
 {
-	_window = window;
+	Input::_window = window;
 }
 
 void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods)
