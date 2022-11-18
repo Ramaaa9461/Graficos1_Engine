@@ -10,12 +10,11 @@ private:
 
 protected:
 
-	DllExport virtual bool IsKeyPressedImpl(int keycode) = 0;
+	DllExport static bool IsKeyPressedImpl(int keycode) ;
 
 public:
 
-	static Input* s_instance;
-	DllExport inline static bool getKeyPressed(int keycode) { return s_instance->IsKeyPressedImpl(keycode);  };
+	DllExport inline static bool getKeyPressed(int keycode) { return IsKeyPressedImpl(keycode);  };
 	
 
 };
