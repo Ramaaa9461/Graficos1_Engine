@@ -2,11 +2,11 @@
 //
 
 
-Entity2d::Entity2d(int initPositionX, int initPositionY) : Entity(initPositionX, initPositionY)
+DllExport Entity2d::Entity2d(int initPositionX, int initPositionY) : Entity(initPositionX, initPositionY)
 {
 }
 
-Entity2d::~Entity2d()
+DllExport Entity2d::~Entity2d()
 {
 	delete va;
 	delete vb;
@@ -15,12 +15,12 @@ Entity2d::~Entity2d()
 	delete texture;
 }
 
-glm::vec3* Entity2d::getVertices()
+DllExport glm::vec3* Entity2d::getVertices()
 {
 	return vertices;
 }
 
-void Entity2d::draw()
+DllExport void Entity2d::draw()
 {
 	glm::mat4 mvp = renderer->proj * renderer->view * TRS;
 

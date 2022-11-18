@@ -1,14 +1,14 @@
 #include "Animaiton.h"
 
-Animation::Animation()
+DllExport Animation::Animation()
 {
 }
 
-Animation::~Animation()
+DllExport Animation::~Animation()
 {
 }
 
-void Animation::UpdateAnimation(Timer& timer) //Recibe un timer
+DllExport void Animation::UpdateAnimation(Timer& timer) //Recibe un timer
 {
 	currentTime += timer.timeBetweenFrames() * speed;
 
@@ -21,7 +21,7 @@ void Animation::UpdateAnimation(Timer& timer) //Recibe un timer
 	currentIndex = static_cast<int>((currentTime / framesVector.size()) % framesVector.size());
 }
 
-void Animation::addFrame(float frameX, float frameY, float frameWidth, float frameHeigth, float textureWidth, float textureHeigth, float animationSpeed)
+DllExport void Animation::addFrame(float frameX, float frameY, float frameWidth, float frameHeigth, float textureWidth, float textureHeigth, float animationSpeed)
 {
 	speed = animationSpeed;
 	//----------------------------------------------------------------
@@ -42,7 +42,7 @@ void Animation::addFrame(float frameX, float frameY, float frameWidth, float fra
 	framesVector.push_back(frame);
 }
 
-void Animation::addFrame(float frameX, float frameY, float frameWidth, float frameHeigth, float textureWidth, float textureHeigth, float durationInSecs, int frameCount)
+DllExport void Animation::addFrame(float frameX, float frameY, float frameWidth, float frameHeigth, float textureWidth, float textureHeigth, float durationInSecs, int frameCount)
 {
 	speed = durationInSecs * 1000;
 
@@ -69,12 +69,12 @@ void Animation::addFrame(float frameX, float frameY, float frameWidth, float fra
 	}
 }
 
-int Animation::getCurrentIndex()
+DllExport int Animation::getCurrentIndex()
 {
 	return currentIndex;
 }
 
-std::vector<Frame>& Animation::getFrames()
+DllExport std::vector<Frame>& Animation::getFrames()
 {
 	return framesVector;
 }

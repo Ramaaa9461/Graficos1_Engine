@@ -21,14 +21,13 @@ private:
 
 public:
 
-	ImGuiEngine(Window* window);
-	~ImGuiEngine();
-
-	void imGuiStarDraw();
-	void imGuiEndDraw();
-
-	void imGuiDrawObject(glm::vec3 traslation, glm::vec3 rotation, glm::vec3 scale);
-
-	void imGuiDrawObject(Entity2d* entity2d, int index);
+	DllExport ImGuiEngine(Window* window);
+	DllExport ~ImGuiEngine();
+	
+	DllExport void imGuiStarDraw();
+	DllExport void imGuiEndDraw();
+	
+	DllExport void imGuiDrawObject(glm::vec3 traslation, glm::vec3 rotation, glm::vec3 scale);
+	DllExport void imGuiDrawObject(Entity2d* entity2d, int index);
 };
 

@@ -9,6 +9,13 @@
 #include "src/Headers/Renderer.h"
 #include "window.h"
 
+#include "Shape.h"
+#include "RectangleShape.h"
+#include "TriangleShape.h"
+#include "Sprite.h"
+#include "ImGuiEngine.h"
+#include "CollisionManager.h"
+#include "Input.h"
 
 	class BaseGame
 	{
@@ -25,9 +32,9 @@
 		DllExport void run();
 
 
-		virtual void Init() = 0;
-		virtual void Update() = 0;
-		virtual void DeInit() = 0;
+		DllExport virtual void Init() = 0;
+		DllExport virtual void Update() = 0;
+		DllExport virtual void DeInit() = 0;
 	};
 
 

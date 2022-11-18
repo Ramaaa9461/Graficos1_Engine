@@ -10,7 +10,7 @@ DllExport Entity::Entity(int initPositionX, int initPositionY)
 	scale = glm::vec3(1, 1, 0);
 }
 
-Entity::~Entity()
+DllExport Entity::~Entity()
 {
 
 }
@@ -48,7 +48,7 @@ DllExport glm::vec3 Entity::getScale()
 	return scale;
 }
 
-void Entity::UpdateTRSMat()
+DllExport void Entity::UpdateTRSMat()
 {
 	glm::mat4 tras = glm::translate(glm::mat4(1.0f), translation);
 
@@ -64,63 +64,63 @@ void Entity::UpdateTRSMat()
 
 
 
-void Entity::addPosition(glm::vec3 positionToAdd)
+DllExport void Entity::addPosition(glm::vec3 positionToAdd)
 {
 	translation += positionToAdd;
 	UpdateTRSMat();
 }
 
-void Entity::setPositionX(float posX)
+DllExport void Entity::setPositionX(float posX)
 {
 	translation.x = posX;
 	UpdateTRSMat();
 }
 
-void Entity::setPositionY(float posY)
+DllExport void Entity::setPositionY(float posY)
 {
 	translation.y = posY;
 	UpdateTRSMat();
 }
 
-float Entity::getPositionX()
+DllExport float Entity::getPositionX()
 {
 	return translation.x;
 }
 
-float Entity::getPositionY()
+DllExport float Entity::getPositionY()
 {
 	return translation.y;
 }
 
 
-void Entity::setScaleX(float scalX)
+DllExport void Entity::setScaleX(float scalX)
 {
 	scale.x = scalX;
 	UpdateTRSMat();
 }
-void Entity::setScaleY(float scalY)
+DllExport void Entity::setScaleY(float scalY)
 {
 	scale.y = scalY;
 	UpdateTRSMat();
 }
 	  
-float Entity::getScaleX()
+DllExport float Entity::getScaleX()
 {
 	return scale.x;
 }
 
-float Entity::getScaleY()
+DllExport float Entity::getScaleY()
 {
 	return scale.y;
 }
 
-void Entity::setRotationZ(float rotZ)
+DllExport void Entity::setRotationZ(float rotZ)
 {
 	rotation.z = rotZ;
 	UpdateTRSMat();
 }
 
-float Entity::getRotationZ()
+DllExport float Entity::getRotationZ()
 {
 	return rotation.z;
 }

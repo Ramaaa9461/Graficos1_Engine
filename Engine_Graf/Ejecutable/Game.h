@@ -1,9 +1,9 @@
 #ifndef GAME_H
 #define GAME_H
 
-#include "../../Engine_Graf/Opengl_Engine/BaseGame.h"
+#include "../Opengl_Engine/BaseGame.h"
 
-class Game : BaseGame
+class Game :  BaseGame
 {
 private:	
 

@@ -5,17 +5,17 @@
 
 
 
-	VertexArray::VertexArray()
+DllExport VertexArray::VertexArray()
 	{
 		GLCall(glGenVertexArrays(1, &m_RendererID));
 	}
 
-	VertexArray::~VertexArray()
+DllExport VertexArray::~VertexArray()
 	{
 		GLCall(glDeleteVertexArrays(1, &m_RendererID));
 	}
 
-	void VertexArray::AddBuffer(const VertexBuffer& vb, const VertexBufferLayout& layout)
+DllExport	void VertexArray::AddBuffer(const VertexBuffer& vb, const VertexBufferLayout& layout)
 	{
 		Bind();
 		vb.Bind();
@@ -32,12 +32,12 @@
 
 	}
 
-	void VertexArray::Bind() const
+DllExport void VertexArray::Bind() const
 	{
 		GLCall(glBindVertexArray(m_RendererID));
 	}
 
-	void VertexArray::Unbind() const
+DllExport void VertexArray::Unbind() const
 	{
 		GLCall(glBindVertexArray(0));
 	}

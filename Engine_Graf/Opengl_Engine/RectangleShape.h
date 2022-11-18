@@ -13,15 +13,15 @@ private:
     float positions[8];
     unsigned int indices[6];
 
-     void  setVertices();
-     void  setIndixs();
-     void calculateVertices();
+    DllExport void  setVertices();
+    DllExport void  setIndixs();
+    DllExport void calculateVertices();
 
 public:
     
-    RectangleShape(int initPositionX, int initPositionY);
+    DllExport RectangleShape(int initPositionX, int initPositionY);
 
-    void setColor(glm::vec4 RGBA);
+    DllExport void setColor(glm::vec4 RGBA);
 
 };
 

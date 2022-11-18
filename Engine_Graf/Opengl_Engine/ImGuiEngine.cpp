@@ -1,7 +1,7 @@
 #include "ImGuiEngine.h"
 
 
-ImGuiEngine::ImGuiEngine(Window* window)
+DllExport ImGuiEngine::ImGuiEngine(Window* window)
 {
 	ImGui::CreateContext();
 	ImGui_ImplGlfwGL3_Init(window->getWindow(), true);
@@ -9,26 +9,26 @@ ImGuiEngine::ImGuiEngine(Window* window)
 
 }
 
-ImGuiEngine::~ImGuiEngine()
+DllExport ImGuiEngine::~ImGuiEngine()
 {
 	ImGui_ImplGlfwGL3_Shutdown();
 	ImGui::DestroyContext();
 }
 
-void ImGuiEngine::imGuiStarDraw()
+DllExport void ImGuiEngine::imGuiStarDraw()
 {
 	ImGui_ImplGlfwGL3_NewFrame();
 
 }
 
-void ImGuiEngine::imGuiEndDraw()
+DllExport void ImGuiEngine::imGuiEndDraw()
 {
 
 	ImGui::Render();
 	ImGui_ImplGlfwGL3_RenderDrawData(ImGui::GetDrawData());
 }
 
-void ImGuiEngine::imGuiDrawObject(glm::vec3 traslation, glm::vec3 rotation, glm::vec3 scale)
+DllExport void ImGuiEngine::imGuiDrawObject(glm::vec3 traslation, glm::vec3 rotation, glm::vec3 scale)
 {
 	ImGui::SliderFloat3("Translation", &traslation.x, 0.0f, 960.0f);
 	ImGui::SliderFloat3("Rotation", &rotation.x, 0.0f, 360.0f);
@@ -37,7 +37,7 @@ void ImGuiEngine::imGuiDrawObject(glm::vec3 traslation, glm::vec3 rotation, glm:
 	ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
 }
 
-void ImGuiEngine::imGuiDrawObject(Entity2d* entity2d, int index)
+DllExport void ImGuiEngine::imGuiDrawObject(Entity2d* entity2d, int index)
 {
 	traslation = entity2d->getPosition();
 	rotation = entity2d->getRotation();

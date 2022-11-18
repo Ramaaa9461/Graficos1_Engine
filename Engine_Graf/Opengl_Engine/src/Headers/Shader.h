@@ -75,22 +75,22 @@ private:
 #pragma endregion
 
 public:
-	Shader(ShaderType shaderType);
-	~Shader();
+	DllExport Shader(ShaderType shaderType);
+	DllExport ~Shader();
 
-	void Bind() const;
-	void Unbind() const;
+	DllExport void Bind() const;
+	DllExport void Unbind() const;
 
 	//Set uniforms
-	void SetUniforms1f(const std::string name, float value);
-	void SetUniforms1i(const std::string name, int value);
-	void SetUniforms4f(const std::string name, float v0, float v1, float v2, float v3);
-	void SetUniformsMat4f(const std::string name, const glm::mat4& matrix);
+	DllExport void SetUniforms1f(const std::string name, float value);
+	DllExport void SetUniforms1i(const std::string name, int value);
+	DllExport void SetUniforms4f(const std::string name, float v0, float v1, float v2, float v3);
+	DllExport void SetUniformsMat4f(const std::string name, const glm::mat4& matrix);
 
 private:
-	unsigned int CreateShader(const std::string& vertexShader, const std::string& fragmentShader);
-	unsigned int CompileShader(unsigned int type, const std::string& source);
-	unsigned int GetUniformLocation(const std::string& name);
+	DllExport unsigned int CreateShader(const std::string& vertexShader, const std::string& fragmentShader);
+	DllExport unsigned int CompileShader(unsigned int type, const std::string& source);
+	DllExport unsigned int GetUniformLocation(const std::string& name);
 	//ShaderProgramSource ParseShader(const std::string& filepath);
 };
 

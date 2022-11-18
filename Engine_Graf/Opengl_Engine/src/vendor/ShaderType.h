@@ -1,7 +1,8 @@
 #pragma once
 
+#include "../../DDLExport.h"
 
-enum class ShaderType
+DllExport enum class ShaderType
 {
 	whithTexture,
 	noTexture

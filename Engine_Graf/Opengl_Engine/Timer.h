@@ -1,7 +1,7 @@
 #pragma once
 
 #include <time.h>
-
+#include "DDLExport.h"
 
 class Timer
 {
@@ -12,13 +12,13 @@ private:
 
 public:
 
-	Timer();
-	~Timer();
+	DllExport Timer();
+	DllExport ~Timer();
 
 
-	float timeBetweenFrames();
+	DllExport float timeBetweenFrames();
 
-	void updateDeltaTime();
+	DllExport void updateDeltaTime();
 
 };
 

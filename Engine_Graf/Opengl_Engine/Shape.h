@@ -18,8 +18,8 @@
 
 	public:
 
-		Shape(int initPositionX, int initPositionY);
-		~Shape();
+			DllExport Shape(int initPositionX, int initPositionY);
+ 			DllExport ~Shape();
 
 		//Tiene Agregar un Material (Una funcion tiene que pedirlo por parametro)
 	};

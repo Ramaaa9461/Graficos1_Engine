@@ -4,7 +4,7 @@
 #include <iostream>
 
 
-Renderer* Renderer::S_Renderer = nullptr;;
+DllExport Renderer* Renderer::S_Renderer = nullptr;;
 
 	void GLClearError()
 	{
@@ -22,9 +22,9 @@ Renderer* Renderer::S_Renderer = nullptr;;
 		return true;
 	}
 
-	Renderer::Renderer() {	}
+	DllExport Renderer::Renderer() {	}
 
-	Renderer* Renderer::getRenderer()
+	DllExport Renderer* Renderer::getRenderer()
 	{
 		if (S_Renderer == nullptr) {
 			S_Renderer = new Renderer();
@@ -32,7 +32,7 @@ Renderer* Renderer::S_Renderer = nullptr;;
 		return S_Renderer;
 	}
 
-	void Renderer::initRenderer(Window* window)
+	DllExport	void Renderer::initRenderer(Window* window)
 	{
 		this->window = window;
 
@@ -41,12 +41,12 @@ Renderer* Renderer::S_Renderer = nullptr;;
 	}
 
 
-	void Renderer::Clear() const
+	DllExport void Renderer::Clear() const
 	{
 		GLCall(glClear(GL_COLOR_BUFFER_BIT));
 	}
 
-	void Renderer::Draw(const VertexArray* va, const IndexBuffer* ib, const Shader* shader) const
+	DllExport void Renderer::Draw(const VertexArray* va, const IndexBuffer* ib, const Shader* shader) const
 	{
 		shader->Bind();
 		va->Bind();

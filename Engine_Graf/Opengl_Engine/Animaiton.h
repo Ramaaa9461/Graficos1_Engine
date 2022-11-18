@@ -16,14 +16,14 @@ class Animation
 
 public:
 
-	Animation();
-	~Animation();
+	DllExport Animation();
+	DllExport ~Animation();
 
-	void UpdateAnimation(Timer& timer);
-	void addFrame(float frameX, float frameY, float frameWidth, float frameHeigth, float textureWidth, float textureHeigth, float animationSpeed);
-	void addFrame(float frameX, float frameY, float frameWidth, float frameHeigth, float textureWidth, float textureHeigth, float animationSpeed, int frameCount);
+	DllExport void UpdateAnimation(Timer& timer);
+	DllExport void addFrame(float frameX, float frameY, float frameWidth, float frameHeigth, float textureWidth, float textureHeigth, float animationSpeed);
+	DllExport void addFrame(float frameX, float frameY, float frameWidth, float frameHeigth, float textureWidth, float textureHeigth, float animationSpeed, int frameCount);
 
-	int getCurrentIndex();
-	std::vector<Frame>& getFrames();
+	DllExport int getCurrentIndex();
+	DllExport std::vector<Frame>& getFrames();
 };
 

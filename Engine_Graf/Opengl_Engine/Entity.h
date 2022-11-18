@@ -38,22 +38,22 @@
 
 		DllExport virtual void draw() = 0;
 
-		void addPosition(glm::vec3 positionToAdd);
+		DllExport void addPosition(glm::vec3 positionToAdd);
 	
-		void setPositionX(float posX);
-		void setPositionY(float posY);
+		DllExport void setPositionX(float posX);
+		DllExport void setPositionY(float posY);
 
-		float getPositionX();
-		float getPositionY();
+		DllExport float getPositionX();
+		DllExport float getPositionY();
 
-		void  setScaleX(float scalX);
-		void  setScaleY(float scalY);
+		DllExport void  setScaleX(float scalX);
+		DllExport void  setScaleY(float scalY);
 				 
-		float getScaleX();
-		float getScaleY();
+		DllExport float getScaleX();
+		DllExport float getScaleY();
 
-		void  setRotationZ(float rotZ);
-		float getRotationZ();
+		DllExport void  setRotationZ(float rotZ);
+		DllExport float getRotationZ();
 	};
 
 #endif

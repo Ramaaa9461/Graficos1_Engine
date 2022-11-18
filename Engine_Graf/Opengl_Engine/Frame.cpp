@@ -1,13 +1,13 @@
 #include "Frame.h"
 
 
-Frame::Frame()
+DllExport Frame::Frame()
 {
 
 }
 
 
-Frame::~Frame()
+DllExport Frame::~Frame()
 {
 
 }

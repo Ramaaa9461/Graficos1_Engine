@@ -58,7 +58,7 @@
 		return WINDOW_HEIGHT;
 	}
 
-	bool Window::getWindowsShouldClose()
+	DllExport bool Window::getWindowsShouldClose()
 	{
 		return glfwWindowShouldClose;
 	}

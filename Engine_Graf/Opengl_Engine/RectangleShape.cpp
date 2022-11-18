@@ -1,6 +1,6 @@
 #include "RectangleShape.h"
 
-RectangleShape::RectangleShape(int initPositionX, int initPositionY) : Shape(initPositionX, initPositionY)
+DllExport RectangleShape::RectangleShape(int initPositionX, int initPositionY) : Shape(initPositionX, initPositionY)
 {
 	setVertices();
 	setIndixs();
@@ -28,14 +28,14 @@ RectangleShape::RectangleShape(int initPositionX, int initPositionY) : Shape(ini
 	shader->Unbind();
 }
 
-void RectangleShape::setColor(glm::vec4 RGBA)
+DllExport void RectangleShape::setColor(glm::vec4 RGBA)
 {
 	shader->Bind();
 	shader->SetUniforms4f("u_Color", RGBA.x, RGBA.y, RGBA.z, RGBA.w);
 	shader->Unbind();
 }
 
-void RectangleShape::setVertices()
+DllExport void RectangleShape::setVertices()
 {
 	width = 100;
 	height = 100;
@@ -54,7 +54,7 @@ void RectangleShape::setVertices()
 
 }
 
-void RectangleShape::setIndixs()
+DllExport void RectangleShape::setIndixs()
 {
 	indices[0] = 0;
 	indices[1] = 1;
@@ -64,7 +64,7 @@ void RectangleShape::setIndixs()
 	indices[5] = 0;
 }
 
-void RectangleShape::calculateVertices()
+DllExport void RectangleShape::calculateVertices()
 {
 	//glm::vec3 scale = getScale();
 	//glm::vec3 rotation = getRotation();
@@ -72,9 +72,9 @@ void RectangleShape::calculateVertices()
 	//int scaleY = scale.y;
 	//int rotZ   = rotation.z;
 
-	vertices[0] = getPosition() + (-glm::vec3(1.0f * width / 2, 0.0f, 0.0f)) + (glm::vec3(0.0f, 1.0f * height / 2, 0.0f));
-	vertices[1] = getPosition() + (glm::vec3(1.0f * width / 2, 0.0f, 0.0f)) + (glm::vec3(0.0f, 1.0f * height / 2, 0.0f));
-	vertices[2] = getPosition() + (glm::vec3(1.0f * width / 2, 0.0f, 0.0f)) + (-glm::vec3(0.0f, 1.0f * height / 2, 0.0f));
-	vertices[3] = getPosition() + (-glm::vec3(1.0f * width / 2, 0.0f, 0.0f)) + (-glm::vec3(0.0f, 1.0f * height / 2, 0.0f));
+	vertices[0] = getPosition() + (-glm::vec3(1.0f * getScaleX() * width / 2, 0.0f, 0.0f)) + (glm::vec3(0.0f, 1.0f *  getScaleY() * height / 2, 0.0f));
+	vertices[1] = getPosition() + (glm::vec3(1.0f * getScaleX() * width / 2, 0.0f, 0.0f)) + (glm::vec3(0.0f, 1.0f *   getScaleY() * height / 2, 0.0f));
+	vertices[2] = getPosition() + (glm::vec3(1.0f * getScaleX() * width / 2, 0.0f, 0.0f)) + (-glm::vec3(0.0f, 1.0f *  getScaleY() * height / 2, 0.0f));
+	vertices[3] = getPosition() + (-glm::vec3(1.0f * getScaleX() * width / 2, 0.0f, 0.0f)) + (-glm::vec3(0.0f, 1.0f * getScaleY() * height / 2, 0.0f));
 }
 

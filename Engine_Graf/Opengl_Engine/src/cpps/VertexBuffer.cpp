@@ -3,19 +3,19 @@
 #include "../Headers/Renderer.h"
 
 
-	VertexBuffer::VertexBuffer(const void* data, unsigned int size)
+DllExport VertexBuffer::VertexBuffer(const void* data, unsigned int size)
 	{
 		GLCall(glGenBuffers(1, &m_RendererID));
 		GLCall(glBindBuffer(GL_ARRAY_BUFFER, m_RendererID));
 		GLCall(glBufferData(GL_ARRAY_BUFFER, size, data, GL_STATIC_DRAW));
 	}
 
-	VertexBuffer::~VertexBuffer()
+DllExport	VertexBuffer::~VertexBuffer()
 	{
 		GLCall(glDeleteBuffers(1, &m_RendererID));
 	}
 
-	void VertexBuffer::updateVertexBufferData(const void* data, unsigned int size)
+DllExport void VertexBuffer::updateVertexBufferData(const void* data, unsigned int size)
 	{
 
 		GLCall(glBindBuffer(GL_ARRAY_BUFFER, m_RendererID));
@@ -24,12 +24,12 @@
 	//https://stackoverflow.com/questions/27771902/opengl-changing-texture-coordinates-on-the-fly
 
 
-	void VertexBuffer::Bind() const
+DllExport	void VertexBuffer::Bind() const
 	{
 		GLCall(glBindBuffer(GL_ARRAY_BUFFER, m_RendererID));
 	}
 
-	void VertexBuffer::UnBind() const
+DllExport void VertexBuffer::UnBind() const
 	{
 		GLCall(glBindBuffer(GL_ARRAY_BUFFER, 0));
 	}

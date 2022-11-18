@@ -16,10 +16,10 @@ private:
 	int width, height;
 	unsigned int indices[6];
 
-	void setVertices();
-	void setVerticesSpriteSheet();
-	void setIndixs();
-	void calculateVertices();
+	DllExport void setVertices();
+	DllExport void setVerticesSpriteSheet();
+	DllExport void setIndixs();
+	DllExport void calculateVertices();
 
 protected:
 
@@ -27,13 +27,13 @@ protected:
 
 public:
 
-	Sprite(std::string imageName, int initPositionX, int initPositionY);
-	Sprite();
-	~Sprite();
-	
-	void setTexture(std::string imageName);
+	DllExport Sprite(std::string imageName, int initPositionX, int initPositionY);
+	DllExport Sprite();
+	DllExport ~Sprite();
 
-	void CreateAnimation(int x, int y, int durationInSec, int framesAmountX, int framesAmountY);
-	void updateAnimation(Timer& timer);
+	DllExport void setTexture(std::string imageName);
+	
+	DllExport void CreateAnimation(int x, int y, int durationInSec, int framesAmountX, int framesAmountY);
+	DllExport void updateAnimation(Timer& timer);
 };
 

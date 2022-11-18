@@ -27,18 +27,18 @@
 		glm::vec3 vertices[4];
 
 
-		virtual void  setVertices() = 0;
-		virtual void  setIndixs() = 0;
+		DllExport virtual void  setVertices() = 0;
+		DllExport virtual void  setIndixs() = 0;
 
 	public:
 
 		DllExport Entity2d(int initPositionX, int initPositionY);
 		DllExport ~Entity2d();
 
-		glm::vec3* getVertices();
+		DllExport glm::vec3* getVertices();
 
-		void draw();
-		virtual void calculateVertices() = 0;
+		DllExport void draw();
+		DllExport virtual void calculateVertices() = 0;
 
 	};
 

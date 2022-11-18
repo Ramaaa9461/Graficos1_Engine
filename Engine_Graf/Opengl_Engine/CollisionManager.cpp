@@ -1,6 +1,6 @@
 #include "CollisionManager.h"
 
-void CollisionManager::ProjectVertices(glm::vec3 vertices[], int size, glm::vec3 axis, float& min, float& max)
+DllExport void CollisionManager::ProjectVertices(glm::vec3 vertices[], int size, glm::vec3 axis, float& min, float& max)
 {
 	min =  3.40282347E+38;
 	max = -3.40282347E+38;
@@ -16,7 +16,7 @@ void CollisionManager::ProjectVertices(glm::vec3 vertices[], int size, glm::vec3
 }
 
 
-bool CollisionManager::IntersectPolygons(glm::vec3 verticesA[], int sizeA, glm::vec3 verticesB[], int sizeB, glm::vec3& normal , float& depth)
+DllExport bool CollisionManager::IntersectPolygons(glm::vec3 verticesA[], int sizeA, glm::vec3 verticesB[], int sizeB, glm::vec3& normal , float& depth)
 {
 	normal = glm::vec3(0, 0, 0);
 	depth = 3.40282347E+38;
@@ -100,7 +100,7 @@ bool CollisionManager::IntersectPolygons(glm::vec3 verticesA[], int sizeA, glm::
 
 }
 
-glm::vec3 CollisionManager::FindArithmeticMean(glm::vec3 vertices[], int size)
+DllExport glm::vec3 CollisionManager::FindArithmeticMean(glm::vec3 vertices[], int size)
 {
 	float sumX = 0;
 	float sumY = 0;

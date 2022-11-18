@@ -13,13 +13,13 @@
 		unsigned int m_RendererID;
 
 	public:
-		VertexArray();
-		~VertexArray();
+		DllExport VertexArray();
+		DllExport ~VertexArray();
 
 
-		void AddBuffer(const VertexBuffer& vb, const VertexBufferLayout& layout);
+		DllExport void AddBuffer(const VertexBuffer& vb, const VertexBufferLayout& layout);
 
-		void Bind() const;
-		void Unbind() const;
+		DllExport void Bind() const;
+		DllExport void Unbind() const;
 	};
 

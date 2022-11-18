@@ -8,7 +8,7 @@ class WindowInput : public Input
 private:
 
 protected:
-	virtual bool IsKeyPressedImpl(int keycode) override;
+	DllExport virtual bool IsKeyPressedImpl(int keycode) override;
 
 public:
 

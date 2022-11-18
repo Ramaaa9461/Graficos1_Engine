@@ -11,13 +11,13 @@ private:
     float positions[6];
     unsigned int indices[3];
 
-     void  setVertices();
-     void  setIndixs();
+    DllExport void  setVertices();
+    DllExport void  setIndixs();
 
 
 public:
     
-    TriangleShape(glm::vec4 RGBA, int initPositionX, int initPositionY);
+    DllExport TriangleShape(glm::vec4 RGBA, int initPositionX, int initPositionY);
 
 
 

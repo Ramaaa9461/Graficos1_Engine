@@ -1,6 +1,6 @@
 #pragma once
 
-
+#include "../../DDLExport.h"
 
 	class VertexBuffer
 	{
@@ -8,12 +8,12 @@
 		unsigned int m_RendererID;
 
 	public:
-		VertexBuffer(const void* data, unsigned int size);
-		~VertexBuffer();
+		DllExport VertexBuffer(const void* data, unsigned int size);
+		DllExport ~VertexBuffer();
 
-		void updateVertexBufferData(const void* data, unsigned int size);
+		DllExport void updateVertexBufferData(const void* data, unsigned int size);
 
-		void Bind() const;
-		void UnBind() const;
+		DllExport void Bind() const;
+		DllExport void UnBind() const;
 	};
 

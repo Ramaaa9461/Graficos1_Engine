@@ -4,7 +4,7 @@
 
 Input* Input::s_instance = new WindowInput();
 
-bool WindowInput::IsKeyPressedImpl(int keycode)
+DllExport bool WindowInput::IsKeyPressedImpl(int keycode)
 {
 
 	auto state = glfwGetKey(_window->getWindow() , keycode);

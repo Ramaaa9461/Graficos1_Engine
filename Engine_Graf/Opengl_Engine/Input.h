@@ -11,13 +11,13 @@ private:
 
 protected:
 	static Window* _window;
-	virtual bool IsKeyPressedImpl(int keycode) = 0;
+	DllExport virtual bool IsKeyPressedImpl(int keycode) = 0;
 
 public:
 
-	static void setWindow(Window* window);
+	DllExport static void setWindow(Window* window);
 
-	inline static bool getKeyPressed(int keycode) { return s_instance->IsKeyPressedImpl(keycode);  };
+	DllExport inline static bool getKeyPressed(int keycode) { return s_instance->IsKeyPressedImpl(keycode);  };
 	
 
 };

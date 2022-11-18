@@ -1,12 +1,12 @@
 #include "Shape.h"
 
 
-	Shape::Shape(int initPositionX, int initPositionY) : Entity2d(initPositionX, initPositionY)
+DllExport Shape::Shape(int initPositionX, int initPositionY) : Entity2d(initPositionX, initPositionY)
 	{
 
 	}
 
-	Shape::~Shape()
+DllExport Shape::~Shape()
 	{
 
 	}

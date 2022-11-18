@@ -12,12 +12,12 @@ Timer::~Timer()
 
 }
 
-float Timer::timeBetweenFrames()
+DllExport float Timer::timeBetweenFrames()
 {
 	return deltaTime;
 }
 
-void Timer::updateDeltaTime()
+DllExport void Timer::updateDeltaTime()
 {
 	deltaTime = clock() - oldTime;
 	//double fps = (1 / deltaTime) * 1000;
