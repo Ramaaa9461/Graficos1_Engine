@@ -30,14 +30,14 @@ void BaseGame::run()
 	Timer* timer = new Timer();
 	Init();
 
-	Entity2d* animation = new Sprite("Mario.png", 200, 200);
+	/*Entity2d* animation = new Sprite("Mario.png", 200, 200);
 	Entity2d* animation1 = new Sprite("Mario.png", 400, 200);
 
 	((Sprite*)animation)->CreateAnimation(0, 0, 1, 4, 4);
 	((Sprite*)animation1)->CreateAnimation(0, 128, 2, 4, 4);
 
 	glm::vec3 normal;
-	float depth;
+	float depth;*/
 
 	while (window->getWindowsShouldClose())
 	{
@@ -47,7 +47,7 @@ void BaseGame::run()
 
 		Update();
 
-		if (Input::getKeyPressed(GLFW_KEY_A) || Input::getKeyPressed(GLFW_KEY_A + 32))
+		/*if (Input::getKeyPressed(GLFW_KEY_A) || Input::getKeyPressed(GLFW_KEY_A + 32))
 		{
 			animation->addPosition(glm::vec3(-5, 0, 0));
 		}
@@ -62,40 +62,37 @@ void BaseGame::run()
 		else if (Input::getKeyPressed(GLFW_KEY_W) || Input::getKeyPressed(GLFW_KEY_W + 32))
 		{
 			animation->addPosition(glm::vec3(0, 5, 0));
-		}
+		}*/
 
 		//CalculateVertices----------------------------------------
-		{
+	/*	{
 			animation->calculateVertices();
 			animation1->calculateVertices();
-		}
+		}*/
 		//Update animation-------------------------
 
-		((Sprite*)animation)->updateAnimation(*timer);
-		((Sprite*)animation1)->updateAnimation(*timer);
+	/*	((Sprite*)animation)->updateAnimation(*timer);
+		((Sprite*)animation1)->updateAnimation(*timer);*/
 
 		//Render here-------------------------
 		{
-			animation->draw();
-			animation1->draw();
+			/*animation->draw();
+			animation1->draw();*/
 		}
 		//------------------------------------
 
 		//ImGui visual sliders
 
-		if (CollisionManager::IntersectPolygons(animation->getVertices(), 4, animation1->getVertices(), 4, normal, depth))
+	/*	if (CollisionManager::IntersectPolygons(animation->getVertices(), 4, animation1->getVertices(), 4, normal, depth))
 		{
 			animation->addPosition(-normal * (depth / 2));
 			animation1->addPosition(+normal * (depth / 2));
 		}
 
 		imGuiEngine->imGuiDrawObject(animation, 0);
-		imGuiEngine->imGuiDrawObject(animation1, 1);
+		imGuiEngine->imGuiDrawObject(animation1, 1);*/
 
 		//------------------------------------
-
-
-
 
 		imGuiEngine->imGuiEndDraw();
 		glfwSwapBuffers(window->getWindow());
@@ -103,9 +100,6 @@ void BaseGame::run()
 	}
 
 	DeInit();
-
-	delete animation;
-	delete animation1;
 
 	delete imGuiEngine;
 
