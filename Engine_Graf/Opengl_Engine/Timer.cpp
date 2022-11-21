@@ -21,7 +21,7 @@ DllExport float Timer::timeBetweenFrames()
 
 DllExport void Timer::updateDeltaTime()
 {
-	deltaTime = clock() - oldTime;
+	deltaTime = clock() - oldTime; 
 	//double fps = (1 / deltaTime) * 1000;
 	oldTime = clock();
 }

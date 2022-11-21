@@ -11,12 +11,12 @@ DllExport Animation::~Animation()
 
 DllExport void Animation::UpdateAnimation() //Recibe un timer
 {
-	currentTime += Timer::getTimer()->timeBetweenFrames() * speed;
+	currentTime += Timer::getTimer()->timeBetweenFrames() / speed;
 
-	/*while (currentTime > length) 
-	{
-		currentTime -= length;
-	}*/
+	//while (currentTime > speed)
+	//{
+	//	currentTime -= speed;
+	//}
 
 	//float frameLength = length / framesVector.size();
 	currentIndex = static_cast<int>((currentTime / framesVector.size()) % framesVector.size());
@@ -24,7 +24,7 @@ DllExport void Animation::UpdateAnimation() //Recibe un timer
 
 DllExport void Animation::addFrame(float frameX, float frameY, float frameWidth, float frameHeigth, float textureWidth, float textureHeigth, float animationSpeed)
 {
-	speed = animationSpeed;
+	speed = animationSpeed ;
 	//----------------------------------------------------------------
 	Frame frame;
 
@@ -43,9 +43,9 @@ DllExport void Animation::addFrame(float frameX, float frameY, float frameWidth,
 	framesVector.push_back(frame);
 }
 
-DllExport void Animation::addFrame(float frameX, float frameY, float frameWidth, float frameHeigth, float textureWidth, float textureHeigth, float durationInSecs, int frameCount)
+DllExport void Animation::addFrame(float frameX, float frameY, float frameWidth, float frameHeigth, float textureWidth, float textureHeigth, float animationSpeed, int frameCount)
 {
-	speed = durationInSecs * 1000;
+	speed = animationSpeed;
 
 	float frameXIndex = 0;
 

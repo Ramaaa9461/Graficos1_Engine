@@ -15,13 +15,15 @@ Game::~Game()
 
 void Game::Init()
 {
-	animation = new Sprite("Mario.png", 200, 200);
-	animation1 = new Sprite("Mario.png", 400, 200);
+	animation = new Sprite("Pacman.png", 200, 200);
+	animation1 = new Sprite("Pacman.png", 400, 200);
+	sprite1 = new Sprite("Pacman.png", 300, 200);
 	rectangleShape = new RectangleShape(200, 300);
 
 
-	((Sprite*)animation)->CreateAnimation(0, 0, 1, 4, 4);
-	((Sprite*)animation1)->CreateAnimation(0, 128, 2, 4, 4);
+	((Sprite*)animation)->CreateAnimation(0, 0, 1, 14, 10);
+	((Sprite*)animation1)->CreateAnimation(0, 80, 10, 14, 10);
+	rectangleShape->setScale(glm::vec3(0.2f, 0.2f, 1.0f));
 }
 
 void Game::Input()
@@ -48,17 +50,28 @@ void Game::Input()
 	{
 		animation1->addPosition(glm::vec3(-5, 0, 0));
 	}
-	else if (Input::getKeyPressed(GLFW_KEY_DOWN)) 
+	else if (Input::getKeyPressed(GLFW_KEY_DOWN))
 	{
 		animation1->addPosition(glm::vec3(0, -5, 0));
 	}
-	else if (Input::getKeyPressed(GLFW_KEY_RIGHT)) 
+	else if (Input::getKeyPressed(GLFW_KEY_RIGHT))
 	{
 		animation1->addPosition(glm::vec3(5, 0, 0));
 	}
 	else if (Input::getKeyPressed(GLFW_KEY_UP))
 	{
 		animation1->addPosition(glm::vec3(0, 5, 0));
+	}
+
+	rectangleShape->setPosition(glm::vec3(Input::getMousePosition().x, -Input::getMousePosition().y, 0.0f));
+
+	if (Input::getMouseButtonPressed(0))
+	{
+		animation1->setPosition(glm::vec3(Input::getMousePosition().x, -Input::getMousePosition().y, 0.0f));
+	}
+	if (Input::getMouseButtonPressed(1))
+	{
+		animation->setPosition(glm::vec3(Input::getMousePosition().x, -Input::getMousePosition().y, 0.0f));
 	}
 }
 
@@ -79,6 +92,7 @@ void Game::Update()
 	{
 		animation->draw();
 		animation1->draw();
+		sprite1->draw();
 		rectangleShape->draw();
 	}
 	//------------------------------------

@@ -150,7 +150,7 @@ void Sprite::CreateAnimation(int x, int y, int durationInSec, int framesAmountX,
 {
 	animation = new Animation();
 
-	animation->addFrame(x, y, texture->GetWidth() / framesAmountX, texture->GetHeight() / framesAmountY, texture->GetWidth(), texture->GetHeight(), durationInSec, framesAmountX);
+	animation->addFrame(x , y , texture->GetWidth() / framesAmountX, texture->GetHeight() / framesAmountY, texture->GetWidth(), texture->GetHeight(), durationInSec, framesAmountX);
 
 
 }
