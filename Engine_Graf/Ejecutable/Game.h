@@ -3,14 +3,28 @@
 
 #include "BaseGame.h"
 
-class Game :  BaseGame
+#include "Shape.h"
+#include "RectangleShape.h"
+#include "TriangleShape.h"
+#include "Sprite.h"
+#include "ImGuiEngine.h"
+#include "CollisionManager.h"
+
+class Game : public BaseGame
 {
-private:	
+private:
+
+	Entity2d* animation;
+	Entity2d* animation1;
+	Entity2d* rectangleShape;
+
+	glm::vec3 normal;
+	float depth;
 
 public:
 
 	Game();
-	~Game();	
+	~Game();
 
 	void Init();
 	void Input();

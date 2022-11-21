@@ -20,7 +20,7 @@ void Game::Init()
 	rectangleShape = new RectangleShape(200, 300);
 
 
-	((Sprite*)animation)->CreateAnimation(0, 0, 1, 4, 4);
+	((Sprite*)animation)->CreateAnimation(0, 64, 1, 4, 4);
 	((Sprite*)animation1)->CreateAnimation(0, 128, 2, 4, 4);
 }
 
