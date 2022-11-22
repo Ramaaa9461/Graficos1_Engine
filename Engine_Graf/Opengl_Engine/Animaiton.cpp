@@ -9,22 +9,16 @@ DllExport Animation::~Animation()
 {
 }
 
-DllExport void Animation::UpdateAnimation() //Recibe un timer
+DllExport void Animation::UpdateAnimation() 
 {
 	currentTime += Timer::getTimer()->timeBetweenFrames() / speed;
 
-	//while (currentTime > speed)
-	//{
-	//	currentTime -= speed;
-	//}
-
-	//float frameLength = length / framesVector.size();
 	currentIndex = static_cast<int>((currentTime / framesVector.size()) % framesVector.size());
 }
 
 DllExport void Animation::addFrame(float frameX, float frameY, float frameWidth, float frameHeigth, float textureWidth, float textureHeigth, float animationSpeed)
 {
-	speed = animationSpeed ;
+	speed = animationSpeed;
 	//----------------------------------------------------------------
 	Frame frame;
 

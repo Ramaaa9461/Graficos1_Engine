@@ -12,6 +12,7 @@
 
 class Game : public BaseGame
 {
+
 private:
 
 	Entity2d* animation;
@@ -31,6 +32,7 @@ public:
 	void Input();
 	void Update();
 	void DeInit();
+
 };
 
 #endif

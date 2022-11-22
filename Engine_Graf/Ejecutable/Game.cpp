@@ -15,14 +15,14 @@ Game::~Game()
 
 void Game::Init()
 {
-	animation = new Sprite("Pacman.png", 200, 200);
-	animation1 = new Sprite("Pacman.png", 400, 200);
-	sprite1 = new Sprite("Pacman.png", 300, 200);
+	animation = new Sprite("Characters.png", 200, 200);
+	animation1 = new Sprite("Characters.png", 400, 200);
+	sprite1 = new Sprite("Characters.png", 300, 200);
 	rectangleShape = new RectangleShape(200, 300);
 
 
-	((Sprite*)animation)->CreateAnimation(0, 0, 1, 14, 10);
-	((Sprite*)animation1)->CreateAnimation(0, 80, 10, 14, 10);
+	((Sprite*)animation)->CreateAnimation(9, 7, 10, 12, 8, 3);
+	((Sprite*)animation1)->CreateAnimation(0, 7, 10, 12, 8);
 	rectangleShape->setScale(glm::vec3(0.2f, 0.2f, 1.0f));
 }
 

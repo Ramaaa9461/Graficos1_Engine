@@ -140,20 +140,46 @@ void Sprite::calculateVertices()
 	int scaleY = getScaleY();
 
 	vertices[0] = getPosition() + (-glm::vec3(1.0f * scaleX * width / 2, 0.0f, 0.0f)) + (glm::vec3(0.0f, 1.0f * scaleY * height / 2, 0.0f));
-	vertices[1] = getPosition() + (glm::vec3(1.0f * scaleX * width / 2, 0.0f, 0.0f)) + (glm::vec3(0.0f, 1.0f *  scaleY * height / 2, 0.0f));
+	vertices[1] = getPosition() + (glm::vec3(1.0f * scaleX * width / 2, 0.0f, 0.0f)) + (glm::vec3(0.0f, 1.0f * scaleY * height / 2, 0.0f));
 	vertices[2] = getPosition() + (glm::vec3(1.0f * scaleX * width / 2, 0.0f, 0.0f)) + (-glm::vec3(0.0f, 1.0f * scaleY * height / 2, 0.0f));
-	vertices[3] = getPosition() + (-glm::vec3(1.0f * scaleX * width / 2, 0.0f, 0.0f)) + (-glm::vec3(0.0f, 1.0f * scaleY * height / 2,0.0f));
+	vertices[3] = getPosition() + (-glm::vec3(1.0f * scaleX * width / 2, 0.0f, 0.0f)) + (-glm::vec3(0.0f, 1.0f * scaleY * height / 2, 0.0f));
 
 }
 
-void Sprite::CreateAnimation(int x, int y, int durationInSec, int framesAmountX, int framesAmountY)
+void Sprite::CreateAnimation(int x, int y, int speed, int framesAmountX, int framesAmountY)
 {
 	animation = new Animation();
 
-	animation->addFrame(x , y , texture->GetWidth() / framesAmountX, texture->GetHeight() / framesAmountY, texture->GetWidth(), texture->GetHeight(), durationInSec, framesAmountX);
+	float frameWidth = texture->GetWidth() / framesAmountX;
+	float frameHeight = texture->GetHeight() / framesAmountY;
 
-
+	animation->addFrame(x * frameWidth, y * frameHeight, frameWidth, frameHeight, texture->GetWidth(), texture->GetHeight(), speed, framesAmountX);
 }
+
+DllExport void Sprite::CreateAnimation(int x, int y, int speed, int framesAmountX, int framesAmountY, int framesLength)
+{
+	animation = new Animation();
+
+	float frameWidth = texture->GetWidth() / framesAmountX;
+	float frameHeight = texture->GetHeight() / framesAmountY;
+
+	//animation->addFrame(x * frameWidth, y * frameHeight, frameWidth, frameHeight, texture->GetWidth(), texture->GetHeight(), speed, framesAmountX);
+
+	for (int i = 0; i < framesLength; i++)
+	{
+		animation->addFrame(
+			(x + i) * frameWidth, 
+			y * frameHeight,
+			frameWidth,
+			frameHeight,
+			texture->GetWidth(),
+			texture->GetHeight(),
+			speed);
+	}
+}
+
+
+
 
 void Sprite::updateAnimation()
 {
