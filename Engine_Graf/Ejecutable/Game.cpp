@@ -21,8 +21,8 @@ void Game::Init()
 	rectangleShape = new RectangleShape(200, 300);
 
 
-	((Sprite*)animation)->CreateAnimation(9, 7, 1000, 12, 8, 3);
-	((Sprite*)animation1)->CreateAnimation(0, 7, 1, 12, 8, 3);
+	((Sprite*)animation)->CreateAnimation(9, 7, 1, 12, 8, 3);
+	((Sprite*)animation1)->CreateAnimation(0, 7, 3, 12, 8, 3);
 	rectangleShape->setScale(glm::vec3(0.2f, 0.2f, 1.0f));
 }
 
@@ -86,7 +86,7 @@ void Game::Update()
 	//Update animation-------------------------
 
 	((Sprite*)animation)->updateAnimation();
-//	((Sprite*)animation1)->updateAnimation();
+	((Sprite*)animation1)->updateAnimation();
 
 	//Render here-------------------------
 	{

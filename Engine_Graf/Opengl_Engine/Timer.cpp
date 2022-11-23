@@ -23,14 +23,7 @@ DllExport float Timer::timeBetweenFrames()
 
 DllExport void Timer::updateDeltaTime()
 {
-	//deltaTime = clock() - oldTime; 
-	////double fps = (1 / deltaTime) * 1000;
-	//oldTime = clock();
-
 	deltaTime = glfwGetTime() - oldTime;
 	oldTime = glfwGetTime();
-	//glfwSetTime(0);
-	
 }
 
-//https://stackoverflow.com/questions/34133249/c-deltatime-using-clock-is-0
