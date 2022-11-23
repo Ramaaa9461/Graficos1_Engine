@@ -1,6 +1,10 @@
 #include "Animaiton.h"
 
 #include "Timer.h"
+
+
+#include <iostream>
+
 DllExport Animation::Animation()
 {
 }
@@ -11,9 +15,11 @@ DllExport Animation::~Animation()
 
 DllExport void Animation::UpdateAnimation() 
 {
-	currentTime += Timer::getTimer()->timeBetweenFrames() / speed;
+	currentTime += Timer::getTimer()->timeBetweenFrames() * speed;
 
-	currentIndex = static_cast<int>((currentTime / framesVector.size()) % framesVector.size());
+	std::cout << currentTime << std::endl;
+
+	currentIndex = static_cast<int>(((int)currentTime / framesVector.size()) % framesVector.size());
 }
 
 DllExport void Animation::addFrame(float frameX, float frameY, float frameWidth, float frameHeigth, float textureWidth, float textureHeigth, float animationSpeed)

@@ -11,7 +11,7 @@ class Animation
 
 		std::vector<Frame> framesVector;
 		int currentIndex;
-		int currentTime;
+		float currentTime;
 		float speed;
 
 public:

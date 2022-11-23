@@ -21,8 +21,8 @@ void Game::Init()
 	rectangleShape = new RectangleShape(200, 300);
 
 
-	((Sprite*)animation)->CreateAnimation(9, 7, 10, 12, 8, 3);
-	((Sprite*)animation1)->CreateAnimation(0, 7, 10, 12, 8);
+	((Sprite*)animation)->CreateAnimation(9, 7, 1000, 12, 8, 3);
+	((Sprite*)animation1)->CreateAnimation(0, 7, 1, 12, 8, 3);
 	rectangleShape->setScale(glm::vec3(0.2f, 0.2f, 1.0f));
 }
 
@@ -63,7 +63,7 @@ void Game::Input()
 		animation1->addPosition(glm::vec3(0, 5, 0));
 	}
 
-	rectangleShape->setPosition(glm::vec3(Input::getMousePosition().x, -Input::getMousePosition().y, 0.0f));
+	/*rectangleShape->setPosition(glm::vec3(Input::getMousePosition().x, -Input::getMousePosition().y, 0.0f));
 
 	if (Input::getMouseButtonPressed(0))
 	{
@@ -72,7 +72,7 @@ void Game::Input()
 	if (Input::getMouseButtonPressed(1))
 	{
 		animation->setPosition(glm::vec3(Input::getMousePosition().x, -Input::getMousePosition().y, 0.0f));
-	}
+	}*/
 }
 
 void Game::Update()
@@ -86,7 +86,7 @@ void Game::Update()
 	//Update animation-------------------------
 
 	((Sprite*)animation)->updateAnimation();
-	((Sprite*)animation1)->updateAnimation();
+//	((Sprite*)animation1)->updateAnimation();
 
 	//Render here-------------------------
 	{
