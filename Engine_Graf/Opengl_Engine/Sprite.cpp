@@ -29,6 +29,8 @@ Sprite::Sprite(std::string imageName, int initPositionX, int initPositionY) : En
 	vb->UnBind();
 	ib->UnBind();
 	shader->Unbind();
+
+	textura = texture;
 }
 
 Sprite::Sprite() : Entity2d(0, 0)
@@ -73,7 +75,6 @@ void Sprite::setTexture(std::string imageName)
 
 	shader->Unbind();
 }
-
 
 void Sprite::setVertices()
 {
@@ -178,10 +179,7 @@ DllExport void Sprite::CreateAnimation(int x, int y, int speed, int framesAmount
 	}
 }
 
-
-
-
-void Sprite::updateAnimation()
+void Sprite::updateAnimation(float durationInSecs)
 {
 	frames = animation->getFrames();
 
@@ -197,9 +195,17 @@ void Sprite::updateAnimation()
 	positions[14] = frames[animation->getCurrentIndex()].uvCoords[2].u;
 	positions[15] = frames[animation->getCurrentIndex()].uvCoords[2].v;
 
-	animation->UpdateAnimation();
+	animation->UpdateAnimation(durationInSecs);
 
 	vb->updateVertexBufferData(positions, 4 * 4 * sizeof(float));
+}
+
+
+DllExport void Sprite::drawTexture()
+{
+	textura->Bind();
+	draw();
+	textura->UnBind();
 }
 
 

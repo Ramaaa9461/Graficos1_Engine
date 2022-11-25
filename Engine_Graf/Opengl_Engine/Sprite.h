@@ -9,6 +9,7 @@ class Sprite : public Entity2d
 
 
 private:
+	Texture* textura;
 
 	Animation* animation;
 	std::vector<Frame> frames;
@@ -35,6 +36,10 @@ public:
 	
 	DllExport void CreateAnimation(int x, int y, int speed, int framesAmountX, int framesAmountY);
 	DllExport void CreateAnimation(int x, int y, int speed, int framesAmountX, int framesAmountY, int framesLength);
-	DllExport void updateAnimation();
+	DllExport void updateAnimation(float durationInSecs);
+	
+	DllExport void drawTexture();
+
+
 };
 

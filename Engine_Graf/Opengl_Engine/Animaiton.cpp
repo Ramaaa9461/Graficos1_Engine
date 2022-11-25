@@ -13,25 +13,22 @@ DllExport Animation::~Animation()
 {
 }
 
-DllExport void Animation::UpdateAnimation() 
+DllExport void Animation::UpdateAnimation(float durationInSecs) 
 {
-	currentTime += Timer::getTimer()->timeBetweenFrames() * speed;
+	currentTime += Timer::getTimer()->timeBetweenFrames() * framesPerSeconds;
 
-	std::cout << speed << std::endl;
+	std::cout << currentTime << std::endl;
 
-	while (currentTime > speed)
+	while (currentTime > durationInSecs)
 	{
-		currentTime -= speed;
+		currentTime -= durationInSecs;
 	}
 
-
-	currentIndex = static_cast<int>(((int)currentTime / framesVector.size()) % framesVector.size());
+	currentIndex = static_cast<int>((int)(currentTime * framesPerSeconds));
 }
 
 DllExport void Animation::addFrame(float frameX, float frameY, float frameWidth, float frameHeigth, float textureWidth, float textureHeigth, float animationSpeed)
 {
-	speed = (animationSpeed * framesVector.size()) * 2 + 1;
-
 	//----------------------------------------------------------------
 	Frame frame;
 
@@ -48,12 +45,12 @@ DllExport void Animation::addFrame(float frameX, float frameY, float frameWidth,
 	frame.uvCoords[3].v = ((frameY + frameHeigth) / textureHeigth);
 	//----------------------------------------------------------------
 	framesVector.push_back(frame);
+
+	framesPerSeconds = framesVector.size();
 }
 
 DllExport void Animation::addFrame(float frameX, float frameY, float frameWidth, float frameHeigth, float textureWidth, float textureHeigth, float animationSpeed, int frameCount)
 {
-	speed = (animationSpeed * framesVector.size()) * 2 + 1;
-
 	float frameXIndex = 0;
 
 	for (int i = 0; i < frameCount; i++) {
@@ -75,6 +72,8 @@ DllExport void Animation::addFrame(float frameX, float frameY, float frameWidth,
 		framesVector.push_back(frame);
 		frameXIndex += frameWidth;
 	}
+
+	framesPerSeconds = framesVector.size();
 }
 
 DllExport int Animation::getCurrentIndex()

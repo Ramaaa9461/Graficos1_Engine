@@ -16,13 +16,14 @@ Game::~Game()
 void Game::Init()
 {
 	animation = new Sprite("Characters.png", 200, 200);
-	animation1 = new Sprite("Characters.png", 400, 200);
-	sprite1 = new Sprite("Characters.png", 300, 200);
+	
+	animation1 = new Sprite("Mario.png", 400, 200);
+	sprite1 = new Sprite("Logo.jpg", 300, 200);
 	rectangleShape = new RectangleShape(200, 300);
 
 
 	((Sprite*)animation)->CreateAnimation(9, 7, 1, 12, 8, 3);
-	((Sprite*)animation1)->CreateAnimation(0, 7, 3, 12, 8, 3);
+	((Sprite*)animation1)->CreateAnimation(0, 0, 1, 4, 4);
 	rectangleShape->setScale(glm::vec3(0.2f, 0.2f, 1.0f));
 }
 
@@ -85,14 +86,14 @@ void Game::Update()
 	}
 	//Update animation-------------------------
 
-	((Sprite*)animation)->updateAnimation();
-	((Sprite*)animation1)->updateAnimation();
+	((Sprite*)animation)->updateAnimation(1.0f);
+//	((Sprite*)animation1)->updateAnimation(1.0f);
 
 	//Render here-------------------------
 	{
-		animation->draw();
-		animation1->draw();
-		sprite1->draw();
+		((Sprite*)animation)->drawTexture();
+		((Sprite*)animation1)->drawTexture();
+		((Sprite*)sprite1)->drawTexture();
 		rectangleShape->draw();
 	}
 	//------------------------------------
