@@ -24,7 +24,7 @@ DllExport void Animation::UpdateAnimation(float durationInSecs)
 		currentTime -= durationInSecs;
 	}
 
-	currentIndex = static_cast<int>((int)(currentTime * framesPerSeconds));
+	currentIndex = static_cast<int>((currentTime / durationInSecs) * framesVector.size());
 }
 
 DllExport void Animation::addFrame(float frameX, float frameY, float frameWidth, float frameHeigth, float textureWidth, float textureHeigth, float animationSpeed)
