@@ -17,8 +17,6 @@ private:
 
 	Entity2d* animation;
 	Entity2d* animation1;
-	Entity2d* sprite1;
-	Entity2d* rectangleShape;
 
 	glm::vec3 normal;
 	float depth;

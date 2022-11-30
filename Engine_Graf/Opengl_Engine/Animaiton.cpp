@@ -17,8 +17,6 @@ DllExport void Animation::UpdateAnimation(float durationInSecs)
 {
 	currentTime += Timer::getTimer()->timeBetweenFrames() * framesPerSeconds;
 
-	std::cout << currentTime << std::endl;
-
 	while (currentTime > durationInSecs)
 	{
 		currentTime -= durationInSecs;
