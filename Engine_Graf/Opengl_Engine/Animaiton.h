@@ -20,8 +20,8 @@ public:
 	DllExport ~Animation();
 
 	DllExport void UpdateAnimation(float durationInSecs);
-	DllExport void addFrame(float frameX, float frameY, float frameWidth, float frameHeigth, float textureWidth, float textureHeigth, float animationSpeed);
-	DllExport void addFrame(float frameX, float frameY, float frameWidth, float frameHeigth, float textureWidth, float textureHeigth, float animationSpeed, int frameCount);
+	DllExport void addFrame(float frameX, float frameY, float frameWidth, float frameHeigth, float textureWidth, float textureHeigth);
+	DllExport void addFrame(float frameX, float frameY, float frameWidth, float frameHeigth, float textureWidth, float textureHeigth, int frameCount);
 
 	DllExport int getCurrentIndex();
 	DllExport std::vector<Frame>& getFrames();

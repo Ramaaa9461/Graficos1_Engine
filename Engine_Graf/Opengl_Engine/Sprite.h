@@ -34,8 +34,8 @@ public:
 
 	DllExport void setTexture(std::string imageName);
 	
-	DllExport void CreateAnimation(int x, int y, int speed, int framesAmountX, int framesAmountY);
-	DllExport void CreateAnimation(int x, int y, int speed, int framesAmountX, int framesAmountY, int framesLength);
+	DllExport void CreateAnimation(int x, int y, int framesAmountX, int framesAmountY);
+	DllExport void CreateAnimation(int x, int y, int framesAmountX, int framesAmountY, int framesLength);
 	DllExport void updateAnimation(float durationInSecs);
 	
 	DllExport void drawTexture();

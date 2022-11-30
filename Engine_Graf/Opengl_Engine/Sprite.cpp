@@ -147,17 +147,17 @@ void Sprite::calculateVertices()
 
 }
 
-void Sprite::CreateAnimation(int x, int y, int speed, int framesAmountX, int framesAmountY)
+void Sprite::CreateAnimation(int x, int y, int framesAmountX, int framesAmountY)
 {
 	animation = new Animation();
 
 	float frameWidth = texture->GetWidth() / framesAmountX;
 	float frameHeight = texture->GetHeight() / framesAmountY;
 
-	animation->addFrame(x * frameWidth, y * frameHeight, frameWidth, frameHeight, texture->GetWidth(), texture->GetHeight(), speed, framesAmountX);
+	animation->addFrame(x * frameWidth, y * frameHeight, frameWidth, frameHeight, texture->GetWidth(), texture->GetHeight(), framesAmountX);
 }
 
-DllExport void Sprite::CreateAnimation(int x, int y, int speed, int framesAmountX, int framesAmountY, int framesLength)
+DllExport void Sprite::CreateAnimation(int x, int y, int framesAmountX, int framesAmountY, int framesLength)
 {
 	animation = new Animation();
 
@@ -174,8 +174,7 @@ DllExport void Sprite::CreateAnimation(int x, int y, int speed, int framesAmount
 			frameWidth,
 			frameHeight,
 			texture->GetWidth(),
-			texture->GetHeight(),
-			speed);
+			texture->GetHeight());
 	}
 }
 

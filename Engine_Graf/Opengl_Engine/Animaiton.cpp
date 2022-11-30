@@ -27,7 +27,7 @@ DllExport void Animation::UpdateAnimation(float durationInSecs)
 	currentIndex = static_cast<int>((currentTime / durationInSecs) * framesVector.size());
 }
 
-DllExport void Animation::addFrame(float frameX, float frameY, float frameWidth, float frameHeigth, float textureWidth, float textureHeigth, float animationSpeed)
+DllExport void Animation::addFrame(float frameX, float frameY, float frameWidth, float frameHeigth, float textureWidth, float textureHeigth)
 {
 	//----------------------------------------------------------------
 	Frame frame;
@@ -49,7 +49,7 @@ DllExport void Animation::addFrame(float frameX, float frameY, float frameWidth,
 	framesPerSeconds = framesVector.size();
 }
 
-DllExport void Animation::addFrame(float frameX, float frameY, float frameWidth, float frameHeigth, float textureWidth, float textureHeigth, float animationSpeed, int frameCount)
+DllExport void Animation::addFrame(float frameX, float frameY, float frameWidth, float frameHeigth, float textureWidth, float textureHeigth, int frameCount)
 {
 	float frameXIndex = 0;
 
