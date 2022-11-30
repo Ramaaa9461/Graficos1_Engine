@@ -1,29 +1,26 @@
 #include "RectangleShape.h"
 
-RectangleShape::RectangleShape()
+DllExport RectangleShape::RectangleShape(int initPositionX, int initPositionY) : Shape(initPositionX, initPositionY)
 {
 	setVertices();
 	setIndixs();
+	calculateVertices();
 
 	va = new VertexArray();
 	vb = new VertexBuffer(positions, 4 * 4 * sizeof(float));
 
 	layout = VertexBufferLayout();
 	layout.Push<float>(2);		 //Video: Buffer Layout Abstraction in OpenGL - min 27.30 Explica mas cosas qe se pueden hacer
-	layout.Push<float>(2);
 	va->AddBuffer(*vb, layout);
 	va->Bind();
 
 	ib = new IndexBuffer(indices, 6);
 
-	shader = new Shader("res/Shaders/Basic.shader");
+	shaderType = ShaderType::noTexture;
+
+	shader = new Shader(shaderType);
 	shader->Bind();
-	shader->SetUniforms4f("u_Color", 0.8f, 0.3f, 0.8f, 1.0f);
-
-	texture = new Texture("res/textures/Logo.jpg");
-	texture->Bind();
-	shader->SetUniforms1i("u_Texture", 0);
-
+	shader->SetUniforms4f("u_Color", 1.0f, 1.0f, 1.0f, 1.0f);
 
 	va->Unbind();
 	vb->UnBind();
@@ -31,36 +28,53 @@ RectangleShape::RectangleShape()
 	shader->Unbind();
 }
 
-void RectangleShape::setVertices()
+DllExport void RectangleShape::setColor(glm::vec4 RGBA)
 {
+	shader->Bind();
+	shader->SetUniforms4f("u_Color", RGBA.x, RGBA.y, RGBA.z, RGBA.w);
+	shader->Unbind();
+}
+
+DllExport void RectangleShape::setVertices()
+{
+	width = 100;
+	height = 100;
 
 	positions[0] = -50.0f;
 	positions[1] = -50.0f;
-	positions[2] = 0.0f;
-	positions[3] = 0.0f;
+
+	positions[2] = 50.0f;
+	positions[3] = -50.0f;
+
 	positions[4] = 50.0f;
-	positions[5] = -50.0f;
-	positions[6] = 1.0f;
-	positions[7] = 0.0f;
-	positions[8] = 50.0f;
-	positions[9] = 50.0f;
-	positions[10] = 1.0f;
-	positions[11] = 1.0f;
-	positions[12] = - 50.0f;
-	positions[13] = 50.0f;
-	positions[14] = 0.0f;
-	positions[15] = 1.0f;
+	positions[5] = 50.0f;
+
+	positions[6] = -50.0f;
+	positions[7] = 50.0f;
 
 }
 
-void RectangleShape::setIndixs()
+DllExport void RectangleShape::setIndixs()
 {
-
 	indices[0] = 0;
 	indices[1] = 1;
 	indices[2] = 2;
 	indices[3] = 2;
 	indices[4] = 3;
 	indices[5] = 0;
-
 }
+
+DllExport void RectangleShape::calculateVertices()
+{
+	//glm::vec3 scale = getScale();
+	//glm::vec3 rotation = getRotation();
+	//int scaleX = scale.x;
+	//int scaleY = scale.y;
+	//int rotZ   = rotation.z;
+
+	vertices[0] = getPosition() + (-glm::vec3(1.0f * getScaleX() * width / 2, 0.0f, 0.0f)) + (glm::vec3(0.0f, 1.0f *  getScaleY() * height / 2, 0.0f));
+	vertices[1] = getPosition() + (glm::vec3(1.0f * getScaleX() * width / 2, 0.0f, 0.0f)) + (glm::vec3(0.0f, 1.0f *   getScaleY() * height / 2, 0.0f));
+	vertices[2] = getPosition() + (glm::vec3(1.0f * getScaleX() * width / 2, 0.0f, 0.0f)) + (-glm::vec3(0.0f, 1.0f *  getScaleY() * height / 2, 0.0f));
+	vertices[3] = getPosition() + (-glm::vec3(1.0f * getScaleX() * width / 2, 0.0f, 0.0f)) + (-glm::vec3(0.0f, 1.0f * getScaleY() * height / 2, 0.0f));
+}
+

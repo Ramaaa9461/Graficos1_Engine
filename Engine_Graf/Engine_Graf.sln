@@ -6,6 +6,9 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Opengl_Engine", "Opengl_Engine\Opengl_Engine.vcxproj", "{7FE0C55E-DF87-4AD0-A87F-7917D7CD4F9C}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Ejecutable", "Ejecutable\Ejecutable.vcxproj", "{0174BC34-D3E7-48C3-995D-285E6ACE3A76}"
+	ProjectSection(ProjectDependencies) = postProject
+		{7FE0C55E-DF87-4AD0-A87F-7917D7CD4F9C} = {7FE0C55E-DF87-4AD0-A87F-7917D7CD4F9C}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -1,9 +1,35 @@
 #include "Entity2d.h"
 
-Entity2d::Entity2d()
+#include "ImGuiEngine.h"
+
+
+
+DllExport Entity2d::Entity2d(int initPositionX, int initPositionY) : Entity(initPositionX, initPositionY)
 {
 }
 
-Entity2d::~Entity2d()
+DllExport Entity2d::~Entity2d()
 {
+	delete va;
+	delete vb;
+	delete ib;
+	delete shader;
+	delete texture;
+}
+
+DllExport glm::vec3* Entity2d::getVertices()
+{
+	return vertices;
+}
+
+DllExport void Entity2d::draw()
+{
+	ImGuiEngine::getImGuiEngine()->imGuiDrawObject(this, id);
+
+	glm::mat4 mvp = renderer->proj * renderer->view * TRS;
+
+	shader->Bind();
+	shader->SetUniformsMat4f("u_MVP", mvp);
+
+	renderer->Draw(va, ib, shader); 
 }
