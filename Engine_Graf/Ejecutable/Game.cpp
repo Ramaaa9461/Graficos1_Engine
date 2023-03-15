@@ -20,6 +20,26 @@ void Game::Init()
 
 	((Sprite*)animation)->CreateAnimation(0, 10, 6, 18);
 	
+	tileMap = new TileMap("TilePallet.png", 200, 200, 10, 5); //620 x 310
+
+	tileMap->setTile(0, true, 9, 0);
+	tileMap->setTile(1, true, 9, 1);
+	tileMap->setTile(2, true, 9, 2);
+	tileMap->setTile(3, true, 9, 3);
+	tileMap->setTile(4, true, 9, 4); // 18 - 10 TilePallet
+
+	tileMap->setDimensions(5, 5);
+	tileMap->setTileDimensions(64, 64);
+	int id = 0;
+	for (int i = 0; i < 5; i++)
+	{
+		for (int j = 0; j < 5; j++)
+		{
+			tileMap->setMapTileId(i, j, id);
+		}
+		id++;
+	}
+
 }
 
 void Game::Input()
@@ -86,8 +106,10 @@ void Game::Update()
 
 	//Render here-------------------------
 	{
-		((Sprite*)animation)->drawTexture();
-		((Sprite*)animation1)->drawTexture();
+		tileMap->draw();
+
+	/*	((Sprite*)animation)->drawTexture();
+		((Sprite*)animation1)->drawTexture();*/
 	}
 	//------------------------------------
 
@@ -106,4 +128,6 @@ void Game::DeInit()
 {
 	delete animation;
 	delete animation1;
+
+	delete tileMap;
 }

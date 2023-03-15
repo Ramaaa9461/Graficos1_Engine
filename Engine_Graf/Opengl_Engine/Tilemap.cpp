@@ -1,59 +1,32 @@
 #include "Tilemap.h"
 
-TileMap::TileMap(std::string imageName, int initPositionX, int initPositionY, int framesCountX, int framesCountY)
-{
-	_imageName = imageName;
-	_initPositionX = initPositionX;
-	_initPositionY = initPositionY;
+TileMap::TileMap() {}
 
-	_framesCountX = framesCountX;
-	_framesCountY = framesCountY;
-
- }
-
-TileMap::~TileMap()
-{
-	for (int i = 0; i < tilePallet.size(); i++)
-	{
-		delete &tilePallet[i];
-	}
-
-	delete[] _tileMapGrid;
-
-}
+TileMap::~TileMap() {}
 
 const Tile& TileMap::getTile(unsigned int uiId)
 {
 	Tile* NoTile = nullptr;
 
-	for (int i = 0; i < tilePallet.size(); i++)
+	for (int i = 0; i < tiles.size(); i++) 
 	{
-		if (uiId == tilePallet[i]->getId()) 
+		if (uiId == tiles[i].getId()) 
 		{
-			return *tilePallet[i];
+			return tiles[i];
 		}
 	}
 
 	return *NoTile;
 }
 
-void TileMap::setTile(int id, bool isWalkeable, float cellsToMoveInX, float cellsToMoveInY)
+void TileMap::setMapTileId(int layer, unsigned int uiCol, unsigned int uiRow, unsigned int uiId) 
 {
-	Tile* newTile = new Tile();
-	newTile->configureTile(id, _imageName, isWalkeable);
-
-	newTile->setTextureSize(_tileWidth, _tileHeight);
-	_tileWidth /= _framesCountX;
-	_tileHeight /= _framesCountY;
-
-	newTile->cutTexture(cellsToMoveInX * _tileWidth, cellsToMoveInY * _tileHeight, _framesCountX, _framesCountY);
-
-	tilePallet.push_back(newTile);
+	_tileMapGrid[layer][uiCol][uiRow] = getTile(uiId);
 }
 
-void TileMap::setMapTileId(unsigned int uiCol, unsigned int uiRow, unsigned int uiId)
+void TileMap::setTile(const Tile& rkTile) 
 {
-	_tileMapGrid[uiCol][uiRow] = getTile(uiId);
+	tiles.push_back(rkTile);
 }
 
 void TileMap::setTileDimensions(float tileWidth, float tileHeight)
@@ -62,44 +35,171 @@ void TileMap::setTileDimensions(float tileWidth, float tileHeight)
 	_tileHeight = tileHeight;
 }
 
-void TileMap::setDimensions(const int tilesAmountX, const int tileAmountY)
+
+void TileMap::setDimensions(float width, float height) 
 {
-	_width = tilesAmountX;
-	_height = tileAmountY;
+	_width = width;
+	_height = height;
 
-	creo la grilla bidimensional para guardar la posicion de cada tile igual que en el editor
-
-	_tileMapGrid = new Tile* [tileAmountY];
-
-	for (int i = 0; i < tileAmountY; i++)
-	{
-		_tileMapGrid[i] = new Tile[tilesAmountX];
+	//creo la grilla bidimensional para guardar la posicion de cada getTile igual que en el editor
+	Tile** tileMap;
+	tileMap = new Tile * [_height];
+	for (int i = 0; i < _height; i++) {
+		tileMap[i] = new Tile[_width];
 	}
+	_tileMapGrid.push_back(tileMap);
+}
 
-} //https://es.stackoverflow.com/questions/51771/crear-una-matriz-de-objetos-din%C3%A1mica-en-c
-
-void TileMap::draw()
+void TileMap::setTexture(const Texture& rkTexture) 
 {
-	float mapWidth = _width * _tileWidth;
-	float mapHeight = _height * _tileHeight;
+	_texture = rkTexture;
+}
 
-	for (int i = 0; i < _height; i++)
+void TileMap::draw(Renderer& rkRenderer) 
+{
+	//rkRenderer.setCurrentTexture(_texture);
+
+
+	float mapWidth  = -(_width * _tileWidth) / 2;
+	float mapHeight = (_height * _tileHeight) / 2;
+
+	for (int i = 0; i < _tileMapGrid.size(); i++) 
 	{
-		for (int j = 0; j < _width; j++)
+		for (int y = 0; y < _height; y++) 
 		{
-			_tileMapGrid[i][j].setPosX( _initPositionX +_tileWidth * i);
-			_tileMapGrid[i][j].setPosY(_initPositionY +_tileHeight * j);
-			
-			_tileMapGrid[i][j].setPosX(mapWidth +  (_tileWidth * i));
-			_tileMapGrid[i][j].setPosY(mapHeight - (_tileHeight * j));
-			_tileMapGrid[i][j].draw();
+			for (int x = 0; x < _width; x++) 
+			{
+				if (_tileMapGrid[i][y][x].getId() != NULL)
+				{
+					_tileMapGrid[i][y][x].setPosX(mapWidth + (_tileWidth * x));
+					_tileMapGrid[i][y][x].setPosY(mapHeight - (_tileHeight * y));
+					_tileMapGrid[i][y][x].draw();
+				}
+			}
 		}
 	}
 
 }
 
-void TileMap::checkCollision(Entity2d& object)
+//bool TileMap::importTileMap(std::string filePath, Renderer& rkRenderer) {
+//	tinyxml2::XMLDocument doc; //guarda el documento
+//	tinyxml2::XMLError errorHandler; //guarda el resultado de las funciones
+//
+//	errorHandler = doc.LoadFile(filePath.c_str()); //carga el archivo XML
+//	if (errorHandler == tinyxml2::XML_ERROR_FILE_NOT_FOUND || errorHandler == tinyxml2::XML_ERROR_FILE_COULD_NOT_BE_OPENED) return false;
+//
+//	// Loading Map element and save Map width, heigth in tiles and width, heigth of Tiles in pixels
+//	tinyxml2::XMLElement* mapNode = doc.FirstChildElement("map");
+//	if (mapNode == nullptr)
+//		return false;
+//	setDimensions(mapNode->FloatAttribute("width"), mapNode->FloatAttribute("height"));				// Get width and heigth for
+//	setTileDimensions(mapNode->FloatAttribute("tilewidth"), mapNode->FloatAttribute("tileheight")); // the map and the tiles
+//
+//	// Loading Tilset element
+//	tinyxml2::XMLElement* pTileset = mapNode->FirstChildElement("tileset");
+//	if (pTileset == NULL)
+//		return false;
+//
+//	int tileCount = pTileset->IntAttribute("tilecount"); // Number of Tiles in the Tileset
+//	int columns = pTileset->IntAttribute("columns");  // Columns of Tiles in the Tileset
+//	int rows = tileCount / columns;
+//
+//	_imagePath = "Assets/";																//
+//	_imagePath += pTileset->FirstChildElement("image")->Attribute("source");			// Loading Textures
+//	setTexture(rkRenderer.loadTexture(_imagePath.c_str(), D3DCOLOR_XRGB(255, 255, 255))); //
+//
+//	// Save the Tiles in the TileMap
+//	_imageWidth = pTileset->FirstChildElement("image")->IntAttribute("width");
+//	_imageHeight = pTileset->FirstChildElement("image")->IntAttribute("height");
+//	float tileX = 0.0f, tileY = 0.0f;
+//	int _id = 1;
+//	for (int i = 0; i < rows; i++) {
+//		for (int j = 0; j < columns; j++) {
+//			Tile newTile;
+//
+//			newTile.setId(_id);
+//			newTile.setTexture(_texture);
+//			newTile.setScale(_tileWidth, _tileHeight);
+//
+//			newTile.setTextureCoordinates(tileX / _imageWidth, tileY / _imageHeight,
+//				(tileX + _tileWidth) / _imageWidth, tileY / _imageHeight,
+//				tileX / _imageWidth, (tileY + _tileHeight) / _imageHeight,
+//				(tileX + _tileWidth) / _imageWidth, (tileY + _tileHeight) / _imageHeight);
+//
+//			tileX += _tileWidth;
+//			setTile(newTile);
+//			_id++;
+//		}
+//		tileX = 0;
+//		tileY += _tileHeight;
+//	}
+//
+//	tinyxml2::XMLElement* pTile = pTileset->FirstChildElement("tile");
+//
+//	while (pTile) {
+//		unsigned int id = pTile->IntAttribute("id");
+//		tinyxml2::XMLElement* pProperty = pTile->FirstChildElement("properties")->FirstChildElement("property");
+//		std::string propertyName = pProperty->Attribute("value");
+//		if (propertyName == "false")
+//			tiles[id].setIsWalkable(false);
+//		else
+//			tiles[id].setIsWalkable(true);
+//
+//		pTile = pTile->NextSiblingElement("tile");
+//	}
+//
+//	// Loading Layer element
+//	tinyxml2::XMLElement* pLayer = mapNode->FirstChildElement("layer");
+//	if (pLayer == NULL)
+//		return false;
+//
+//	int layerCount = 0;
+//	while (pLayer) {
+//		// Loading Data element
+//		tinyxml2::XMLElement* pData = pLayer->FirstChildElement("data");
+//		if (pData == NULL)
+//			return false;
+//
+//		if (layerCount > 0) {
+//			Tile** tileMap;
+//			tileMap = new Tile * [_height];
+//			for (int i = 0; i < _height; i++) {
+//				tileMap[i] = new Tile[_width];
+//			}
+//			_tileMapGrid.push_back(tileMap);
+//		}
+//
+//		while (pData) {
+//			std::vector<int> tileGids;
+//			for (tinyxml2::XMLElement* pTile = pData->FirstChildElement("tile");
+//				pTile != NULL;
+//				pTile = pTile->NextSiblingElement("tile"))
+//			{
+//				unsigned int gid = std::atoi(pTile->Attribute("gid")); // getTile's id is saved
+//				tileGids.push_back(gid);
+//			}
+//
+//			int gid = 0;
+//			for (int y = 0; y < _height; y++) {
+//				for (int x = 0; x < _width; x++) {
+//					if (tileGids[gid] != 0)
+//						setMapTileId(layerCount, y, x, tileGids[gid]);
+//					gid++;
+//				}
+//			}
+//
+//			pData = pData->NextSiblingElement("data");
+//		}
+//		layerCount++;
+//		pLayer = pLayer->NextSiblingElement("layer");
+//	}
+//
+//	return true;
+//}
+
+void TileMap::checkCollision(Entity2d& object) 
 {
+
 	convertedPosX = object.getPositionX() + (_width / 2) * _tileWidth;
 	convertedPosY = object.getPositionY() - (_height / 2) * _tileHeight;
 
@@ -121,46 +221,26 @@ void TileMap::checkCollision(Entity2d& object)
 	if (bottom_tile >= _height)
 		bottom_tile = _height - 1;
 
-	/*
-	cout << "converted X: " << convertedPosX << endl;
-	cout << "converted Y: " << convertedPosY << endl;
 
-	cout << "left: " <<left_tile << endl;
-	cout << "right: "<<right_tile << endl;
-	cout << "top: " << top_tile << endl;
-	cout << "bottom: "<<bottom_tile << endl;
-	*/
+	//for (int i = left_tile; i <= right_tile; i++)
+	//{
 
-	//for (int i = left_tile; i <= right_tile; i++) {
+	//	for (int j = top_tile; j <= bottom_tile; j++) 
+	//	{
 
-	//	for (int j = top_tile; j <= bottom_tile; j++) {
+	//		for (int k = 0; k < _tileMapGrid.size(); k++) 
+	//		{
+	//			if (!_tileMapGrid[k][j][i].isWalkable()) {
 
-	//		for (int k = 0; k < _tileMapGrid.size(); k++) {
-	//			//cout << "caminable " << "[" << k << "]" << "[" << j << "]" << "[" << i << "] : "<< _tileMapGrid[k][j][i].isWalkable() << endl; // true == 1  ; false == 0
-	//			//cout << true << endl;
-	//			if (!_tileMapGrid[k][j][i].isWalkable())
-	//			{
-	//			
-	//				if (CollisionManager::IntersectPolygons(_tileMapGrid[k][j][i].getVertices(), 4, object.getVertices(), 4, normal, depth))
-	//				{
-	//					
-	//				}
-	//				//if (_tileMapGrid[k][j][i].checkCollision(object) == CollisionHorizontalRight ||
-	//				//	_tileMapGrid[k][j][i].checkCollision(object) == CollisionHorizontalLeft)
-	//				//{
-	//				//object.returnToPreviusPosH();
-	//				//}
+	//				if (_tileMapGrid[k][j][i].checkCollision(object) == CollisionHorizontalRight ||
+	//					_tileMapGrid[k][j][i].checkCollision(object) == CollisionHorizontalLeft)
+	//					object.returnToPreviusPosH();
 
-	//				//if (_tileMapGrid[k][j][i].checkCollision(object) == CollisionVerticalUp)
-	//				//{
-	//				//object.returnToPreviusPos(object.posX(), object.previusPosY() + 0.2);
-	//				//}
+	//				if (_tileMapGrid[k][j][i].checkCollision(object) == CollisionVerticalUp)
+	//					object.returnToPreviusPos(object.posX(), object.previusPosY() + 0.2);
 
-	//				//else if (_tileMapGrid[k][j][i].checkCollision(object) == CollisionVerticalDown)
-	//				//{
-	//				//object.returnToPreviusPos(object.posX(), object.previusPosY() - 0.2);
-	//				//}
-	//					
+	//				else if (_tileMapGrid[k][j][i].checkCollision(object) == CollisionVerticalDown)
+	//					object.returnToPreviusPos(object.posX(), object.previusPosY() - 0.2);
 	//			}
 	//		}
 	//	}

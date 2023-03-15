@@ -1,44 +1,39 @@
 #include "Tile.h"
 
-Tile::Tile() : _id(0), _walkable(false)
+Tile::Tile() 
 {
-
+	_id = 0;
+	isWalkable = false;
 }
 
-Tile::~Tile()
+Tile::~Tile() 
 {
-}
-
-void Tile::setPosX(float posX)
-{
-	setPositionX(posX);
-}
-
-void Tile::setPosY(float posY)
-{
-	setPositionY(posY);
-}
-
-bool Tile::isWalkable()
-{
-	return _walkable;
-}
-
-void Tile::setWalkable(bool Walkable)
-{
-	_walkable = Walkable;
-}
-
-unsigned int Tile::getId()
-{
-	return _id;
 }
 
 void Tile::configureTile(int id, std::string nameImage, bool isWalkable)
 {
 	setTexture(nameImage);
 	_id = id;
-	_walkable = isWalkable;
+	this->isWalkable = isWalkable;
+}
+
+bool Tile::getIsWalkable() 
+{
+		return isWalkable;
+}
+
+void Tile::setIsWalkable(bool bWalkable) {
+	isWalkable = bWalkable;
+}
+
+unsigned int Tile::getId() 
+{
+	return _id;
+}
+
+void Tile::setId(unsigned int id) 
+{
+	_id = id;
 }
 
 void Tile::cutTexture(float initPosX, float intPosY, int framesCountX, int framesCountY)
@@ -76,8 +71,18 @@ void Tile::cutTexture(float initPosX, float intPosY, int framesCountX, int frame
 	vb->updateVertexBufferData(positions, 4 * 4 * sizeof(float));
 }
 
-void Tile::setTextureSize(float& width, float& height)
+void Tile::getTextureSize(float& width, float& height)
 {
 	width = texture->GetWidth();
 	height = texture->GetHeight();
+}
+
+void Tile::setPosX(float posX)
+{
+	setPositionX(posX);
+}
+
+void Tile::setPosY(float posY)
+{
+	setPositionY(posY);
 }

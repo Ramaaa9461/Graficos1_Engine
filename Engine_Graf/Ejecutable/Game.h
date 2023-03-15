@@ -9,6 +9,7 @@
 #include "Sprite.h"
 #include "ImGuiEngine.h"
 #include "CollisionManager.h"
+#include "Tilemap.h"
 
 class Game : public BaseGame
 {
@@ -20,6 +21,8 @@ private:
 
 	glm::vec3 normal;
 	float depth;
+
+	TileMap* tileMap;
 
 public:
 
