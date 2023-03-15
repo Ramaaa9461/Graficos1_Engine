@@ -12,7 +12,7 @@ private:
 
 
 	DllExport Timer();
-	static Timer* S_Timer;
+	static Timer* S_Timer     ;
 
 public:
 
